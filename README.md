@@ -5,7 +5,53 @@ LearningStation is an educational platform which connects students and tutors.
 
 
 ### Users Stories
+	As a user, I want to visit the homepage to explore the tutoring services.
 
+
+		As a user, I want to sign up for an account as a student or a tutor using my name, email, location, and other basic information required for efficient app usage.
+
+
+		As a student, I want to search for tutors based on subject and availability.
+
+
+		As a student, I want to view tutor profiles to see their expertise, bio, average rating, class prices, years of experience, and languages spoken.
+
+
+		As a student, I want to book available classes with the tutor of my choice.
+
+
+		As a student, I want to pay for classes individually.
+
+
+		As a student, I want to rate tutors based on my experience after taking their classes.
+
+
+		As a student, I want to communicate with tutors via messaging or video calls for further discussion or clarification.
+
+
+		As a student, I want the ability to cancel a class and receive a refund if I do so at least 24 hours in advance.
+
+
+		As a tutor, I want to sign up for an account using my name, email, location, and other information required by education institutions.
+
+
+		As a tutor, I want to create a profile with a quick bio to present myself to students.
+
+
+		As a tutor, I want to have access to OpenAI lesson plans for reference in my tutoring sessions.
+
+
+		As a tutor, I want to edit my profile, including changing my location and updating class information.
+
+
+		As a tutor, I want to set my available class hours to let students know when I am available.
+		As a tutor, I want to see the number of students I have taught.
+
+
+		As a tutor, I want to communicate with students via messaging or video calls for further discussion or clarification.
+
+
+		As a tutor, I want the ability to cancel a class and provide an alternative time/date, while ensuring the student receives a full refund.
 
 ### WareFrame
 
