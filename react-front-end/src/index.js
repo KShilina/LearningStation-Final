@@ -1,20 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import { Auth0Provider } from "@auth0/auth0-react";
 import Logout from "./components/Logout";
+import Home from "./components/Home";
+
 
 export default function Index() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-
+        <Route path="/" element={<Home />} />
+        
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/logout" element={<Logout />} />

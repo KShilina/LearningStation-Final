@@ -1,33 +1,45 @@
-import React, { useState } from "react";
-import axios from "axios";
-import "./App.css";
-// import { Auth0Provider } from '@auth0/auth0-react';
+// import "./App.css";
 
-const App = () => {
-  const [message, setMessage] = useState("Click the button to load data!");
+// import Home from "./components/Home";
 
-  const fetchData = () => {
-    axios
-      .get("/api/data") // You can simply make your requests to "/api/whatever you want"
-      .then((response) => {
-        // handle success
-        console.log(response.data); // The entire response from the Rails API
+// const App = () => {
+//   // const [searchResults, setSearchResults] = useState([]);
 
-        console.log(response.data.message); // Just the message
-        setMessage(response.data.message);
-      })
-      .catch((error) => {
-        // handle error if needed
-        console.error(error);
-      });
-  };
+//   // const handleSearch = (query) => {
+//   //   axios
+//   //     .get("/api/search", {
+//   //       params: { subject: query } // Pass the search query as a parameter
+//   //     })
+//   //     .then((response) => {
+//   //       // handle success
+//   //       console.log(response.data); // The search results received from the API
+//   //       setSearchResults(response.data); // Update the state with the search results
+//   //     })
+//   //     .catch((error) => {
+//   //       // handle error if needed
+//   //       console.error(error);
+//   //     });
+//   // };
 
-  return (
-    <div className="App">
-      <h1>{message}</h1>
-      <button onClick={fetchData}>Fetch Data</button>
-    </div>
-  );
-};
+//   // return (
+//   //   <div>
+//   //     <h1>Main Component</h1>
+//   //     <SearchBar onSearch={handleSearch} />
+//   //     {/* Display the search results */}
+//   //     <ul>
+//   //       {searchResults.map((result) => (
+//   //         <li key={result.class_id}>
+//   //           <p> {result.first_name} </p>
+//   //           <p> {result.last_name}</p>
+//   //           <img src = {result.image} alt = {`${result.first_name} pic`} />
+//   //         </li>
+//   //       ))}
+//   //     </ul>
+//   //   </div>
+//   // );
+//   return (
+//     <Home />
+//   )
+// };
 
-export default App;
+// export default App;
