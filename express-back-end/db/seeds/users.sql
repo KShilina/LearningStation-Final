@@ -13,18 +13,20 @@ VALUES
   ('Lisa', 'Garcia', 'lisa.garcia@student.com', 'Atlanta', 'password10');
 
 -- Insert 10 tutors
-INSERT INTO tutors (first_name, last_name, email, location, password, expertise, quick_bio)
+-- Insert sample data into the "tutors" table
+INSERT INTO tutors (expertise, quick_bio, first_name, last_name, email, location, password, image)
 VALUES
-  ('Andrew', 'Lee', 'andrew.lee@tutor.com', 'New York', 'tutor1', 'Mathematics', 'Experienced math tutor'),
-  ('Melissa', 'Clark', 'melissa.clark@tutor.com', 'Los Angeles', 'tutor2', 'Science', 'Passionate about science education'),
-  ('Kevin', 'Wang', 'kevin.wang@tutor.com', 'Chicago', 'tutor3', 'English', 'Certified English teacher'),
-  ('Laura', 'Lopez', 'laura.lopez@tutor.com', 'Houston', 'tutor4', 'History', 'History enthusiast and tutor'),
-  ('Ryan', 'Scott', 'ryan.scott@tutor.com', 'Miami', 'tutor5', 'Physics', 'Helping students understand physics concepts'),
-  ('Michelle', 'Nguyen', 'michelle.nguyen@tutor.com', 'San Francisco', 'tutor6', 'Chemistry', 'Chemistry tutor with lab experience'),
-  ('Jason', 'Kim', 'jason.kim@tutor.com', 'Seattle', 'tutor7', 'Computer Science', 'Software engineer and CS tutor'),
-  ('Amy', 'Rivera', 'amy.rivera@tutor.com', 'Denver', 'tutor8', 'Spanish', 'Native Spanish speaker and tutor'),
-  ('Mark', 'Hernandez', 'mark.hernandez@tutor.com', 'Boston', 'tutor9', 'Biology', 'Biology PhD candidate and tutor'),
-  ('Julia', 'Gomez', 'julia.gomez@tutor.com', 'Atlanta', 'tutor10', 'Music', 'Music teacher and tutor');
+  ('Mathematics', 'Experienced tutor in Mathematics.', 'John', 'Doe', 'john.doe@example.com', 'New York', 'password123', 'https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'),
+  ('Science', 'Passionate about teaching Science.', 'Jane', 'Smith', 'jane.smith@example.com', 'Los Angeles', 'tutorpass', 'https://images.unsplash.com/photo-1614644147798-f8c0fc9da7f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80'),
+  ('English', 'Skilled in teaching English language and literature.', 'Michael', 'Johnson', 'michael.johnson@example.com', 'Chicago', 'securepassword', 'https://example.com/michael.jpg'),
+  ('Computer Science', 'Experienced in programming and computer science.', 'Alex', 'Lee', 'alex.lee@example.com', 'San Francisco', 'cs1234', 'https://images.unsplash.com/photo-1587837073080-448bc6a2329b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'),
+  ('History', 'Specializes in History and Social Studies.', 'Emily', 'Brown', 'emily.brown@example.com', 'Boston', 'history101', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80'),
+  ('Physics', 'Physics enthusiast and tutor.', 'William', 'Taylor', 'william.taylor@example.com', 'Houston', 'physicstutor', 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'),
+  ('Chemistry', 'Chemistry expert and tutor.', 'Sophia', 'Martinez', 'sophia.martinez@example.com', 'Miami', 'chemistryrocks', 'https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80'),
+  ('Biology', 'Passionate about teaching Biology.', 'Daniel', 'Garcia', 'daniel.garcia@example.com', 'Phoenix', 'biologist', 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80'),
+  ('Foreign Languages', 'Fluent in multiple foreign languages.', 'Olivia', 'Lopez', 'olivia.lopez@example.com', 'Dallas', 'multilingual', 'https://images.unsplash.com/photo-1627161683077-e34782c24d81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=703&q=80'),
+  ('Music', 'Talented music tutor and performer.', 'Ethan', 'Rivera', 'ethan.rivera@example.com', 'Seattle', 'music123', 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80');
+
 
   ---- add 10 bookings ----
 
