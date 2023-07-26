@@ -1,0 +1,74 @@
+-- Insert 10 students
+INSERT INTO students (first_name, last_name, email, location, password)
+VALUES
+  ('John', 'Doe', 'john.doe@student.com', 'New York', 'password1'),
+  ('Jane', 'Smith', 'jane.smith@student.com', 'Los Angeles', 'password2'),
+  ('Michael', 'Johnson', 'michael.johnson@student.com', 'Chicago', 'password3'),
+  ('Emily', 'Williams', 'emily.williams@student.com', 'Houston', 'password4'),
+  ('David', 'Brown', 'david.brown@student.com', 'Miami', 'password5'),
+  ('Sarah', 'Miller', 'sarah.miller@student.com', 'San Francisco', 'password6'),
+  ('Robert', 'Anderson', 'robert.anderson@student.com', 'Seattle', 'password7'),
+  ('Jessica', 'Martinez', 'jessica.martinez@student.com', 'Denver', 'password8'),
+  ('Daniel', 'Thompson', 'daniel.thompson@student.com', 'Boston', 'password9'),
+  ('Lisa', 'Garcia', 'lisa.garcia@student.com', 'Atlanta', 'password10');
+
+-- Insert 10 tutors
+INSERT INTO tutors (first_name, last_name, email, location, password, expertise, quick_bio)
+VALUES
+  ('Andrew', 'Lee', 'andrew.lee@tutor.com', 'New York', 'tutor1', 'Mathematics', 'Experienced math tutor'),
+  ('Melissa', 'Clark', 'melissa.clark@tutor.com', 'Los Angeles', 'tutor2', 'Science', 'Passionate about science education'),
+  ('Kevin', 'Wang', 'kevin.wang@tutor.com', 'Chicago', 'tutor3', 'English', 'Certified English teacher'),
+  ('Laura', 'Lopez', 'laura.lopez@tutor.com', 'Houston', 'tutor4', 'History', 'History enthusiast and tutor'),
+  ('Ryan', 'Scott', 'ryan.scott@tutor.com', 'Miami', 'tutor5', 'Physics', 'Helping students understand physics concepts'),
+  ('Michelle', 'Nguyen', 'michelle.nguyen@tutor.com', 'San Francisco', 'tutor6', 'Chemistry', 'Chemistry tutor with lab experience'),
+  ('Jason', 'Kim', 'jason.kim@tutor.com', 'Seattle', 'tutor7', 'Computer Science', 'Software engineer and CS tutor'),
+  ('Amy', 'Rivera', 'amy.rivera@tutor.com', 'Denver', 'tutor8', 'Spanish', 'Native Spanish speaker and tutor'),
+  ('Mark', 'Hernandez', 'mark.hernandez@tutor.com', 'Boston', 'tutor9', 'Biology', 'Biology PhD candidate and tutor'),
+  ('Julia', 'Gomez', 'julia.gomez@tutor.com', 'Atlanta', 'tutor10', 'Music', 'Music teacher and tutor');
+
+  ---- add 10 bookings ----
+
+  INSERT INTO bookings (student_id, class_id, booking_date, payment_confirmed)
+VALUES
+  (1, 1, '2023-07-25 12:00:00', true),
+  (2, 2, '2023-07-26 15:30:00', true),
+  (3, 3, '2023-07-27 10:00:00', false),
+  (4, 4, '2023-07-28 09:45:00', false),
+  (5, 5, '2023-07-29 14:15:00', true),
+  (6, 6, '2023-07-30 11:30:00', true),
+  (7, 7, '2023-07-31 17:00:00', false),
+  (8, 8, '2023-08-01 13:45:00', true),
+  (9, 9, '2023-08-02 12:30:00', true),
+  (10, 10, '2023-08-03 10:15:00', false);
+
+
+  ---create 10 message examples ----
+
+INSERT INTO messages (student_id, tutor_id, content, sent_at, payment_confirmed)
+VALUES
+  (1, 1, 'Hi, I need help with my math assignment.', '2023-07-25 08:30:00', true),
+  (2, 2, 'Hello, can you assist with my science project?', '2023-07-25 10:15:00', true),
+  (3, 3, 'Hey, I have a question about English grammar.', '2023-07-25 12:45:00', false),
+  (4, 4, 'Hi there, Im having trouble with history facts.', '2023-07-25 14:30:00', false),
+  (5, 5, 'Hello, can you explain physics concepts to me?', '2023-07-25 16:00:00', true),
+  (6, 6, 'Hi, I need help understanding chemistry reactions.', '2023-07-25 17:45:00', true),
+  (7, 7, 'Hey, can you assist with a computer science problem?', '2023-07-25 19:30:00', false),
+  (8, 8, 'Hello, I want to practice speaking Spanish.', '2023-07-25 21:00:00', true),
+  (9, 9, 'Hi, can you explain biology concepts?', '2023-07-26 09:30:00', true),
+  (10, 10, 'Hey, Im interested in learning music theory.', '2023-07-26 11:15:00', false);
+
+
+  ------create 10 class examples ----
+
+  INSERT INTO classes (tutor_id, subject, class_price)
+VALUES
+  (1, 'Mathematics', '$30.00'),
+  (2, 'Science', '$25.00'),
+  (3, 'English', '$20.00'),
+  (4, 'History', '$18.00'),
+  (5, 'Physics', '$35.00'),
+  (6, 'Chemistry', '$28.00'),
+  (7, 'Computer Science', '$40.00'),
+  (8, 'Spanish', '$22.00'),
+  (9, 'Biology', '$26.00'),
+  (10, 'Music', '$32.00');

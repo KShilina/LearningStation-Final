@@ -1,3 +1,8 @@
+// load .env data into process.env
+require("dotenv").config();
+const userQueries = require("./db/queries/users");
+
+// Web server config
 const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
@@ -7,6 +12,7 @@ const PORT = 8080;
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
+
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
