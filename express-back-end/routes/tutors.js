@@ -32,7 +32,7 @@ module.exports = (pool) => {
   // Route to update a specific tutor by tutor_id
   router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { first_name, last_name, email, location, password, expertise, quick_bio } = req.body;
+    const { first_name, last_name, email, location, password, expertise, quick_bio, image } = req.body;
     try {
       // Build the update query dynamically based on the provided fields in the request body
       let updateQuery = 'UPDATE tutors SET ';
@@ -74,6 +74,13 @@ module.exports = (pool) => {
         updateValues.push(quick_bio);
         paramCount++;
       }
+
+      if (image) {
+        updateQuery += `image = $${paramCount}, `;
+        updateValues.push(image);
+        paramCount++;
+      }
+
   
       // Remove the trailing comma and space
       updateQuery = updateQuery.slice(0, -2);
@@ -98,11 +105,11 @@ module.exports = (pool) => {
   
 // add a tutor
   router.post('/', async (req, res) => {
-    const {first_name, last_name, email, location, password, expertise, quick_bio } = req.body;
+    const {first_name, last_name, email, location, password, expertise, quick_bio, image } = req.body;
     try {
       const newTutor = await pool.query(
-        'INSERT INTO tutors (first_name, last_name, email, location, password, expertise, quick_bio) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-        [first_name, last_name, email, location, password, expertise, quick_bio]
+        'INSERT INTO tutors (first_name, last_name, email, location, password, expertise, quick_bio, image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+        [first_name, last_name, email, location, password, expertise, quick_bio, image]
       );
       res.json(newTutor.rows[0]);
     } catch (err) {
