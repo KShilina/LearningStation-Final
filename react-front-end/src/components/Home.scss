@@ -1,0 +1,17 @@
+// Home.scss
+
+.tutor-container {
+  display: flex;
+  // flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .tutor-card {
+    width: calc(33.33% - 20px); // To make each tutor card take one-third of the available width (minus margins)
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+
+    // Add other styles as needed for the tutor cards
+  }
+}

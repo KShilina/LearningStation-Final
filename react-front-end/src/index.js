@@ -8,6 +8,8 @@ import Dashboard from "./components/Dashboard";
 import { Auth0Provider } from "@auth0/auth0-react";
 import Logout from "./components/Logout";
 import Home from "./components/Home";
+import StudentRegister from "./components/StudentRegister";
+import TutorRegister from "./components/TutorRegister";
 
 
 export default function Index() {
@@ -15,10 +17,11 @@ export default function Index() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        
+        <Route path="/StudentRegister" element={<StudentRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/TutorRegister" element={<TutorRegister />} />
       </Routes>
     </BrowserRouter>
   );
