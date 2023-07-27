@@ -1,19 +1,27 @@
-import React from 'react'
-import SearchBar from './SearchBar';
-import './navbar.scss';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import "./navbar.scss";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  // Function to handle search
-  const handleSearch = (searchTerm) => {
-    // Perform search functionality here based on the searchTerm
-    console.log('Search Term:', searchTerm);
+  const [selectedOption, setSelectedOption] = useState("");
+  const navigate = useNavigate();
+
+  // Function to handle the dropdown selection change
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
-  // function Navbar() {
+  // Function to handle Sign up dropdown selection
+  const handleSignUpOption = () => {
+    if (selectedOption === "student") {
+      navigate("/StudentRegister");
+    } else if (selectedOption === "tutor") {
+      navigate("/TutorRegister");
+    }
+  };
+
   return (
     <nav className="Navbar">
-
       <ul className="nav-links">
         <li>
           <a href="/">Home</a>
@@ -26,29 +34,29 @@ const Navbar = () => {
         <li>
           {/* Dropdown menu for Sign Up */}
           <div className="signup-dropdown">
-            <select id="signup-dropdown">Sign up
-              <option value="">Sign up</option>
-              <option value="student">Sign up as a Student</option>
-              <option value="tutor">Sign up as a Tutor</option>
+            <select
+              id="signup-dropdown"
+              onChange={handleSelectChange}
+              value={selectedOption}
+            >
+              <option value="">Choose from</option>
+              <option value="student">Become a Student</option>
+              <option value="tutor">Become a Tutor</option>
             </select>
           </div>
         </li>
 
-        <Link to="/StudentRegister">
-          <button>Student Register</button>
-        </Link>
-
-        <Link to="/TutorRegister">
-          <button>Tutor Register</button>
-        </Link>
+        <li>
+          {/* Use a button for Sign Up to trigger handleSignUpOption */}
+          <button onClick={handleSignUpOption}>Sign up</button>
+        </li>
 
         <li>
           <a href="/login">Login</a>
         </li>
-
       </ul>
     </nav>
   );
 };
 
-export default Navbar
+export default Navbar;
