@@ -7,7 +7,7 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 // middleware
 app.use(cors());
@@ -18,20 +18,17 @@ const pool = new Pool({
   host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     user: process.env.DB_USER,
-    password: process.env.DB_PASS,
     database: process.env.DB_NAME
 });
 
+// home page route
 app.get('/',(req, res) => {
+  console.log("here too")
   res.send('Hello World')
  })
 
-// Routes
+
 const studentsRouter = require('./routes/students');
-// Define the router for search functions
-const router = express.Router(); 
-
-
 const tutorsRouter = require('./routes/tutors');
 const classesRouter = require('./routes/classes');
 const bookingsRouter = require('./routes/bookings');
