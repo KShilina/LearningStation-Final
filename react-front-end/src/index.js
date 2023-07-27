@@ -10,13 +10,14 @@ import Logout from "./components/Logout";
 import Home from "./components/Home";
 import StudentRegister from "./components/StudentRegister";
 import TutorRegister from "./components/TutorRegister";
-
+import About from "./components/About";
 
 export default function Index() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/StudentRegister" element={<StudentRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />

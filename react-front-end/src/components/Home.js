@@ -20,22 +20,17 @@ const Home = () => {
 
   //handlesearch is for the search bar
   const handleSearch = (query) => {
-    fetch(`/api/search?subject=${query}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // handle success
-        console.log(data); // The search results received from the API
-        setSearchResults(data); // Update the state with the search results
-      })
-      .catch((error) => {
-        // handle error if needed
-        console.error('Error fetching search results:', error);
-      });
+    axios
+    .get(`/api/search?subject=${query}`)
+    .then((response) => {
+      // handle success
+      console.log(response.data); // The search results received from the API
+      setSearchResults(response.data); // Update the state with the search results
+    })
+    .catch((error) => {
+      // handle error if needed
+      console.error('Error fetching search results:', error);
+    });
   };
 
   const fetchThreeTutors = async () => {
