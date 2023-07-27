@@ -22,7 +22,7 @@ const About = () => {
       </p>
       <p>
         Join us on this exciting learning journey and unlock your full
-        potential!🌱
+        potential!🌱🌱🌱
       </p>
     </div>
   );
