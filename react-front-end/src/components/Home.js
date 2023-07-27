@@ -31,8 +31,10 @@ const Home = () => {
       <ul>
         {searchResults.map((result) => (
           <li key={result.class_id}>
-            <p> {result.first_name} </p>
-            <p> {result.last_name}</p>
+            <p>{result.first_name} {result.last_name}</p>
+            <p> Location: {result.location} </p>
+            <p> Expert in {result.expertise}</p>
+            <p>BIO: {result.quick_bio}</p>
             <img src = {result.image} alt = {`${result.first_name} pic`} />
           </li>
         ))}
