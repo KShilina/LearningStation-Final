@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './TutorRegister.scss';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./TutorRegister.scss";
 
 const TutorRegister = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    location: '',
-    expertise: '',
-    quickBio: '',
-    password: '',
-    image: null, // Store the image file in the state
+    first_name: "",
+    last_name: "",
+    email: "",
+    location: "",
+    expertise: "",
+    quick_bio: "",
+    password: "",
   });
 
   const [isFormSubmitted, setIsFormSubmitted] = useState(false); // State variable for form submission status
@@ -24,47 +24,27 @@ const TutorRegister = () => {
     }));
   };
 
-  const handleImageChange = (e) => {
-    const imageFile = e.target.files[0]; // Get the selected image file
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      image: imageFile, // Update the image state with the selected file
-    }));
-  };
+  // Define the navigate function using useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formDataWithImage = new FormData(); // Create a FormData object to send the data
-      formDataWithImage.append('image', formData.image); // Append the image to the FormData
+      // Make a POST request to backend API with the form data
+      const response = await axios.post("/api/tutors", formData);
 
-      // Append other form data to the FormData
-      formDataWithImage.append('firstName', formData.firstName);
-      formDataWithImage.append('lastName', formData.lastName);
-      formDataWithImage.append('email', formData.email);
-      formDataWithImage.append('location', formData.location);
-      formDataWithImage.append('expertise', formData.expertise);
-      formDataWithImage.append('quickBio', formData.quickBio);
-      formDataWithImage.append('password', formData.password);
-
-      // Make a POST request to your backend API with the FormData
-      const response = await axios.post('/api/tutors', formDataWithImage, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Set the content type for the FormData
-        },
-      });
-
-      console.log('Tutor sign-up successful:', response.data);
-      // Optionally, you can redirect to a success page here
+      console.log("Tutor sign-up successful:", response.data);
+      setIsFormSubmitted(true); // Set the form submission status to true
     } catch (error) {
-      console.error('Error signing up tutor:', error);
+      console.error("Error signing up tutor:", error);
     }
-
-    
   };
-  
 
-  
+  if (isFormSubmitted) {
+    // Use the navigate function to redirect to the success page
+    navigate("/success");
+  }
+
   return (
     <div className="form-container">
       <h1>Teach online</h1>
@@ -73,10 +53,10 @@ const TutorRegister = () => {
         <div className="form-group">
           <input
             type="text"
-            id="firstName"
-            name="firstName"
+            id="first_name"
+            name="first_name"
             placeholder="First Name"
-            value={formData.firstName}
+            value={formData.first_name}
             onChange={handleChange}
             required
           />
@@ -85,10 +65,10 @@ const TutorRegister = () => {
         <div className="form-group">
           <input
             type="text"
-            id="lastName"
-            name="lastName"
+            id="last_name"
+            name="last_name"
             placeholder="Last Name"
-            value={formData.lastName}
+            value={formData.last_name}
             onChange={handleChange}
             required
           />
@@ -133,9 +113,9 @@ const TutorRegister = () => {
         <div className="form-group">
           <textarea
             id="quickBio"
-            name="quickBio"
+            name="quick_bio"
             placeholder="Quick Bio"
-            value={formData.quickBio}
+            value={formData.quick_bio}
             onChange={handleChange}
             rows="4"
           />
@@ -149,18 +129,6 @@ const TutorRegister = () => {
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="image">Image:</label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            onChange={handleImageChange}
             required
           />
         </div>

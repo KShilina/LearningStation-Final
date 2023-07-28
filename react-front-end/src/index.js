@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import StudentRegister from "./components/StudentRegister";
 import TutorRegister from "./components/TutorRegister";
 import About from "./components/About";
+import Success from "./Success";
 
 export default function Index() {
   return (
@@ -23,6 +24,7 @@ export default function Index() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/TutorRegister" element={<TutorRegister />} />
+        <Route path="/Success" element={<Success />} /> 
       </Routes>
     </BrowserRouter>
   );
