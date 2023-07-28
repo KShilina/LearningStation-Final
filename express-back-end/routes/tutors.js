@@ -97,28 +97,23 @@ module.exports = (pool) => {
 
   
 // add a tutor
-  router.post('/', async (req, res) => {
-    const {first_name, last_name, email, location, password, expertise, quick_bio } = req.body;
-    try {
-      const newTutor = await pool.query(
-        'INSERT INTO tutors (first_name, last_name, email, location, password, expertise, quick_bio) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-        [first_name, last_name, email, location, password, expertise, quick_bio]
-      );
-      res.json(newTutor.rows[0]);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Error creating tutor' });
-    }
-  });
-
- 
+router.post('/', async (req, res) => {
+  const { first_name, last_name, email, location, password, expertise, quick_bio, image } = req.body;
+  console.log(req.body);
+  try {
+    const newTutor = await pool.query(
+      'INSERT INTO tutors (first_name, last_name, email, location, password, expertise, quick_bio) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+      [first_name, last_name, email, location, password, expertise, quick_bio]
+    );
+console.log(newTutor);
+    res.status(201).json({ message: 'Tutor created successfully', tutor: newTutor.rows[0], redirect: '/success' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error creating tutor' });
+  }
+});
 
   return router;
 };
 
 
-
-
-
-
-// Rest of the routes and queries for tutors...
