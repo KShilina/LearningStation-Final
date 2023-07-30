@@ -76,13 +76,32 @@ The main important bit is that the React project has `proxy` set to `localhost:8
 
 You need **TWO** terminal windows/tabs for this (or some other plan for running two Node processes).
 
-In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to install the dependencies. Then run `npm start` or `yarn start`, and go to `localhost:3000` in your browser. if you wish to use nodemon run `npm run local`.
+In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to install the dependencies. Then run `npm start` or `yarn start`, and go to `localhost:3000` in your browser. 
 
-In the other terminal, `cd` into `express-back-end`. Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server.
+In the other terminal, `cd` into `express-back-end`. Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server. If you wish to use nodemon run `npm run local`.
 
-In the browser, you can click on the button and see the data get loaded.
+### Database set up
+You need to create .env file inside the `express-back-end` directory, please take as an example .env.example
+* Create a new database called learningstation. You will run psql to perform this operation :
+``` psql
+CREATE NEW DATABASE learningstation; 
+```
+Then connect to DB:
+```  \c learningstation  ```
 
-If this doesn't work, please message me!
+
+* Next step will be creating tables, an example below:
+```
+CREATE TABLE students (
+  student_id SERIAL PRIMARY KEY NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  location VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+```
+* After creating tables you will need to seed tables
 
 ## Next steps
 
