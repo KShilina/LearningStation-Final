@@ -12,6 +12,8 @@ import './Home.scss';
 const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [tutors, setTutors] = useState([]);
+  const [classes, setClasses] = useState([]);
+
 
   useEffect(() => {
     // Fetch three tutors from the backend when the component mounts
@@ -44,11 +46,26 @@ const Home = () => {
     }
   };
 
+  const classFilter = async (subjectName) => {
+    console.log(subjectName)
+    try {
+      const response = await axios.get(`/api/classes/subject/${subjectName}`);
+      const data = response.data;
+      // Set the first three tutors to the state
+      setClasses(data);
+    } catch (error) {
+      console.error("Error fetching classes:", error);
+    }
+  };
+
   return (
     <div>
       <h1>Learning Station Home</h1>
       <Navbar />
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar
+        onSearch={handleSearch}
+        onFilter={classFilter}
+      />
 
       {/* Display the search results */}
       <ul>

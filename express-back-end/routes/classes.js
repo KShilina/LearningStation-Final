@@ -111,5 +111,24 @@ module.exports = (pool) => {
     }
   });
 
+  // Route to get classes by subject
+  router.get('/subject/:subject', async (req, res) => {
+    try {
+      const { subject } = req.params;
+      const classesBySubject = await pool.query('SELECT * FROM classes WHERE subject ILIKE $1', [`%${subject}%`]);
+  
+      if (classesBySubject.rows.length === 0) {
+        return res.status(404).json({ error: 'No classes found for the given subject' });
+      }
+  
+      res.json(classesBySubject.rows);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).json({ error: 'Server Error' });
+    }
+  });
+
+  
+
   return router;
 }
