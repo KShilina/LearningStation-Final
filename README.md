@@ -81,7 +81,7 @@ In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to ins
 In the other terminal, `cd` into `express-back-end`. Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server. If you wish to use nodemon run `npm run local`.
 
 ### Database set up
-You need to create .env file inside the `express-back-end` directory, please take as an example .env.example
+You need to create .env file inside the `express-back-end` directory, please take as an example from .env.example file
 * Create a new database called learningstation. You will run psql to perform this operation :
 ``` psql
 CREATE NEW DATABASE learningstation; 
