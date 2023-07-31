@@ -105,6 +105,19 @@ module.exports = (pool) => {
     }
   });
 
+
+  // Route to get all messages related to a specific student
+  router.get('/students/:studentId/messages', async (req, res) => {
+    try {
+      const studentId = parseInt(req.params.studentId); // Convert to integer
+      const messages = await pool.query('SELECT * FROM messages WHERE student_id = $1', [studentId]);
+      res.json(messages.rows);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).json({ error: 'Server Error' });
+    }
+  });
+
   return router;
 };
 
