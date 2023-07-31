@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 const SearchBar = ({ onSearch, onFilter }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchOption, setSearchOption] = useState(''); // Default to searching by subject
+  const [searchOption, setSearchOption] = useState('');
+  // Default to searching by subject
 
   //needed for the function to trigger 
   const handleSubjectFilter = (event) => {
@@ -55,7 +56,9 @@ const SearchBar = ({ onSearch, onFilter }) => {
           <option value="Miscellaneous">Miscellaneous</option>
         </select>
 
-        <button type="submit" disabled={searchOption ? false : true}>filter</button>
+        <button type="submit" disabled={searchOption ? false : true}>
+          filter
+        </button>
 
       </form>
     </>
