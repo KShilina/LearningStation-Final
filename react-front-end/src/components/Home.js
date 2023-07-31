@@ -38,7 +38,7 @@ const Home = () => {
       const response = await axios.get("/api/tutors"); // Replace "/api/tutors" with the correct backend route to fetch tutors
       const data = response.data;
       // Set the first three tutors to the state
-      setTutors(data.slice(0, 3));
+      setTutors(data);
     } catch (error) {
       console.error("Error fetching tutors:", error);
     }
