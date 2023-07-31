@@ -5,6 +5,7 @@ import SearchBar from './SearchBar';
 import Navbar from "./Navbar";
 import TutorCard from "./TutorCard";
 import { useEffect } from "react";
+import TutorPage from "./TutorPage"
 import './Home.scss';
 
 
