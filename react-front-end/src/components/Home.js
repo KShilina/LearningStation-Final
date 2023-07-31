@@ -35,6 +35,18 @@ const Home = () => {
     });
   };
 
+  //TEST
+  const handleFilter = (subjectName) => {
+    axios
+      .get(`/api/classes/subject/${subjectName}`)
+      .then((response) => {
+        setClasses(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching classes:", error);
+      });
+  };
+
   const fetchThreeTutors = async () => {
     try {
       const response = await axios.get("/api/tutors"); // Replace "/api/tutors" with the correct backend route to fetch tutors
@@ -76,6 +88,19 @@ const Home = () => {
             <p> Expert in {result.expertise}</p>
             <p>BIO: {result.quick_bio}</p>
             <img src = {result.image} alt = {`${result.first_name} pic`} />
+          </li>
+        ))}
+      </ul>
+
+      {/* TEST Display the filtered classes */}
+      <ul>
+        {classes.map((classInfo) => (
+          <li key={classInfo.class_id}>
+            <p>Class Name: {classInfo.class_name}</p>
+            <p>Subject: {classInfo.subject}</p>
+            <p>Price: {classInfo.class_price}</p>
+            
+            {/* Add other class information as needed */}
           </li>
         ))}
       </ul>
