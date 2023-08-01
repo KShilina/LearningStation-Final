@@ -4,32 +4,20 @@ const router = express.Router();
 // Search route
 module.exports = (pool) => {
   router.get('/', async (req, res) => {
-    const searchTerm = req.query.subject;
-    const searchOption = req.query.location;
+    const searchTerm = req.query.subject; // Only use the subject parameter for regular search
 
-    if (!searchTerm || !searchOption) {
-      return res.status(400).json({ error: 'Please provide both searchTerm and searchOption.' });
+    if (!searchTerm) {
+      return res.status(400).json({ error: 'Please provide a searchTerm.' });
     }
 
     try {
-      let query = `
+      const query = `
         SELECT *
         FROM classes
         LEFT JOIN tutors ON classes.tutor_id = tutors.tutor_id
-        WHERE 1 = 1
+        WHERE subject ILIKE $1
       `;
-      const values = [];
-
-      // Add condition based on the selected searchOption
-      if (searchOption === 'subject') {
-        query += ` AND subject ILIKE $${values.length + 1}`;
-        values.push('%' + searchTerm + '%');
-      } else if (searchOption === 'location') {
-        query += ` AND location ILIKE $${values.length + 1}`;
-        values.push('%' + searchTerm + '%');
-      } else {
-        return res.status(400).json({ error: 'Invalid searchOption. Please choose "subject" or "location".' });
-      }
+      const values = ['%' + searchTerm + '%'];
 
       const result = await pool.query(query, values);
       res.json(result.rows);

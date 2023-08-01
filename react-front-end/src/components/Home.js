@@ -20,7 +20,7 @@ const Home = () => {
     fetchThreeTutors();
   }, []);
 
-  //handlesearch is for the search bar
+  //For the search bar
   const handleSearch = (query) => {
     axios
     .get(`/api/search?subject=${query}`)
@@ -99,7 +99,6 @@ const Home = () => {
             <p>Class Name: {classInfo.class_name}</p>
             <p>Subject: {classInfo.subject}</p>
             <p>Price: {classInfo.class_price}</p>
-            
             {/* Add other class information as needed */}
           </li>
         ))}
