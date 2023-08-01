@@ -13,6 +13,7 @@ const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [tutors, setTutors] = useState([]);
   const [classes, setClasses] = useState([]);
+  const [filteredTutors, setFilteredTutors] = useState([]); 
 
 
   useEffect(() => {
@@ -21,9 +22,9 @@ const Home = () => {
   }, []);
 
   //For the search bar
-  const handleSearch = (query) => {
+  const handleSearch = (searchTerm) => {
     axios
-    .get(`/api/search?subject=${query}`)
+    .get(`/api/search?searchTerm=${searchTerm}`) //change subject to searchTerm *****
     .then((response) => {
       // handle success
       console.log(response.data); // The search results received from the API
@@ -35,7 +36,6 @@ const Home = () => {
     });
   };
 
-  //TEST
   const handleFilter = (subjectName) => {
     axios
       .get(`/api/classes/subject/${subjectName}`)
@@ -58,15 +58,31 @@ const Home = () => {
     }
   };
 
-  const classFilter = async (subjectName) => {
+  // filter Class subjects
+  const classSubjectFilter = async (subjectName) => {
     console.log(subjectName)
     try {
       const response = await axios.get(`/api/classes/subject/${subjectName}`);
       const data = response.data;
       // Set the first three tutors to the state
       setClasses(data);
+      setFilteredTutors([])
     } catch (error) {
       console.error("Error fetching classes:", error);
+    }
+  };
+
+  //filters tutor locations
+  const tutorLocationFilter = async (locationName) => {
+    console.log(locationName)
+    try {
+      const response = await axios.get(`/api/tutors/location/${locationName}`);
+      const data = response.data;
+      // Set the first three tutors to the state
+      setFilteredTutors(data);
+      setClasses([])
+    } catch (error) {
+      console.error("Error fetching tutors:", error);
     }
   };
 
@@ -76,10 +92,11 @@ const Home = () => {
       <Navbar />
       <SearchBar
         onSearch={handleSearch}
-        onFilter={classFilter}
+        onSubjectFilter={classSubjectFilter}
+        onTutorLocationFilter={tutorLocationFilter}
       />
 
-      {/* Display the search results */}
+      {/* Display the string searchbar results */}
       <ul>
         {searchResults.map((result) => (
           <li key={result.class_id}>
@@ -92,13 +109,28 @@ const Home = () => {
         ))}
       </ul>
 
-      {/* TEST Display the filtered classes */}
+      {/* Display the filtered classes subjects */}
       <ul>
         {classes.map((classInfo) => (
           <li key={classInfo.class_id}>
             <p>Class Name: {classInfo.class_name}</p>
             <p>Subject: {classInfo.subject}</p>
             <p>Price: {classInfo.class_price}</p>
+            {/* Add other class information as needed */}
+          </li>
+        ))}
+      </ul>
+
+      {/* Display the filtered tutor locations */}
+
+      <ul>
+        {filteredTutors.map((TutorInfo) => (
+          <li key={TutorInfo.tutor_id}>
+            <p> Tutor Name: {TutorInfo.first_name} {TutorInfo.last_name}</p>
+            <p>Subject: {TutorInfo.expertise}</p>
+            <p>location: {TutorInfo.location}</p>
+            < img src = {TutorInfo.image} alt = {`${TutorInfo.first_name} pic`} />
+
             {/* Add other class information as needed */}
           </li>
         ))}

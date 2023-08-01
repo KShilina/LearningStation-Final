@@ -95,6 +95,23 @@ module.exports = (pool) => {
     }
   });
 
+    // Route to get tutor by location
+    router.get('/location/:location', async (req, res) => {
+      try {
+        const { location } = req.params;
+        const tutorsByLocation = await pool.query('SELECT * FROM tutors WHERE location ILIKE $1', [`%${location}%`]);
+    
+        if (tutorsByLocation.rows.length === 0) {
+          return res.status(404).json({ error: 'No tutors found for the given location' });
+        }
+    
+        res.json(tutorsByLocation.rows);
+      } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Server Error' });
+      }
+    });
+
   
 // add a tutor
 router.post('/', async (req, res) => {
