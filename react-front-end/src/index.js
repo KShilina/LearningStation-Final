@@ -19,6 +19,7 @@ import StudentPage from "./components/StudentPage";
 import StudentMessages from "./components/StudentMessages";
 import StudentBookings from "./components/StudentBookings";
 import LessonPlanWriter from "./components/LessonPlanWriter";
+import Profile from "./components/Profile";
 
 
 export default function Index() {
@@ -40,6 +41,7 @@ export default function Index() {
         <Route path="/StudentMessages" element={<StudentMessages />} /> 
         <Route path="/StudentBookings" element={<StudentBookings />} /> 
         <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} /> 
+        <Route path="/Profile" element={<Profile />} />
 
       </Routes>
     </BrowserRouter>

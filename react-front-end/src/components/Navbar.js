@@ -70,8 +70,8 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
-  const { user, isAuthenticated, isLoading, logout } = useAuth0(); // Destructure user and isAuthenticated from the useAuth0 hook
-
+  const { user, isAuthenticated, isLoading, logout, loginWithRedirect } = useAuth0(); // Destructure user and isAuthenticated from the useAuth0 hook
+console.log(user);
   // Function to handle the dropdown selection change
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
@@ -107,7 +107,7 @@ const Navbar = () => {
           <>
             <li>
               {/* Dropdown menu for Sign Up */}
-              <div className="signup-dropdown">
+               <div className="signup-dropdown">
                 <select
                   id="signup-dropdown"
                   onChange={handleSelectChange}
@@ -117,20 +117,24 @@ const Navbar = () => {
                   <option value="student">Become a Student</option>
                   <option value="tutor">Become a Tutor</option>
                 </select>
-              </div>
+                </div>
+                <div>
+
+      
+      <button onClick={() => loginWithRedirect({redirectUri : window.location.origin +"/"})}>Sign Up</button>
+    </div>
+             
             </li>
 
-            <li>
-              {/* Use a button for Sign Up to trigger handleSignUpOption */}
-              <button onClick={handleSignUpOption}>Sign up</button>
-            </li>
+           
+            
           </>
         )}
 
         {isAuthenticated && !isLoading ? (
           // If user is authenticated, show welcoming message and logout button
           <li>
-            <Link to="/StudentPage"> Hello, {user.name} </Link>
+            <p> Hello, {user.name} </p>
             <button onClick={handleLogout}>Logout</button>
           </li>
         ) : (

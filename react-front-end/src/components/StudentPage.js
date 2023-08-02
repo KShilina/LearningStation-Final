@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"; // Import the Link component
 const StudentPage = () => {
   return (
     <div>
-      <h1 className="header">Welcome to Student Page</h1>
+      <h1 className="header">Welcome</h1>
       <nav>
         <ul className="nav-links">
           {/* Use Link instead of a */}
@@ -20,6 +20,9 @@ const StudentPage = () => {
           </li>
           <li>
             <Link to="/logout">Log out</Link>
+          </li>
+          <li>
+            <Link to="/profile">My Profile</Link>
           </li>
         </ul>
       </nav>

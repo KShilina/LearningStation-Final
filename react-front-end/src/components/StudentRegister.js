@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./TutorRegister.scss";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const StudentRegister = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,11 @@ const StudentRegister = () => {
     location: "",
     password: "",
   });
+
+  const { loginWithRedirect } = useAuth0();
+
+  
+ 
 
   const [isFormSubmitted, setIsFormSubmitted] = useState(false); // State variable for form submission status
 
@@ -111,6 +117,12 @@ const StudentRegister = () => {
         <div className="form-group">
           <button type="submit">Sign Up</button>
         </div>
+
+        <div>
+      
+      <button onClick={() => loginWithRedirect({redirectUri : window.location.origin +"/"})}>Sign Up As Student</button>
+    </div>
+
       </form>
     </div>
   );

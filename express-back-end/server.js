@@ -34,6 +34,7 @@ const classesRouter = require('./routes/classes');
 const bookingsRouter = require('./routes/bookings');
 const messagesRouter = require('./routes/messages');
 const searchRouter = require('./routes/search');
+const usersRouter = require('./routes/users');
 
 
 
@@ -43,7 +44,7 @@ app.use('/api/classes', classesRouter(pool));
 app.use('/api/bookings', bookingsRouter(pool));
 app.use('/api/messages', messagesRouter(pool));
 app.use('/api/search', searchRouter(pool)); // Use the search route
-
+app.use('/api/auth0/users', usersRouter(pool));
 
 
 app.listen(port, () => {

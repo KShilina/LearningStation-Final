@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./TutorRegister.scss";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const TutorRegister = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,8 @@ const TutorRegister = () => {
     quick_bio: "",
     password: "",
   });
+
+  const {user} = useAuth0()
 
   const [isFormSubmitted, setIsFormSubmitted] = useState(false); // State variable for form submission status
 
@@ -79,7 +82,7 @@ const TutorRegister = () => {
             type="email"
             id="email"
             name="email"
-            placeholder="Email"
+            placeholder={user && user.email}
             value={formData.email}
             onChange={handleChange}
             required
@@ -134,7 +137,7 @@ const TutorRegister = () => {
         </div>
 
         <div className="form-group">
-          <button type="submit">Sign Up</button>
+          <button type="submit">Update Profile</button>
         </div>
       </form>
     </div>

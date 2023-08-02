@@ -7,6 +7,7 @@ import TutorCard from "./TutorCard";
 import { useEffect } from "react";
 import TutorPage from "./TutorPage"
 import './Home.scss';
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
@@ -14,10 +15,34 @@ const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [tutors, setTutors] = useState([]);
 
+
+  const { user } = useAuth0();
+  useEffect(() => {
+    // Fetch three tutors from the backend when the component mounts
+    getDatabaseUser(user);
+  }, [user]); 
+
+
   useEffect(() => {
     // Fetch three tutors from the backend when the component mounts
     fetchThreeTutors();
   }, []);
+
+  const getDatabaseUser = async (auth0user) => {
+    if (!auth0user){
+return console.log("NO Auth user");
+    }
+    console.log("Fetching user",auth0user);
+      try {
+        const response = await axios.post("/api/auth0/users", {user: auth0user});
+        const type = response.data.type
+        const user = response.data.user
+      } catch (error) {
+        console.error("Error fetching messages:", error);
+      }
+    };
+
+
 
   //handlesearch is for the search bar
   const handleSearch = (query) => {
