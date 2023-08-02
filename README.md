@@ -63,9 +63,9 @@ Seeding TABLES - When seeding LEAVE BOOKINGS SEEDS FOR LAST.
 
 
 ## Build with:
-*
-*
-*
+* ReatJS
+* Express
+* OpenAI
 
 
 
@@ -103,6 +103,25 @@ CREATE TABLE students (
 ```
 * After creating tables you will need to seed tables
 
+### OpenAI with React Set Up
+* You will need to install the OpenAI SDK. This can be done by running the following command in root of front end folder:
+```
+npm install openai
+```
+* Building The Lesson Plan Writer. Create a .env file in the root of your front end folder and store your API key like:
+
+```
+REACT_APP_OPENAI_API_KEY = "Your API Key here"
+```
+* Next, you will need to install “dotenv” npm package, which will allow you to access the environment variables defined in the .env file.
+```
+npm install dotenv
+```
+* Then you can use the environment variable like:
+```
+process.env.REACT_APP_OPENAI_API_KEY
+
+```
 ## Next steps
 
 From here, you can start working on your project!
