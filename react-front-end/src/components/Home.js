@@ -13,7 +13,8 @@ const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [tutors, setTutors] = useState([]);
   const [classes, setClasses] = useState([]);
-  const [filteredTutors, setFilteredTutors] = useState([]); 
+  const [filteredTutors, setFilteredTutors] = useState([]);
+  const [filteredClassPrices, setFilteredClassPrices] = useState([])
 
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const Home = () => {
   //For the search bar
   const handleSearch = (searchTerm) => {
     axios
-    .get(`/api/search?searchTerm=${searchTerm}`) //change subject to searchTerm *****
+    .get(`/api/search?searchTerm=${searchTerm}`)
     .then((response) => {
       // handle success
       console.log(response.data); // The search results received from the API
@@ -64,8 +65,24 @@ const Home = () => {
     try {
       const response = await axios.get(`/api/classes/subject/${subjectName}`);
       const data = response.data;
-      // Set the first three tutors to the state
+      // Set setClasses as the state and rest to empty
       setClasses(data);
+      setFilteredTutors([])
+      setFilteredClassPrices([])
+    } catch (error) {
+      console.error("Error fetching classes:", error);
+    }
+  };
+
+  //filter class prices
+  const classPriceFilter = async (classPrice) => {
+    console.log(classPrice)
+    try {
+      const response = await axios.get(`/api/classes/class_price/${classPrice}`);
+      const data = response.data;
+      // Set setFilteredClassPrices as the state and rest to empty
+      setFilteredClassPrices(data)
+      setClasses([]);
       setFilteredTutors([])
     } catch (error) {
       console.error("Error fetching classes:", error);
@@ -78,8 +95,9 @@ const Home = () => {
     try {
       const response = await axios.get(`/api/tutors/location/${locationName}`);
       const data = response.data;
-      // Set the first three tutors to the state
+      // Set setFilteredTutors as the state and rest to empty
       setFilteredTutors(data);
+      setFilteredClassPrices([])
       setClasses([])
     } catch (error) {
       console.error("Error fetching tutors:", error);
@@ -93,6 +111,7 @@ const Home = () => {
       <SearchBar
         onSearch={handleSearch}
         onSubjectFilter={classSubjectFilter}
+        onPriceFilter={classPriceFilter}
         onTutorLocationFilter={tutorLocationFilter}
       />
 
@@ -122,7 +141,6 @@ const Home = () => {
       </ul>
 
       {/* Display the filtered tutor locations */}
-
       <ul>
         {filteredTutors.map((TutorInfo) => (
           <li key={TutorInfo.tutor_id}>
@@ -130,8 +148,17 @@ const Home = () => {
             <p>Subject: {TutorInfo.expertise}</p>
             <p>location: {TutorInfo.location}</p>
             < img src = {TutorInfo.image} alt = {`${TutorInfo.first_name} pic`} />
+          </li>
+        ))}
+      </ul>
 
-            {/* Add other class information as needed */}
+      {/* Display the filtered class prices */}
+      <ul>
+        {filteredClassPrices.map((ClassInfo) => (
+          <li key={ClassInfo.class_id}>
+            <p> Class Name: </p>
+            <p>Subject: {ClassInfo.subject}</p>
+            <p>price: {ClassInfo.class_price}</p>
           </li>
         ))}
       </ul>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const SearchBar = ({ onSearch, onTutorLocationFilter, onSubjectFilter }) => {
+const SearchBar = ({ onSearch, onTutorLocationFilter, onSubjectFilter, onPriceFilter }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchOption, setSearchOption] = useState('');
   // Default to searching by subject
@@ -12,6 +12,13 @@ const SearchBar = ({ onSearch, onTutorLocationFilter, onSubjectFilter }) => {
 
   }
 
+  const handleClassPriceFilter = (event) => {
+    event.preventDefault();
+    onPriceFilter(searchOption)
+
+  }
+  
+
   //needed for the tutor location drop down
   const handlelocationFilter = (event) => {
     event.preventDefault();
@@ -19,12 +26,15 @@ const SearchBar = ({ onSearch, onTutorLocationFilter, onSubjectFilter }) => {
 
   }
 
+
+
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
     console.log('Input Value:', event.target.value);
   };
 
   const handleSearchOptionChange = (event) => {
+    console.log("option change being called")
     setSearchOption(event.target.value);
     console.log('Selected Search Option:', event.target.value);
   };
@@ -52,14 +62,13 @@ const SearchBar = ({ onSearch, onTutorLocationFilter, onSubjectFilter }) => {
 
         {/* rename searchOption to SubjectOption***** */}
         <select value={searchOption} onChange={handleSearchOptionChange}> 
-          <option value=""  disabled>Select Subject</option>
+          <option value=""  >Select Subject</option>
           <option value="Mathematics">Mathematics</option>
           <option value="Science">Science</option>
           <option value="Languages">Languages</option>
           <option value="Arts and Music">Arts and Music</option>
           <option value="Social Studies">Social Studies</option>
           <option value="Computer Science">Computer Science</option>
-          <option value="Music and Arts">Music and Arts</option>
           <option value="Miscellaneous">Miscellaneous</option>
         </select>
 
@@ -72,7 +81,7 @@ const SearchBar = ({ onSearch, onTutorLocationFilter, onSubjectFilter }) => {
       <form onSubmit={handlelocationFilter}>
 
         <select value={searchOption} onChange={handleSearchOptionChange}>
-          <option value=""  disabled>Select Location</option>
+          <option value=""  >Select Location</option>
           <option value="New York">New York</option>
           <option value="Chicago">Chicago</option>
           <option value="San Francisco">San Francisco</option>
@@ -82,6 +91,20 @@ const SearchBar = ({ onSearch, onTutorLocationFilter, onSubjectFilter }) => {
           <option value="Dallas">Dallas</option>
           <option value="Seattle">Seattle</option>
 
+        </select>
+
+        <button type="submit" disabled={searchOption ? false : true}>
+          filter
+        </button>
+
+      </form>
+
+      <form onSubmit={handleClassPriceFilter}>
+
+        <select value={searchOption} onChange={handleSearchOptionChange}>
+          <option value=""  >Class price</option>
+          <option value="$30.00">$30.00</option>
+          <option value="$25.00">$25.00</option>
         </select>
 
         <button type="submit" disabled={searchOption ? false : true}>
