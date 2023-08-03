@@ -20,6 +20,9 @@ import StudentMessages from "./components/StudentMessages";
 import StudentBookings from "./components/StudentBookings";
 import LessonPlanWriter from "./components/LessonPlanWriter";
 import Calendar from "./components/Calendar";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+
 
 
 export default function Index() {
