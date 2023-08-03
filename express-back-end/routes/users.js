@@ -18,6 +18,7 @@ module.exports = (pool) => {
       const valueStudent = [Auth0user.email];
       const resultStudent = await pool.query(queryStudent, valueStudent);
       const student = resultStudent.rows[0]
+      console.log("resultStudent.rows[0]:",student);
       if (student){
         return res.json({type:"student", user:student})
       }
@@ -27,8 +28,8 @@ module.exports = (pool) => {
         WHERE email = $1;
       `;
       const valueTutor = [Auth0user.email];
-      const resultTuror = await pool.query(queryTutor, valueTutor);
-      const tutor = resultTuror.rows[0]
+      const resultTutor = await pool.query(queryTutor, valueTutor);
+      const tutor = resultTutor.rows[0]
       if (tutor){
         return res.json({type:"tutor", user:tutor})
       }
