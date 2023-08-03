@@ -1,0 +1,36 @@
+// Define variables or other SCSS rules if needed
+
+// Styles for the header
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+// Styles for the navigation links
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: inline-block;
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+
+      &:hover {
+        color: #007bff; // Change to your preferred hover color
+      }
+    }
+  }
+}
+
+

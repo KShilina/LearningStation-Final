@@ -106,6 +106,17 @@ module.exports = (pool) => {
       }
     });
   
+     // Route to get all bookings made by a specific student
+     router.get('/students/:studentId/bookings', async (req, res) => {
+      try {
+        const studentId = parseInt(req.params.studentId); // Convert to integer
+        const studentBookings = await pool.query('SELECT * FROM bookings WHERE student_id = $1', [studentId]);
+        res.json(studentBookings.rows);
+      } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Server Error' });
+      }
+    });
  
 
   return router;
