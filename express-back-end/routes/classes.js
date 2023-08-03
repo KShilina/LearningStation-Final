@@ -79,37 +79,72 @@ module.exports = (pool) => {
       }
     });
   
-  // Route to add a new class
-  router.post('/', async (req, res) => {
-    try {
-      const { tutor_id, subject, class_price } = req.body;
-      const newClass = await pool.query(
-        'INSERT INTO classes (tutor_id, subject, class_price) VALUES ($1, $2, $3) RETURNING *',
-        [tutor_id, subject, class_price]
-      );
-      res.status(201).json(newClass.rows[0]);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).json({ error: 'Server Error' });
-    }
-  });
-
-  // Route to delete a specific class by class_id
-  router.delete('/:id', async (req, res) => {
-    try {
-      const { id } = req.params;
-      const deletedClass = await pool.query('DELETE FROM classes WHERE class_id = $1 RETURNING *', [id]);
-
-      if (deletedClass.rows.length === 0) {
-        return res.status(404).json({ error: 'Class not found' });
+    // Route to add a new class
+    router.post('/', async (req, res) => {
+      try {
+        const { tutor_id, subject, class_price } = req.body;
+        const newClass = await pool.query(
+          'INSERT INTO classes (tutor_id, subject, class_price) VALUES ($1, $2, $3) RETURNING *',
+          [tutor_id, subject, class_price]
+        );
+        res.status(201).json(newClass.rows[0]);
+      } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Server Error' });
       }
+    });
+  
+    // Route to delete a specific class by class_id
+    router.delete('/:id', async (req, res) => {
+      try {
+        const { id } = req.params;
+        const deletedClass = await pool.query('DELETE FROM classes WHERE class_id = $1 RETURNING *', [id]);
+  
+        if (deletedClass.rows.length === 0) {
+          return res.status(404).json({ error: 'Class not found' });
+        }
+  
+        res.json({ message: 'Class deleted successfully' });
+      } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Server Error' });
+      }
+    });
+  
+    // Route to get classes by subject
+    router.get('/subject/:subject', async (req, res) => {
+      try {
+        const { subject } = req.params;
+        const classesBySubject = await pool.query('SELECT * FROM classes WHERE subject ILIKE $1', [`%${subject}%`]);
+    
+        if (classesBySubject.rows.length === 0) {
+          return res.status(404).json({ error: 'No classes found for the given subject' });
+        }
+    
+        res.json(classesBySubject.rows);
+      } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Server Error' });
+      }
+    });
 
-      res.json({ message: 'Class deleted successfully' });
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).json({ error: 'Server Error' });
-    }
-  });
+    // Route to get classes by price
+    router.get('/class_price/:price', async (req, res) => {
+      try {
+        const price = req.params.price;
+        console.log(price, "price from classes")
+        const classesByPrice = await pool.query('SELECT * FROM classes WHERE class_price = $1', [price]);
+    
+        if (classesByPrice.rows.length === 0) {
+          return res.status(404).json({ error: 'No classes found for the given subject' });
+        }
+    
+        res.json(classesByPrice.rows);
+      } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: 'Server Error' });
+      }
+    });
 
   return router;
 }
