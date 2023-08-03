@@ -15,9 +15,6 @@ const StudentRegister = () => {
 
   const { loginWithRedirect } = useAuth0();
 
-  
- 
-
   const [isFormSubmitted, setIsFormSubmitted] = useState(false); // State variable for form submission status
 
   const handleChange = (e) => {
@@ -114,15 +111,19 @@ const StudentRegister = () => {
           />
         </div>
 
-        <div className="form-group">
+        {/* <div className="form-group">
           <button type="submit">Sign Up</button>
-        </div>
+        </div> */}
 
         <div>
-      
-      <button onClick={() => loginWithRedirect({redirectUri : window.location.origin +"/"})}>Sign Up As Student</button>
-    </div>
-
+          <button
+            onClick={() =>
+              loginWithRedirect({ redirectUri: window.location.origin + "/" })
+            }
+          >
+            Become a Student
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -137,7 +137,7 @@ const TutorRegister = () => {
         </div>
 
         <div className="form-group">
-          <button type="submit">Update Profile</button>
+          <button type="submit">Become a Tutor</button>
         </div>
       </form>
     </div>

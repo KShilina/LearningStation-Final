@@ -1,66 +1,3 @@
-// import React, { useState } from "react";
-// import "./navbar.scss";
-// import { useNavigate } from "react-router-dom";
-
-// const Navbar = () => {
-//   const [selectedOption, setSelectedOption] = useState("");
-//   const navigate = useNavigate();
-
-//   // Function to handle the dropdown selection change
-//   const handleSelectChange = (event) => {
-//     setSelectedOption(event.target.value);
-//   };
-
-//   // Function to handle Sign up dropdown selection
-//   const handleSignUpOption = () => {
-//     if (selectedOption === "student") {
-//       navigate("/StudentRegister");
-//     } else if (selectedOption === "tutor") {
-//       navigate("/TutorRegister");
-//     }
-//   };
-
-//   return (
-//     <nav className="Navbar">
-//       <ul className="nav-links">
-//         <li>
-//           <a href="/">Home</a>
-//         </li>
-
-//         <li>
-//           <a href="/about">About</a>
-//         </li>
-
-//         <li>
-//           {/* Dropdown menu for Sign Up */}
-//           <div className="signup-dropdown">
-//             <select
-//               id="signup-dropdown"
-//               onChange={handleSelectChange}
-//               value={selectedOption}
-//             >
-//               <option value="">Choose from</option>
-//               <option value="student">Become a Student</option>
-//               <option value="tutor">Become a Tutor</option>
-//             </select>
-//           </div>
-//         </li>
-
-//         <li>
-//           {/* Use a button for Sign Up to trigger handleSignUpOption */}
-//           <button onClick={handleSignUpOption}>Sign up</button>
-//         </li>
-
-//         <li>
-//           <a href="/login">Login</a>
-//         </li>
-//       </ul>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
 import React, { useState } from "react";
 import "./navbar.scss";
 import { useNavigate } from "react-router-dom";
@@ -70,8 +7,9 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
-  const { user, isAuthenticated, isLoading, logout, loginWithRedirect } = useAuth0(); // Destructure user and isAuthenticated from the useAuth0 hook
-console.log(user);
+  const { user, isAuthenticated, isLoading, logout, loginWithRedirect } =
+    useAuth0(); // Destructure user and isAuthenticated from the useAuth0 hook
+  console.log(user);
   // Function to handle the dropdown selection change
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
@@ -107,7 +45,7 @@ console.log(user);
           <>
             <li>
               {/* Dropdown menu for Sign Up */}
-               <div className="signup-dropdown">
+              {/* <div className="signup-dropdown">
                 <select
                   id="signup-dropdown"
                   onChange={handleSelectChange}
@@ -117,24 +55,26 @@ console.log(user);
                   <option value="student">Become a Student</option>
                   <option value="tutor">Become a Tutor</option>
                 </select>
-                </div>
-                <div>
-
-      
-      <button onClick={() => loginWithRedirect({redirectUri : window.location.origin +"/"})}>Sign Up</button>
-    </div>
-             
+              </div> */}
+              <div>
+                <button
+                  onClick={() =>
+                    loginWithRedirect({
+                      redirectUri: window.location.origin + "/",
+                    })
+                  }
+                >
+                  Sign Up
+                </button>
+              </div>
             </li>
-
-           
-            
           </>
         )}
 
         {isAuthenticated && !isLoading ? (
           // If user is authenticated, show welcoming message and logout button
           <li>
-            <p> Hello, {user.name} </p>
+            <Link to="StudentPage"> Hello, {user.nickname} </Link>
             <button onClick={handleLogout}>Logout</button>
           </li>
         ) : (
@@ -149,4 +89,6 @@ console.log(user);
 };
 
 export default Navbar;
+
+
 
