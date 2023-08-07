@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "./MyCalendarStyle.scss";
+import axios from "axios";
+
 
 const localizer = momentLocalizer(moment);
 
@@ -17,104 +19,92 @@ const CustomToolbar = ({ selectedDate, setSelectedDate }) => (
   </div>
 );
 
-const MyCalendar = (props) => {
+// const MyCalendar = ({ tutorId }) => {
+  const MyCalendar = (props) => {
   const [myEventsList, setMyEventsList] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [bookingDetails, setBookingDetails] = useState({
-    title: "",
-    date: null,
-    time: "",
-    additionalInfo: "",
-  });
 
   useEffect(() => {
-    // Function to fetch student bookings from the backend API
-    const fetchStudentBookings = async () => {
-      try {
-        const studentId = 1; // Replace 1 with the actual student ID you want to fetch bookings for
-        const response = await fetch(`/api/bookings/students/${studentId}/bookings`);
-        const bookings = await response.json();
+  // Function to fetch student bookings from the backend API
+  const fetchStudentBookings = async () => {
+    const studentId = 1; // Replace 1 w/ student ID you want bookings for
+    axios.get(`/api/bookings/students/${studentId}/bookings`)
+      .then(response => {
+        const bookings = response.data;
 
         // Convert the bookings data into the required format for the calendar
         const events = bookings.map((booking) => ({
           title: `Booking ${booking.booking_id}`,
           start: new Date(booking.booking_date),
-          end: new Date(booking.booking_date), // Assuming booking duration is 1 hour, adjust as needed
+          end: new Date(booking.booking_date), // Assuming duration 1 hour
         }));
 
         setMyEventsList(events);
-      } catch (error) {
+      })
+      .catch(error => {
         console.error(error);
-      }
-    };
+      });
+  };
 
-    fetchStudentBookings();
-  }, []);
+  fetchStudentBookings();
+}, []);
+
 
   const handleDateChange = ({ start }) => {
     setSelectedDate(start);
     setSelectedSlot({ start, end: moment(start).add(1, "hour").toDate() }); // Set the end time to be 1 hour after the selected start time
-    setBookingDetails({
-      ...bookingDetails,
-      date: start,
-    });
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setBookingDetails({
-      ...bookingDetails,
-      [name]: value,
-    });
   };
 
   const handleSubmit = () => {
     // Make a POST request to your backend API to save the booking in the database
+    const booking_date = moment(selectedDate).format("YYYY-MM-DD HH:mm:ss");
+    const student_id = 1; // Replace with the actual student ID
+    const class_id = props.tutor.tutor_id; // Use the prop value passed from TutorPage
+    // const tutor_id = 1; // Use the prop value passed from TutorPage
+    const payment_confirmed = null;
+
     const newBooking = {
-      title: bookingDetails.title,
-      booking_date: bookingDetails.date, // You might need to adjust the date format here
-      additional_info: bookingDetails.additionalInfo,
+      student_id,
+      class_id,
+      // tutor_id,
+      booking_date,
+      payment_confirmed,
     };
+    console.log(newBooking, "Booking Details");
+
     // Replace 'your-api-endpoint' with the actual endpoint for creating bookings
-    fetch("/api/create-booking", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newBooking),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle any response from the backend if needed
-        console.log(data);
-        // Clear the form and selected date after successful booking
-        setBookingDetails({
-          title: "",
-          date: null,
-          time: "",
-          additionalInfo: "",
-        });
-        setSelectedSlot(null);
+
+    axios.post("/api/bookings", newBooking)
+      .then(() => {
+        console.log("post sent")
+        //set some state here
       })
       .catch((error) => {
         // Handle any errors that occur during the POST request
         console.error(error);
       });
-  };
 
-  const timeOptions = Array.from({ length: 13 }, (_, i) => `${i + 8}:00 AM`);
 
-  const handleBookButtonClick = () => {
-    if (!selectedDate) {
-      alert("Please select a date.");
-      return;
-    }
-    if (!bookingDetails.time) {
-      alert("Please select a time.");
-      return;
-    }
-    handleSubmit();
+    // fetch("/api/bookings", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(newBooking),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     // Handle any response from the backend if needed
+    //     console.log("Data sent to backend:", data);
+    //     // Clear the form and selected date after successful booking
+    //     setSelectedSlot(null);
+    //     setSelectedDate(null);
+    //   })
+    //   .catch((error) => {
+    //     // Handle any errors that occur during the POST request
+    //     console.error(error);
+    //   });
   };
 
   // Make the hours only display 8am - 8pm
@@ -131,15 +121,6 @@ const MyCalendar = (props) => {
           <h2>Create Booking</h2>
           <form>
             <div className="form-group">
-              <label>Title:</label>
-              <input
-                type="text"
-                name="title"
-                value={bookingDetails.title}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
               <label>Selected Time:</label>
               <input
                 type="text"
@@ -149,16 +130,8 @@ const MyCalendar = (props) => {
                 disabled
               />
             </div>
-            <div className="form-group">
-              <label>Additional Info:</label>
-              <textarea
-                name="additionalInfo"
-                value={bookingDetails.additionalInfo}
-                onChange={handleChange}
-              />
-            </div>
-            <button type="button" onClick={handleBookButtonClick}>
-              Save Booking
+            <button type="button" onClick={handleSubmit}>
+              Pay for booking
             </button>
           </form>
         </div>
