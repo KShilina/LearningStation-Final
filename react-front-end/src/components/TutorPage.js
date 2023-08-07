@@ -36,7 +36,9 @@ const TutorPage = () => {
             <p>Name: {tutor.first_name} {tutor.last_name}</p>
             <p>Expertise: {tutor.expertise}</p>
             <p>About_Me: {tutor.quick_bio}</p>
-            <p>location: {tutor.location}</p>
+            <p>avg_rating: {tutor.avg_rating}</p>
+            <p>avg_class_prices: {tutor.avg_class_prices}</p>
+            <p>num_students_booked: {tutor.num_students_booked}</p>
           </div>
           <div className="buttons">
             {/* <button className="book-class-button">BOOK a Class</button> */}

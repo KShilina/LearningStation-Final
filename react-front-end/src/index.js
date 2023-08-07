@@ -55,6 +55,11 @@ export default function Index() {
 
 ReactDOM.render(
   <Auth0Provider
+    // domain="dev-qwjytyiwyzskt1lz.us.auth0.com"
+    domain="dev-tocbpwv8uqlsfl20.us.auth0.com"
+    // clientId="OF7lBHIjm9KIuIkweBNsl7TNf6gyPlhc"
+    clientId="rC65vq1k05qHmpGa6dlWFSFqaZgVRmCk"
+    redirectUri={window.location.origin + "/dashboard"}
     domain="dev-tocbpwv8uqlsfl20.us.auth0.com"
     clientId="rC65vq1k05qHmpGa6dlWFSFqaZgVRmCk"
     authorizationParams={{
