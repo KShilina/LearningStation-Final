@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import "./TutorPage.scss"
+import BookingCalendar from './BookingCalendar';
 
 const TutorPage = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const TutorPage = () => {
     return <div>Loading tutor information...</div>;
   }
 
+
   return (
     // <div className="tutor-page-container">
       <div className="tutor-card">
@@ -39,7 +41,8 @@ const TutorPage = () => {
             <p>num_students_booked: {tutor.num_students_booked}</p>
           </div>
           <div className="buttons">
-            <button className="book-class-button">BOOK a Class</button>
+            {/* <button className="book-class-button">BOOK a Class</button> */}
+            <BookingCalendar tutor={tutor} />
             <button className="message-button">MESSAGE</button>
           </div>
         </div>

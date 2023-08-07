@@ -1,0 +1,34 @@
+// CalendarStyles.scss
+@import 'react-big-calendar/lib/sass/styles';
+@import 'react-big-calendar/lib/addons/dragAndDrop/styles'; // if using DnD
+
+$bc-primary-color: #007bff; // Change the primary color to blue
+
+// Additional custom styles
+.myCustomHeight {
+  height: 400px; // Set a custom height for the calendar container
+}
+
+.modal-body {
+  height: 500px;
+}
+
+.back-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Style the "Back" button on hover */
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+

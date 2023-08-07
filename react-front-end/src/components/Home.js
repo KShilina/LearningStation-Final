@@ -7,6 +7,8 @@ import TutorCard from "./TutorCard";
 import { useEffect } from "react";
 import TutorPage from "./TutorPage"
 import './Home.scss';
+import BookingCalendar from "./BookingCalendar"
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -129,6 +131,8 @@ const Home = () => {
         ))}
       </ul>
 
+
+
       {/* Display the filtered classes subjects */}
       <ul>
         {classes.map((classInfo) => (
@@ -163,6 +167,7 @@ const Home = () => {
           </li>
         ))}
       </ul>
+
 
       <div className="tutor-container">
         {tutors.map((tutor) => (
