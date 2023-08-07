@@ -8,7 +8,6 @@ import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from "./CheckoutForm"; // Import your PaymentForm component
 
 const stripePromise = loadStripe("pk_test_51NPUwIJ7asQDcmsxPQqqMevZU3aNyMYdWDBTm75kAgHEjLYQu7NLGSvoTa55z4uBBIWjrJeucHnysVKzEEdNzDOx00vBYfZek2"); // Replace with your actual Stripe publishable key
->>>>>>>>> Temporary merge branch 2
 
 const TutorPage = () => {
   const { id } = useParams();
@@ -54,8 +53,6 @@ const TutorPage = () => {
           </div>
           <div className="buttons">
 
-            {/* <button className="book-class-button">BOOK a Class</button> */}
-            <BookingCalendar tutor={tutor} />
             <button className="book-class-button" onClick={handleBookClass}>BOOK a Class</button>
             {/* Render the CheckoutForm component when showCheckoutForm is true */}
             {showCheckoutForm && <CheckoutForm />}

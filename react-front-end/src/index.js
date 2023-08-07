@@ -20,9 +20,6 @@ import StudentPage from "./components/StudentPage";
 import StudentMessages from "./components/StudentMessages";
 import StudentBookings from "./components/StudentBookings";
 import LessonPlanWriter from "./components/LessonPlanWriter";
-<<<<<<< HEAD
-import CheckoutForm from "./components/CheckoutForm";
-=======
 
 import CheckoutForm from "./components/CheckoutForm";
 
@@ -32,7 +29,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
 
->>>>>>> af4b3cf519f017bc5d7c161cda35244dd8c38480
 
 
 export default function Index() {
@@ -50,17 +46,6 @@ export default function Index() {
         <Route path="/Success" element={<Success />} />
 
         <Route path="/tutors/:id" element={<TutorPage />} />
-<<<<<<< HEAD
-
-        <Route path="/StudentPage" element={<StudentPage />} />
-        <Route path="/StudentMessages" element={<StudentMessages />} />
-        <Route path="/StudentBookings" element={<StudentBookings />} />
-        <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} />
-        <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} />
-        <Route path="/CheckoutForm" element={<CheckoutForm />} />
-      
-    </Routes>
-=======
         <Route path="/StudentPage" element={<StudentPage />} />
         <Route path="/StudentMessages" element={<StudentMessages />} />
         <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} />
@@ -71,7 +56,6 @@ export default function Index() {
 
       </Routes>
 
->>>>>>> af4b3cf519f017bc5d7c161cda35244dd8c38480
     </BrowserRouter>
   );
 }
