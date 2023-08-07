@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-//import * as serviceWorker from "./serviceWorker";
+
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -13,7 +14,7 @@ import TutorRegister from "./components/TutorRegister";
 import About from "./components/About";
 import Success from "./Success";
 
-import TutorPage from "./components/TutorPage"
+import TutorPage from "./components/TutorPage";
 
 import StudentPage from "./components/StudentPage";
 import StudentMessages from "./components/StudentMessages";
@@ -24,9 +25,11 @@ import MyCalendar from "./components/MyCalendar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
+import CheckoutForm from "./components/CheckoutForm";
 
 
 export default function Index() {
+  
   return (
     <BrowserRouter>
       <Routes>
@@ -37,7 +40,7 @@ export default function Index() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/TutorRegister" element={<TutorRegister />} />
-        <Route path="/Success" element={<Success />} /> 
+        <Route path="/Success" element={<Success />} />
 
         <Route path="/tutors/:id" element={<TutorPage />} />
 
@@ -47,8 +50,9 @@ export default function Index() {
         <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} />
         <Route path="/BookingCalendar" element={<BookingCalendar />} />
         <Route path="/MyCalendar" element={<MyCalendar />} />  
-
-      </Routes>
+        <Route path="/CheckoutForm" element={<CheckoutForm />} />
+      
+    </Routes>
     </BrowserRouter>
   );
 }
@@ -56,22 +60,19 @@ export default function Index() {
 ReactDOM.render(
   <Auth0Provider
     // domain="dev-qwjytyiwyzskt1lz.us.auth0.com"
-    domain="dev-tocbpwv8uqlsfl20.us.auth0.com"
+  
     // clientId="OF7lBHIjm9KIuIkweBNsl7TNf6gyPlhc"
     clientId="rC65vq1k05qHmpGa6dlWFSFqaZgVRmCk"
     redirectUri={window.location.origin + "/dashboard"}
     domain="dev-tocbpwv8uqlsfl20.us.auth0.com"
-    clientId="rC65vq1k05qHmpGa6dlWFSFqaZgVRmCk"
+  
     authorizationParams={{
-      redirect_uri: window.location.origin + "/"
-    }} 
-    onError={(err) => console.error("Auth0 Error:", err)} 
+      redirect_uri: window.location.origin + "/",
+    }}
+    onError={(err) => console.error("Auth0 Error:", err)}
   >
-    <Index />
+   <Index />
   </Auth0Provider>,
+
   document.getElementById("root")
 );
-
-//serviceWorker.unregister();
-
-
