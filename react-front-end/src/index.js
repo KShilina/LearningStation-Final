@@ -20,11 +20,6 @@ import StudentPage from "./components/StudentPage";
 import StudentMessages from "./components/StudentMessages";
 import StudentBookings from "./components/StudentBookings";
 import LessonPlanWriter from "./components/LessonPlanWriter";
-import BookingCalendar from "./components/BookingCalendar";
-import MyCalendar from "./components/MyCalendar";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
-
 import CheckoutForm from "./components/CheckoutForm";
 
 
@@ -44,12 +39,11 @@ export default function Index() {
 
         <Route path="/tutors/:id" element={<TutorPage />} />
 
-        <Route path="/StudentPage" element={<StudentPage />} /> 
-        <Route path="/StudentMessages" element={<StudentMessages />} /> 
-        <Route path="/StudentBookings" element={<StudentBookings />} /> 
+        <Route path="/StudentPage" element={<StudentPage />} />
+        <Route path="/StudentMessages" element={<StudentMessages />} />
+        <Route path="/StudentBookings" element={<StudentBookings />} />
         <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} />
-        <Route path="/BookingCalendar" element={<BookingCalendar />} />
-        <Route path="/MyCalendar" element={<MyCalendar />} />  
+        <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} />
         <Route path="/CheckoutForm" element={<CheckoutForm />} />
       
     </Routes>
