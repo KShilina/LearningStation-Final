@@ -6,6 +6,7 @@ import BookingCalendar from './BookingCalendar';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from "./CheckoutForm"; // Import your PaymentForm component
+import Navbar from './Navbar';
 
 const stripePromise = loadStripe("pk_test_51NPUwIJ7asQDcmsxPQqqMevZU3aNyMYdWDBTm75kAgHEjLYQu7NLGSvoTa55z4uBBIWjrJeucHnysVKzEEdNzDOx00vBYfZek2"); // Replace with your actual Stripe publishable key
 
@@ -38,7 +39,11 @@ const TutorPage = () => {
 
 
   return (
+    
     <Elements stripe={stripePromise}>
+      
+      <Navbar />
+
       <div className="tutor-card">
         <img className="tutor-image" src={tutor.image} alt={`${tutor.name}'s pic`} />
         <div className="info-container">
