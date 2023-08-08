@@ -13,10 +13,16 @@ const stripePromise = loadStripe("pk_test_51NPUwIJ7asQDcmsxPQqqMevZU3aNyMYdWDBTm
 const TutorPage = () => {
   const { id } = useParams();
   const [tutor, setTutor] = useState(null);
+  const [reviews, setReviews] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const [showCheckoutForm, setShowCheckoutForm] = useState(false); // State to control the rendering of CheckoutForm
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [newReviewRating, setNewReviewRating] = useState(5); // Default rating
+  const [newReviewComment, setNewReviewComment] = useState("");
 
   useEffect(() => {
     fetchTutorInfo(id);
+    fetchTutorReviews(id);
   }, [id]);
 
   const fetchTutorInfo = async (tutorId) => {
@@ -28,9 +34,40 @@ const TutorPage = () => {
     }
   };
 
+  const fetchTutorReviews = async (tutorId) => {
+    try {
+      const response = await axios.get(`/api/reviews/tutors/${tutorId}`);
+      setReviews(response.data);
+    } catch (error) {
+      console.error('Error fetching tutor reviews:', error);
+    }
+  };
+
   const handleBookClass = () => {
-    // Set the state to show CheckoutForm
-    setShowCheckoutForm(true);
+    setShowModal(true);
+    setShowCheckoutForm(true); // Set showCheckoutForm to true when booking a class
+  };
+
+  const handleShowReviewForm = () => {
+    setShowReviewForm(true);
+  };
+
+  const handleReviewSubmit = async () => {
+    try {
+      const response = await axios.post('/api/reviews', {
+        student_id: 1, // Replace with the actual student_id
+        tutor_id: id,
+        rating: newReviewRating,
+        comment: newReviewComment
+      });
+      const newReview = response.data;
+      setReviews([...reviews, newReview]);
+      setNewReviewRating(5);
+      setNewReviewComment("");
+      setShowReviewForm(false);
+    } catch (error) {
+      console.error('Error submitting review:', error);
+    }
   };
 
   if (!tutor) {
@@ -66,6 +103,36 @@ const TutorPage = () => {
 
             <button className="message-button">MESSAGE</button>
           </div>
+        </div>
+        <div className="reviews-container">
+          <h3>Reviews</h3>
+          <button onClick={handleShowReviewForm}>Write a Review</button>
+          {showReviewForm && (
+            <div className="review-form">
+              <select value={newReviewRating} onChange={(e) => setNewReviewRating(e.target.value)}>
+                <option value={5}>5 stars</option>
+                <option value={4}>4 stars</option>
+                <option value={3}>3 stars</option>
+                <option value={2}>2 stars</option>
+                <option value={1}>1 star</option>
+              </select>
+              <textarea
+                placeholder="Write your review..."
+                value={newReviewComment}
+                onChange={(e) => setNewReviewComment(e.target.value)}
+              />
+              <button onClick={handleReviewSubmit}>Submit Review</button>
+            </div>
+          )}
+          <ul className="reviews-list">
+            {reviews.map((review) => (
+              <li key={review.review_id}>
+                <p>Rating: {review.rating}</p>
+                <p>Comment: {review.comment}</p>
+                <p>Review Date: {review.review_date}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </Elements>
