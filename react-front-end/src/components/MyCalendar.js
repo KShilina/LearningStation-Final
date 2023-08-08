@@ -88,7 +88,6 @@ const MyCalendar = ({ tutor }) => {
     start: moment().set({ hour: 8, minute: 0, second: 0, millisecond: 0 }).toDate(),
     end: moment().set({ hour: 20, minute: 0, second: 0, millisecond: 0 }).toDate(),
   };
-//stripe implementation
   return (
     <Elements stripe={stripePromise}>
       <div className="myCustomHeight">

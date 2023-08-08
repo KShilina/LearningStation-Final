@@ -57,7 +57,6 @@ const TutorPage = () => {
             <p>num_students_booked: {tutor.num_students_booked}</p>
           </div>
           <div className="buttons">
-
             {/* <button className="book-class-button" onClick={handleBookClass}>BOOK a Class</button> */}
             {/* Render the CheckoutForm component when showCheckoutForm is true */}
             {showCheckoutForm && <CheckoutForm />}
