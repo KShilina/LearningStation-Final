@@ -10,13 +10,22 @@ DROP TABLE IF EXISTS reviews CASCADE;
 -- CREATE DATABASE learningstation;
 
 -- Create the "students" table
+-- CREATE TABLE students (
+--   student_id SERIAL PRIMARY KEY NOT NULL,
+--   first_name VARCHAR(255) NOT NULL,
+--   last_name VARCHAR(255) NOT NULL,
+--   email VARCHAR(255) UNIQUE NOT NULL,
+--   location VARCHAR(255) NOT NULL,
+--   password VARCHAR(255) NOT NULL
+-- );
+
 CREATE TABLE students (
   student_id SERIAL PRIMARY KEY NOT NULL,
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
-  location VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL
+  location VARCHAR(255),
+  sub_id VARCHAR(255) NOT NULL
 );
 
 -- Create the "tutors" table
