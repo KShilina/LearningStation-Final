@@ -53,7 +53,7 @@ const TutorPage = () => {
           </div>
           <div className="buttons">
 
-            <button className="book-class-button" onClick={handleBookClass}>BOOK a Class</button>
+            {/* <button className="book-class-button" onClick={handleBookClass}>BOOK a Class</button> */}
             {/* Render the CheckoutForm component when showCheckoutForm is true */}
             {showCheckoutForm && <CheckoutForm />}
 

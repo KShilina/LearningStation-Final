@@ -31,7 +31,7 @@ const CheckoutForm = () => {
     <form onSubmit={handleSubmit}>
       <CardElement />
       <button type="submit" disabled={!stripe}>
-        Pay
+        Confirm
       </button>
       {error && <div>{error}</div>}
     </form>
