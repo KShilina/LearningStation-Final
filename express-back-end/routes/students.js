@@ -44,6 +44,41 @@ module.exports = (pool) => {
     }
   });
 
+  router.post('/find', async (req, res) => {
+    try {
+      const {
+        given_name,
+        family_name,
+        name,
+        sub,
+        email
+      }= req.body;
+
+      const student = await pool.query('SELECT * FROM students WHERE sub_id = $1', [sub]);
+      if (student.rows.length === 0) {
+        // return res.status(404).json({ error: 'Tutor not found' });
+        const user = await pool.query(
+          'INSERT INTO students (first_name, last_name, email, sub_id) VALUES ($1, $2, $3, $4) RETURNING *',
+          [given_name, family_name, email, sub]
+        );
+        console.log(user)
+        const userCheck = {
+          ...user.rows[0],
+          newUser: true
+        }
+        return res.send(userCheck)
+      }
+      const userCheck = {
+        ...student.rows[0],
+        newUser: false
+      }
+      res.json(userCheck);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Error retrieving tutor' });
+    }
+  });
+
  
 
   return router;

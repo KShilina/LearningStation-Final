@@ -9,7 +9,7 @@ SELECT setval('bookings_booking_id_seq', 1, false);
 SELECT setval('messages_message_id_seq', 1, false);
 SELECT setval('reviews_review_id_seq', 1, false);
 -- Insert 10 students
-INSERT INTO students (first_name, last_name, email, location, password)
+INSERT INTO students (first_name, last_name, email, location, sub_id)
 VALUES
   ('John', 'Doe', 'john.doe@student.com', 'New York', 'password1'),
   ('Jane', 'Smith', 'jane.smith@student.com', 'Los Angeles', 'password2'),

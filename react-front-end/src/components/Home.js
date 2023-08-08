@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import TutorPage from "./TutorPage"
 import './Home.scss';
 import BookingCalendar from "./BookingCalendar"
+import { useAuth0 } from "@auth0/auth0-react";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -18,13 +19,27 @@ const Home = () => {
   const [classes, setClasses] = useState([]);
   const [filteredTutors, setFilteredTutors] = useState([]);
   const [filteredClassPrices, setFilteredClassPrices] = useState([])
-
+  const {user, isAuthenticated, isLoading} = useAuth0()
+  const [newUser, setNewUser] = useState(false)
 
   useEffect(() => {
     // Fetch three tutors from the backend when the component mounts
     fetchThreeTutors();
-  }, []);
+    if (isAuthenticated){
+      axios.post("http://localhost:8080/api/students/find",user)
+        .then(({data}) => {
+          console.log(data)
+          window.sessionStorage.setItem("first_name", data.first_name)
+          window.sessionStorage.setItem("student_id", data.student_id)
+          setNewUser(data.newUser)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  }, [isAuthenticated]);
 
+  console.log(newUser)
   //For the search bar
   const handleSearch = (searchTerm) => {
     axios
@@ -117,7 +132,9 @@ const Home = () => {
         onPriceFilter={classPriceFilter}
         onTutorLocationFilter={tutorLocationFilter}
       />
-
+      {newUser && (
+        <h1> Add New User Form Here </h1>
+      )}
       {/* Display the string searchbar results */}
       <ul>
         {searchResults.map((result) => (

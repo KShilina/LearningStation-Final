@@ -88,6 +88,7 @@ const Navbar = () => {
 
   // Function to handle logout
   const handleLogout = () => {
+    window.sessionStorage.clear()
     logout({ returnTo: window.location.origin });
   };
 
