@@ -7,7 +7,15 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 const app = express();
+const server = require("http").createServer(app);
 const port = 8080;
+
+const io = require("socket.io")(server, {
+	cors: {
+		origin: "*",
+		methods: [ "GET", "POST" ]
+	}
+});
 
 // middleware
 app.use(cors());
@@ -45,8 +53,27 @@ app.use('/api/messages', messagesRouter(pool));
 app.use('/api/search', searchRouter(pool)); // Use the search route
 app.use('/api/reviews', reviewsRouter(pool));
 
+//socket connection 
+io.on("connection", (socket) => {
+	console.log(socket.id)
+	socket.emit("me", socket.id);
 
-app.listen(port, () => {
+	socket.on("disconnect", () => {
+		socket.broadcast.emit("callEnded")
+	});
+
+	socket.on("callUser", ({ userToCall, signalData, from, name }) => {
+		io.to(userToCall).emit("callUser", { signal: signalData, from, name });
+	});
+
+	socket.on("answerCall", (data) => {
+		io.to(data.to).emit("callAccepted", data.signal)
+	});
+});
+///
+
+
+server.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${port} so that's pretty good 👍`);
 });

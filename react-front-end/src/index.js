@@ -14,6 +14,7 @@ import About from "./components/About";
 import Success from "./Success";
 
 import TutorPage from "./components/TutorPage"
+import VideoComponent from "./components/VideoComponent/App"
 
 import StudentPage from "./components/StudentPage";
 import StudentMessages from "./components/StudentMessages";
@@ -22,12 +23,13 @@ import LessonPlanWriter from "./components/LessonPlanWriter";
 import Profile from "./components/Profile";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import { ContextProvider } from './Context';
 
 export default function Index() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<VideoComponent />} />
         <Route path="/about" element={<About />} />
         <Route path="/StudentRegister" element={<StudentRegister />} />
         <Route path="/login" element={<Login />} />
@@ -43,6 +45,8 @@ export default function Index() {
         <Route path="/StudentBookings" element={<StudentBookings />} /> 
         <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} /> 
         <Route path="/Profile" element={<Profile />} />
+        {/* <Route path="/VideoComponent" element={<VideoComponent />} /> */}
+        
 
       </Routes>
     </BrowserRouter>
@@ -58,7 +62,9 @@ ReactDOM.render(
     }} 
     onError={(err) => console.error("Auth0 Error:", err)} 
   >
+    <ContextProvider>
     <Index />
+    </ContextProvider>,
   </Auth0Provider>,
   document.getElementById("root")
 );
