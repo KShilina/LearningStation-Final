@@ -4,11 +4,13 @@ import axios from "axios";
 const StudentBookings = () => {
   const [bookings, setBookings] = useState([]);
 
+  // const studentID = window.sessionStorage.getItem("student_id")
+  // console.log(studentID);
   useEffect(() => {
     // Function to fetch bookings related to the logged-in student
     const fetchStudentBookings = async () => {
       try {
-        const response = await axios.get("/api/bookings/students/studentId/bookings");
+        const response = await axios.get(`/api/bookings/students/1/bookings`);
         setBookings(response.data);
       } catch (error) {
         console.error("Error fetching bookings:", error);
