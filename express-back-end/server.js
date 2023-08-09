@@ -61,7 +61,7 @@ const classesRouter = require('./routes/classes');
 const bookingsRouter = require('./routes/bookings');
 const messagesRouter = require('./routes/messages');
 const searchRouter = require('./routes/search');
-
+const reviewsRouter = require('./routes/reviews');
 
 
 app.use('/api/students', studentsRouter(pool));
@@ -70,7 +70,7 @@ app.use('/api/classes', classesRouter(pool));
 app.use('/api/bookings', bookingsRouter(pool));
 app.use('/api/messages', messagesRouter(pool));
 app.use('/api/search', searchRouter(pool)); // Use the search route
-
+app.use('/api/reviews', reviewsRouter(pool));
 
 
 app.listen(port, () => {

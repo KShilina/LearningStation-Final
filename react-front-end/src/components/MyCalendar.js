@@ -53,7 +53,8 @@ const MyCalendar = ({ tutor }) => {
 
   useEffect(() => {
     const fetchStudentBookings = async () => {
-      const studentId = 1; // Replace with the actual student ID
+      const studentId = sessionStorage.getItem('student_id');
+      console.log(studentId, "logged in student id from session storage")
       try {
         const response = await axios.get(
           `/api/bookings/students/${studentId}/bookings`

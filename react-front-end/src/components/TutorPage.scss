@@ -1,8 +1,95 @@
-// .tutor-page-container {
+// // .tutor-page-container {
+// //   display: flex;
+// //   justify-content: center;
+// //   align-items: center;
+// //   height: 100vh; // Assuming you want the card centered vertically as well
+// // }
+
+// .tutor-card {
+//   width: 85%;
 //   display: flex;
+//   flex-direction: row;
+//   gap: 15%;
+//   // align-items: center;
 //   justify-content: center;
-//   align-items: center;
-//   height: 100vh; // Assuming you want the card centered vertically as well
+//   background-color: #f1f1f1;
+//   border: 1px solid #ccc;
+//   border-radius: 8px;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//   padding: 20px;
+//   box-sizing: border-box;
+  
+//   .info-container {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     align-items: flex-start;
+//     gap: 85px;
+//     width: 100%; // Adjust as needed to control the spacing between image and content
+//   }
+
+//   .tutor-image {
+//     width: 40%;
+//     border-radius: 5%;
+//     margin-right: 20px; // Adjust as needed to control the spacing between image and content
+//   }
+
+//   .tutor-info {
+//     h3 {
+//       font-size: 15%;
+//       margin: 0 0 10px;
+//     }
+
+//     p {
+//       margin: 7% 0;
+//     }
+//   }
+
+//   .buttons {
+//     display: flex;
+//     gap: 25px;
+//   }
+
+//   .book-class-button,
+//   .message-button {
+//     background-color: slateblue;
+//     color: #fff;
+//     border: none;
+//     padding: 10px 20px;
+//     border-radius: 5px;
+//     cursor: pointer;
+
+//     &:hover {
+//       background-color: #0056b3;
+//     }
+//   }
+//   .reviews-container {
+//     width: 100%;
+//     margin-top: 20px;
+
+//     h3 {
+//       font-size: 18px;
+//       margin-bottom: 10px;
+//     }
+
+//     .reviews-list {
+//       list-style: none;
+//       padding: 0;
+
+//       li {
+//         border: 1px solid #ccc;
+//         border-radius: 5px;
+//         padding: 10px;
+//         margin-bottom: 10px;
+//         background-color: #fff;
+//         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//       }
+
+//       p {
+//         margin: 5px 0;
+//       }
+//     }
+//   }
 // }
 
 .tutor-card {
@@ -10,7 +97,6 @@
   display: flex;
   flex-direction: row;
   gap: 15%;
-  // align-items: center;
   justify-content: center;
   background-color: #f1f1f1;
   border: 1px solid #ccc;
@@ -18,36 +104,36 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   box-sizing: border-box;
-  
+
   .info-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 85px;
-    width: 100%; // Adjust as needed to control the spacing between image and content
+    gap: 15px; // Adjust as needed to control the spacing between sections
+    width: 100%;
   }
 
   .tutor-image {
     width: 40%;
     border-radius: 5%;
-    margin-right: 20px; // Adjust as needed to control the spacing between image and content
+    margin-right: 20px;
   }
 
   .tutor-info {
     h3 {
-      font-size: 15%;
+      font-size: 18px;
       margin: 0 0 10px;
     }
 
     p {
-      margin: 7% 0;
+      margin: 5px 0;
     }
   }
 
   .buttons {
     display: flex;
-    gap: 25px;
+    gap: 15px;
   }
 
   .book-class-button,
@@ -61,6 +147,34 @@
 
     &:hover {
       background-color: #0056b3;
+    }
+  }
+
+  .reviews-container {
+    width: 100%;
+    margin-top: 20px;
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .reviews-list {
+      list-style: none;
+      padding: 0;
+
+      li {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      p {
+        margin: 5px 0;
+      }
     }
   }
 }
