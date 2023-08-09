@@ -11,7 +11,8 @@ import TutorRegister from "./components/TutorRegister";
 import About from "./components/About";
 import Success from "./Success";
 
-import TutorPage from "./components/TutorPage";
+import TutorPage from "./components/TutorPage"
+import VideoComponent from "./components/VideoComponent/App"
 
 import StudentPage from "./components/StudentPage";
 import StudentMessages from "./components/StudentMessages";
@@ -19,14 +20,15 @@ import StudentBookings from "./components/StudentBookings";
 import LessonPlanWriter from "./components/LessonPlanWriter";
 import Profile from "./components/Profile";
 import SuccessPage from "./components/SuccessPage";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+import { ContextProvider } from './Context';
 
 export default function Index() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<VideoComponent />} />
         <Route path="/about" element={<About />} />
         <Route path="/studentRegister" element={<StudentRegister />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -36,12 +38,14 @@ export default function Index() {
 
         <Route path="/tutors/:id" element={<TutorPage />} />
 
-        <Route path="/studentPage" element={<StudentPage />} />
-        <Route path="/studentMessages" element={<StudentMessages />} />
-        <Route path="/studentBookings" element={<StudentBookings />} />
-        <Route path="/lessonPlanWriter" element={<LessonPlanWriter />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/success" component={<SuccessPage />} />
+        <Route path="/StudentPage" element={<StudentPage />} /> 
+        <Route path="/StudentMessages" element={<StudentMessages />} /> 
+        <Route path="/StudentBookings" element={<StudentBookings />} /> 
+        <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} /> 
+        <Route path="/Profile" element={<Profile />} />
+        {/* <Route path="/VideoComponent" element={<VideoComponent />} /> */}
+        
+
       </Routes>
     </BrowserRouter>
   );
@@ -56,7 +60,9 @@ ReactDOM.render(
     }}
     onError={(err) => console.error("Auth0 Error:", err)}
   >
+    <ContextProvider>
     <Index />
+    </ContextProvider>,
   </Auth0Provider>,
   document.getElementById("root")
 );
