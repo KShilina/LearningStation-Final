@@ -103,7 +103,7 @@ const Navbar = () => {
         <li>
           <Link to="/about">About</Link>
         </li>
-
+        
         {isAuthenticated && !isLoading ? (
           <li>
             <Link to="/StudentPage"> Hello, {user.name} </Link>
@@ -114,6 +114,7 @@ const Navbar = () => {
             <Link to="/login">Login</Link>
           </li>
         )}
+        
       </ul>
     </nav>
   );
