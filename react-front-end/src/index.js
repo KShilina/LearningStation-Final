@@ -20,6 +20,7 @@ import StudentMessages from "./components/StudentMessages";
 import StudentBookings from "./components/StudentBookings";
 import LessonPlanWriter from "./components/LessonPlanWriter";
 import Profile from "./components/Profile";
+import SuccessPage from "./components/SuccessPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
@@ -29,20 +30,21 @@ export default function Index() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/StudentRegister" element={<StudentRegister />} />
+        <Route path="/studentRegister" element={<StudentRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/TutorRegister" element={<TutorRegister />} />
-        <Route path="/Success" element={<Success />} /> 
+        <Route path="/tutorRegister" element={<TutorRegister />} />
+        <Route path="/success" element={<Success />} /> 
 
         <Route path="/tutors/:id" element={<TutorPage />} />
 
-        <Route path="/StudentPage" element={<StudentPage />} /> 
-        <Route path="/StudentMessages" element={<StudentMessages />} /> 
-        <Route path="/StudentBookings" element={<StudentBookings />} /> 
-        <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} /> 
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/studentPage" element={<StudentPage />} /> 
+        <Route path="/studentMessages" element={<StudentMessages />} /> 
+        <Route path="/studentBookings" element={<StudentBookings />} /> 
+        <Route path="/lessonPlanWriter" element={<LessonPlanWriter />} /> 
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/success" component={<SuccessPage />} />
 
       </Routes>
     </BrowserRouter>

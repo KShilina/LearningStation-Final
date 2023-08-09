@@ -7,7 +7,9 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm"; // Import your PaymentForm component
 
-const stripePromise = loadStripe("pk_test_51NPUwIJ7asQDcmsxPQqqMevZU3aNyMYdWDBTm75kAgHEjLYQu7NLGSvoTa55z4uBBIWjrJeucHnysVKzEEdNzDOx00vBYfZek2");
+const stripePromise = loadStripe(
+  "pk_test_51NPUwIJ7asQDcmsxPQqqMevZU3aNyMYdWDBTm75kAgHEjLYQu7NLGSvoTa55z4uBBIWjrJeucHnysVKzEEdNzDOx00vBYfZek2"
+);
 
 const localizer = momentLocalizer(moment);
 
@@ -28,12 +30,34 @@ const MyCalendar = ({ tutor }) => {
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [showCheckoutForm, setShowCheckoutForm] = useState(false);
+  const [clientSecret, setClientSecret] = useState("");
+
+  const fetchClientSecret = async () => {
+    try {
+      const response = await axios.post("/api/payments/", {
+        data: { items: [] },
+      });
+      setClientSecret(() => response.data.clientSecret);
+      console.log(response.data);
+
+      // retrievePayment(response.data.clientSecret); // Call retrievePayment
+    } catch (error) {
+      console.error("Error fetching client secret:", error);
+    }
+  };
+
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret: clientSecret,
+  };
 
   useEffect(() => {
     const fetchStudentBookings = async () => {
       const studentId = 1; // Replace with the actual student ID
       try {
-        const response = await axios.get(`/api/bookings/students/${studentId}/bookings`);
+        const response = await axios.get(
+          `/api/bookings/students/${studentId}/bookings`
+        );
         const bookings = response.data;
         const events = bookings.map((booking) => ({
           title: `Booking ${booking.booking_id}`,
@@ -47,6 +71,7 @@ const MyCalendar = ({ tutor }) => {
     };
 
     fetchStudentBookings();
+    fetchClientSecret();
   }, []);
 
   const handleDateChange = ({ start }) => {
@@ -85,52 +110,71 @@ const MyCalendar = ({ tutor }) => {
   };
 
   const businessHours = {
-    start: moment().set({ hour: 8, minute: 0, second: 0, millisecond: 0 }).toDate(),
-    end: moment().set({ hour: 20, minute: 0, second: 0, millisecond: 0 }).toDate(),
+    start: moment()
+      .set({ hour: 8, minute: 0, second: 0, millisecond: 0 })
+      .toDate(),
+    end: moment()
+      .set({ hour: 20, minute: 0, second: 0, millisecond: 0 })
+      .toDate(),
   };
-  return (
-    <Elements stripe={stripePromise}>
-      <div className="myCustomHeight">
-        <CustomToolbar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
-        {selectedDate ? (
-          <div className="booking-form">
-            <h2>Create Booking</h2>
-            <form>
-              <div className="form-group">
-                <label>Selected Time:</label>
-                <input
-                  type="text"
-                  value={`${moment(selectedDate).format("MMMM Do, YYYY [at] h:mm a")} - ${moment(selectedDate)
-                    .add(1, "hour")
-                    .format("h:mm a")}`}
-                  disabled
-                />
-              </div>
-              <button type="button" onClick={handleBookClass}>
-                Pay for booking
-              </button>
-              {showCheckoutForm && <CheckoutForm />}
-            </form>
-          </div>
-        ) : (
-          <Calendar
-            localizer={localizer}
-            events={myEventsList}
-            startAccessor="start"
-            endAccessor="end"
-            onSelectSlot={handleDateChange}
-            selectable
-            views={['month', 'day']}
-            min={businessHours.start}
-            max={businessHours.end}
-            step={60}
-            timeslots={1}
-            defaultView="month"
+
+  
+  if (clientSecret.length > 0) {
+    return (
+      <Elements stripe={stripePromise} options={options}>
+        <div className="myCustomHeight">
+          <CustomToolbar
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
           />
-        )}
-      </div>
-    </Elements>
-  );
+          {selectedDate ? (
+            <div className="booking-form">
+              <h2>Create Booking</h2>
+              <form>
+                <div className="form-group">
+                  <label>Selected Time:</label>
+                  <input
+                    type="text"
+                    value={`${moment(selectedDate).format(
+                      "MMMM Do, YYYY [at] h:mm a"
+                    )} - ${moment(selectedDate)
+                      .add(1, "hour")
+                      .format("h:mm a")}`}
+                    disabled
+                  />
+                </div>
+                <button type="button" onClick={handleBookClass}>
+                  Pay for booking
+                </button>
+                {showCheckoutForm && (
+                  <CheckoutForm
+                    clientSecret={clientSecret}
+                    setClientSecret={setClientSecret}
+                    insertDB={handleSubmit}
+                  />
+                )}
+              </form>
+            </div>
+          ) : (
+            <Calendar
+              localizer={localizer}
+              events={myEventsList}
+              startAccessor="start"
+              endAccessor="end"
+              onSelectSlot={handleDateChange}
+              selectable
+              views={["month", "day"]}
+              min={businessHours.start}
+              max={businessHours.end}
+              step={60}
+              timeslots={1}
+              defaultView="month"
+            />
+          )}
+        </div>
+      </Elements>
+    );
+  }
 };
 
 export default MyCalendar;
