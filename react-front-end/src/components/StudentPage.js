@@ -20,7 +20,7 @@ const StudentPage = () => {
     <div>
       <h1 className="header">Welcome to Student Page</h1>
       <nav>
-        <ul className="nav-links">
+        <ul className="student-nav-links">
           {/* Use Link instead of a */}
           <li>
             <Link to="/StudentMessages">Messages</Link>

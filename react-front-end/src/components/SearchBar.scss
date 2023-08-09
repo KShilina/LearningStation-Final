@@ -1,0 +1,31 @@
+.search-filter-bars {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // position: fixed;
+}
+
+/* Apply this style to each form element for consistent spacing */
+.search-filter-bars form {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Adjust as needed */
+}
+
+/* Style the select and button within each form */
+.search-filter-bars select {
+  /* Your select styles here */
+}
+
+.search-filter-bars button {
+  display: flex;
+  align-items: center;
+  height: 26.4px;
+  margin: 0px
+}
+
+
+
+
+
+

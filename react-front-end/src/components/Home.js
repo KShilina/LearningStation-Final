@@ -123,67 +123,95 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>Learning Station Home</h1>
-      <Navbar />
-      <SearchBar
-        onSearch={handleSearch}
-        onSubjectFilter={classSubjectFilter}
-        onPriceFilter={classPriceFilter}
-        onTutorLocationFilter={tutorLocationFilter}
-      />
-      {newUser && (
-        <h1> Add New User Form Here </h1>
-      )}
-      {/* Display the string searchbar results */}
-      <ul>
-        {searchResults.map((result) => (
-          <li key={result.class_id}>
-            <p>{result.first_name} {result.last_name}</p>
-            <p> Location: {result.location} </p>
-            <p> Expert in {result.expertise}</p>
-            <p>BIO: {result.quick_bio}</p>
-            <img src = {result.image} alt = {`${result.first_name} pic`} />
-          </li>
-        ))}
-      </ul>
+    <div class="main-container">
+
+      <div class="background-image">
+        
+        <Navbar />
 
 
+        
+        <div class="header-text">
+          <img class="header-image" src={process.env.PUBLIC_URL + '/images/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg'} alt="headerImg" />
+          
+          <h1>Start your learning journey now!</h1>
+        </div>
 
-      {/* Display the filtered classes subjects */}
-      <ul>
-        {classes.map((classInfo) => (
-          <li key={classInfo.class_id}>
-            <p>Class Name: {classInfo.class_name}</p>
-            <p>Subject: {classInfo.subject}</p>
-            <p>Price: {classInfo.class_price}</p>
-            {/* Add other class information as needed */}
-          </li>
-        ))}
-      </ul>
+        <SearchBar
+          onSearch={handleSearch}
+          onSubjectFilter={classSubjectFilter}
+          onPriceFilter={classPriceFilter}
+          onTutorLocationFilter={tutorLocationFilter}
+        />
 
-      {/* Display the filtered tutor locations */}
-      <ul>
-        {filteredTutors.map((TutorInfo) => (
-          <li key={TutorInfo.tutor_id}>
-            <p> Tutor Name: {TutorInfo.first_name} {TutorInfo.last_name}</p>
-            <p>Subject: {TutorInfo.expertise}</p>
-            <p>location: {TutorInfo.location}</p>
-            < img src = {TutorInfo.image} alt = {`${TutorInfo.first_name} pic`} />
-          </li>
-        ))}
-      </ul>
+        {newUser && (
+          <h1> Add New User Form Here </h1>
+        )}
 
-      {/* Display the filtered class prices */}
-      <ul>
-        {filteredClassPrices.map((ClassInfo) => (
-          <li key={ClassInfo.class_id}>
-            <p> Class Name: </p>
-            <p>Subject: {ClassInfo.subject}</p>
-            <p>price: {ClassInfo.class_price}</p>
-          </li>
-        ))}
-      </ul>
+        {/* Display the string searchbar results */}
+        <ul class="search-card">
+          {searchResults.map((result) => (
+            <li key={result.class_id} class="search-card-item">
+
+              <div class="search-card-image">
+                <img src={result.image} alt={`${result.first_name} pic`} />
+              </div>
+
+              <div class="search-card-info">
+                <p>{result.first_name} {result.last_name}</p>
+                <p> Location: {result.location} </p>
+                <p> Expert in {result.expertise}</p>
+                <p>BIO: {result.quick_bio}</p>
+              </div>
+
+            </li>
+          ))}
+        </ul>
+
+        {/* Display the filtered classes subjects */}
+        <ul class="search-card">
+          {classes.map((classInfo) => (
+            <li key={classInfo.class_id} class="search-card-item">
+              <p>Class Name: {classInfo.class_name}</p>
+              <p>Expert in {classInfo.subject}</p>
+              <p>Price: {classInfo.class_price}</p>
+              {/* Add other class information as needed */}
+            </li>
+          ))}
+        </ul>
+  
+        {/* Display the filtered tutor locations */}
+        <ul class="search-card">
+          {filteredTutors.map((TutorInfo) => (
+            <li key={TutorInfo.tutor_id} class="search-card-item">
+            <div class="search-card-image">
+              <img src = {TutorInfo.image} alt = {`${TutorInfo.first_name} pic`} />
+            </div>
+            <div class="search-card-info">
+              <p> Tutor Name: {TutorInfo.first_name} {TutorInfo.last_name}</p>
+              <p>Expert in {TutorInfo.expertise}</p>
+              <p>Location: {TutorInfo.location}</p>
+              <p>BIO: {TutorInfo.quick_bio}</p>
+            </div>
+            </li>
+          ))}
+        </ul>
+  
+        {/* Display the filtered class prices */}
+        <ul>
+          {filteredClassPrices.map((ClassInfo) => (
+            <li key={ClassInfo.class_id} class="search-card-item">
+              <p> Class Name: </p>
+              <p>Subject: {ClassInfo.subject}</p>
+              <p>price: {ClassInfo.class_price}</p>
+            </li>
+          ))}
+        </ul>
+
+
+  
+      </div> {/* background-image div */}
+
 
 
       <div className="tutor-container">
@@ -191,6 +219,9 @@ const Home = () => {
           <TutorCard key={tutor.tutor_id} tutor={tutor} />
         ))}
       </div>
+
+      
+
     </div>
   );
 };
