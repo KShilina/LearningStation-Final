@@ -7,6 +7,17 @@
   max-height: auto; /* Adjust as needed */
   display: block;
   margin: 0 auto; /* Center the image horizontally */
+  top: 0;
+}
+
+.header-text{
+ position: relative;
+   
+  h1 {
+    position: absolute;
+    top: 60%
+  }
+
 }
 
 //--------SEARCH/FILTER CARDS--------

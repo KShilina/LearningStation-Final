@@ -1,35 +1,62 @@
 // Navbar.scss
 
 .Navbar {
-  background-color: slateblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Add this line to separate logo and nav-links */
+  background-color: transparent;
   color: white;
   padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  position: absolute; /* Ensure the navbar is a positioned element */
+  // position: fixed;
+  z-index: 100; /* Set a higher z-index value to bring the navbar to the front 
+  */
+  width:100%;
+}
 
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Navbar.scss */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+
+
+  .li {
+    display: flex;
+    display: inline-block;
+    margin-left: 20px;
+    justify-content: space-between;
   }
 
-  .nav-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+    color: white;
+    margin-right: 2vw;
 
-    li {
-      display: inline-block;
-      margin-left: 20px;
-    }
-
-    a {
-      text-decoration: none;
-      color: white;
-
-      &:hover {
-        text-decoration: underline;
-      }
+    &:hover {
+      box-shadow: 0 0 7px rgba(0,0,0,.50);
     }
   }
 }
+
+
+
 
 
 

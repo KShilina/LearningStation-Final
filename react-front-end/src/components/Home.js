@@ -128,15 +128,21 @@ const Home = () => {
       <div class="background-image">
         
         <Navbar />
+
+
+        
+        <div class="header-text">
+          <img class="header-image" src={process.env.PUBLIC_URL + '/images/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg'} alt="headerImg" />
+          
+          <h1>Start your learning journey now!</h1>
+        </div>
+
         <SearchBar
           onSearch={handleSearch}
           onSubjectFilter={classSubjectFilter}
           onPriceFilter={classPriceFilter}
           onTutorLocationFilter={tutorLocationFilter}
         />
-
-        <img class="header-image" src={process.env.PUBLIC_URL + '/images/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg'} alt="headerImg" />
-
 
         {newUser && (
           <h1> Add New User Form Here </h1>
@@ -202,9 +208,11 @@ const Home = () => {
           ))}
         </ul>
 
-        <h1>Start your learning journey now!</h1>
+
   
       </div> {/* background-image div */}
+
+
 
       <div className="tutor-container">
         {tutors.map((tutor) => (

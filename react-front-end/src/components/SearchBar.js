@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./SearchBar.scss";
+
 
 const SearchBar = ({ onSearch, onTutorLocationFilter, onSubjectFilter, onPriceFilter }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -57,7 +60,7 @@ const SearchBar = ({ onSearch, onTutorLocationFilter, onSubjectFilter, onPriceFi
 
         <button type="submit">Search</button>
       </form>
-      
+
       <div class="search-filter-bars">
         <form onSubmit={handleSubjectFilter}>
   
