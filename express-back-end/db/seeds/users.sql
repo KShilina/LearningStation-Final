@@ -48,7 +48,8 @@ VALUES
   ('Chemistry', 'Chemistry expert and tutor.', 'Sophia', 'Martinez', 'sophia.martinez@example.com', 'Miami', 'chemistryrocks', 'https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80', 0, 0, 0),
   ('Biology', 'Passionate about teaching Biology.', 'Daniel', 'Garcia', 'daniel.garcia@example.com', 'Phoenix', 'biologist', 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80', 0, 0, 0),
   ('Foreign Languages', 'Fluent in multiple foreign languages.', 'Olivia', 'Lopez', 'olivia.lopez@example.com', 'Dallas', 'multilingual', 'https://images.unsplash.com/photo-1627161683077-e34782c24d81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=703&q=80', 0, 0, 0),
-  ('Music', 'Talented music tutor and performer.', 'Ethan', 'Rivera', 'ethan.rivera@example.com', 'Seattle', 'music123', 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80', 0, 0, 0);
+  ('Music', 'Talented music tutor and performer.', 'Ethan', 'Rivera', 'ethan.rivera@example.com', 'Seattle', 'music123', 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80', 0, 0, 0),
+  ('Spanish', 'Experienced tutor in Spanish.', 'Maria', 'Garcia', 'maria.garcia@example.com', 'Madrid', 'password123', 'https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80', 0, 0, 0);
 
 
   ---- add 10 bookings ----
@@ -97,6 +98,7 @@ VALUES
   (8, 'Spanish', '$22.00'),
   (9, 'Biology', '$26.00'),
   (10, 'Music', '$32.00');
+  (11, 'Foreign Languages', '$47.00');
 
 
 ------create 10 reviews examples ----
