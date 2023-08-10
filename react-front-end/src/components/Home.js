@@ -188,9 +188,9 @@ const Home = () => {
                 <p>BIO: {result.quick_bio}</p>
                 <p>{result.quick_bio} per class</p>
               </div>
-              <button className="close-button" onClick={handleSearchClose}>
+              {/* <button className="close-button" onClick={handleSearchClose}>
                 X
-              </button>
+              </button> */}
             </li>
             </a>
           ))}
