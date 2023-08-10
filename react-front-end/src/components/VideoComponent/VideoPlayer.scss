@@ -1,0 +1,38 @@
+// // VideoPlayer.scss
+// .videoPlayerContainer {
+//   display: flex;
+//   justify-content: center;
+//   margin-top: 20px;
+// }
+
+// .videoPlayerPaper {
+//   padding: 20px;
+// }
+
+// .videoElement {
+//   width: 100%;
+//   max-width: 800px;
+//   border: 2px solid black;
+// }
+
+// VideoPlayer.scss
+// VideoPlayer.scss
+.videoPlayerContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: #271f38; // Dark purple background color
+}
+
+.videoPlayerPaper {
+  padding: 20px;
+  background-color: #33294d; // Slightly lighter purple background color
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.videoElement {
+  width: 100%;
+  max-width: 800px;
+  border: 2px solid #5d4b75; // Lighter purple border
+}
