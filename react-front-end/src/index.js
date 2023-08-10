@@ -23,6 +23,11 @@ import SuccessPage from "./components/SuccessPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { ContextProvider } from './Context';
+// import { stopReportingRuntimeErrors  } from 'react-error-overlay';
+//
+// if (process.env.NODE_ENV === "development") {
+//   stopReportingRuntimeErrors(); // disables error overlays
+// } 
 
 export default function Index() {
   return (
