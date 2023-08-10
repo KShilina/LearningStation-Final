@@ -55,16 +55,18 @@ const SearchBar = ({
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={handleInputChange}
-          placeholder="Search..."
-        />
-
-        <button type="submit">Search</button>
-      </form>
+      
+        <form class="text-search-and-btn" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleInputChange}
+            placeholder="Search..."
+          />
+  
+          <button type="submit">Search</button>
+        </form>
+      
 
       <div class="search-filter-bars">
         <form onSubmit={handleSubjectFilter}>
@@ -73,12 +75,15 @@ const SearchBar = ({
           <select value={searchOption} onChange={handleSearchOptionChange}> 
             <option value=""  >Select Subject</option>
             <option value="Mathematics">Mathematics</option>
-            <option value="Science">Science</option>
-            <option value="Languages">Languages</option>
-            <option value="Arts and Music">Arts and Music</option>
-            <option value="Social Studies">Social Studies</option>
+            <option value="English">English</option>
+            <option value="History">History</option>
+            <option value="Physics">Physics</option>
+            <option value="Chemistry">Chemistry</option>
             <option value="Computer Science">Computer Science</option>
-            <option value="Miscellaneous">Miscellaneous</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Biology">Biology</option>
+            <option value="Music">Music</option>
+            <option value="Science">Science</option>
           </select>
   
           <button type="submit" disabled={searchOption ? false : true}>
@@ -99,21 +104,29 @@ const SearchBar = ({
             <option value="Phoenix">Phoenix</option>
             <option value="Dallas">Dallas</option>
             <option value="Seattle">Seattle</option>
+
+            <button type="button" onClick={() => handleSearchOptionChange({     target: { value: '' } })}>
+              Close
+            </button>
   
           </select>
   
           <button type="submit" disabled={searchOption ? false : true}>
             filter
           </button>
+
+
   
         </form>
   
         <form onSubmit={handleClassPriceFilter}>
   
           <select value={searchOption} onChange={handleSearchOptionChange}>
-            <option value=""  >Class price</option>
-            <option value="$30.00">$30.00</option>
-            <option value="$25.00">$25.00</option>
+            <option value="">Select price range</option>
+            <option value="0-20">$0 - $20</option>
+            <option value="20-30">$20 - $30</option>
+            <option value="30-40">$30 - $40</option>
+            <option value="40-50">$40 - $50</option>
           </select>
   
           <button type="submit" disabled={searchOption ? false : true}>
