@@ -26,7 +26,7 @@ const Navbar = () => {
         {isAuthenticated && !isLoading ? (
           <li>
             <Link to="/StudentPage">Hello, {user.name}</Link>
-            <button
+            <button className="login-logout-btn"
               onClick={() => logout({ returnTo: window.location.origin })}
             >
               Logout
@@ -34,7 +34,9 @@ const Navbar = () => {
           </li>
         ) : (
           <li>
-            <button onClick={() => loginWithRedirect()}>Login</button>
+            <button className="login-logout-btn" onClick={() => loginWithRedirect()}>
+              Login
+            </button>
           </li>
         )}
       </ul>

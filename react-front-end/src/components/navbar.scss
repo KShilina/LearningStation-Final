@@ -59,6 +59,25 @@
       box-shadow: 0 0 7px rgba(0,0,0,.50);
     }
   }
+
+  .login-logout-btn{
+    background-color: #b4b3af;
+    border-radius: 4%;
+    padding: 5px 10px;
+
+    &:hover {
+      box-shadow: 0 0 7px rgba(0,0,0,.50);
+      background-color: #AD8D76;
+    
+    }
+  }
+
+  .login-icon{
+    color: white;
+  }
+
+  
+  
 }
 
 
