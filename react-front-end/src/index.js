@@ -29,7 +29,7 @@ export default function Index() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<VideoComponent />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/StudentRegister" element={<StudentRegister />} />
         <Route path="/login" element={<Login />} />
@@ -45,7 +45,7 @@ export default function Index() {
         <Route path="/StudentBookings" element={<StudentBookings />} /> 
         <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} /> 
         <Route path="/Profile" element={<Profile />} />
-        {/* <Route path="/VideoComponent" element={<VideoComponent />} /> */}
+        <Route path="/VideoComponent" element={<VideoComponent />} />
         
 
       </Routes>

@@ -1,0 +1,28 @@
+// // Sidebar.scss
+// .sidebarContainer {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// .sidebarPaper {
+//   padding: 10px 20px;
+//   border: 2px solid black;
+// }
+
+// Sidebar.scss
+// Sidebar.scss
+.container {
+  width: 600px;
+  margin: 35px 0;
+  padding: 0;
+  background-color: #33294d; // Slightly lighter purple background color
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.paper {
+  padding: 10px 20px;
+  border: 2px solid #5d4b75; // Lighter purple border
+  background-color: #44365e; // Darker purple background color
+  border-radius: 5px;
+}
