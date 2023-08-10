@@ -99,7 +99,12 @@ module.exports = (pool) => {
   router.get('/location/:location', async (req, res) => {
     try {
       const { location } = req.params;
-      const tutorsByLocation = await pool.query('SELECT * FROM tutors WHERE location ILIKE $1', [`%${location}%`]);
+      const tutorsByLocation = await pool.query(`
+        SELECT tutors.*, classes.class_price
+        FROM tutors
+        JOIN classes ON tutors.tutor_id = classes.tutor_id
+        WHERE tutors.location ILIKE $1
+      `, [`%${location}%`]);
   
       if (tutorsByLocation.rows.length === 0) {
         return res.status(404).json({ error: 'No tutors found for the given location' });
@@ -116,7 +121,12 @@ module.exports = (pool) => {
   router.get('/expertise/:expertise', async (req, res) => {
     try {
       const { expertise } = req.params;
-      const tutorsByExpertise = await pool.query('SELECT * FROM tutors WHERE expertise ILIKE $1', [`%${expertise}%`]);
+      const tutorsByExpertise = await pool.query(`
+        SELECT tutors.*, classes.class_price
+        FROM tutors
+        JOIN classes ON tutors.tutor_id = classes.tutor_id
+        WHERE tutors.expertise ILIKE $1
+      `, [`%${expertise}%`]);
   
       if (tutorsByExpertise.rows.length === 0) {
         return res.status(404).json({ error: 'No tutors found for the given expertise' });
@@ -129,23 +139,22 @@ module.exports = (pool) => {
     }
   });
 
-  
-// add a tutor
-router.post('/', async (req, res) => {
-  const { first_name, last_name, email, location, password, expertise, quick_bio, image } = req.body;
-  console.log(req.body);
-  try {
-    const newTutor = await pool.query(
-      'INSERT INTO tutors (first_name, last_name, email, location, password, expertise, quick_bio) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      [first_name, last_name, email, location, password, expertise, quick_bio]
-    );
-console.log(newTutor);
-    res.status(201).json({ message: 'Tutor created successfully', tutor: newTutor.rows[0], redirect: '/success' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Error creating tutor' });
-  }
-});
+  // add a tutor
+  router.post('/', async (req, res) => {
+    const { first_name, last_name, email, location, password, expertise, quick_bio, image } = req.body;
+    console.log(req.body);
+    try {
+      const newTutor = await pool.query(
+        'INSERT INTO tutors (first_name, last_name, email, location, password, expertise, quick_bio) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+        [first_name, last_name, email, location, password, expertise, quick_bio]
+      );
+        console.log(newTutor);
+      res.status(201).json({ message: 'Tutor created successfully', tutor: newTutor.rows[0], redirect: '/success' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Error creating tutor' });
+    }
+  });
 
   return router;
 };
