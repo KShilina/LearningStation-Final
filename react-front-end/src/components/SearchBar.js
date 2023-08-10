@@ -7,8 +7,9 @@ const SearchBar = ({
   onSearch,
   onTutorLocationFilter,
   onSubjectFilter,
-  onPriceFilter
-}) => {
+  onPriceFilter,
+  handleClearSearch
+  }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchOption, setSearchOption] = useState('');
   // Default to searching by subject
@@ -25,7 +26,6 @@ const SearchBar = ({
     onPriceFilter(searchOption)
 
   }
-  
 
   //needed for the tutor location drop down
   const handlelocationFilter = (event) => {
@@ -39,11 +39,11 @@ const SearchBar = ({
     console.log('Input Value:', event.target.value);
   };
 
-  const handleSearchOptionChange = (event) => {
-    console.log("option change being called")
-    setSearchOption(event.target.value);
-    console.log('Selected Search Option:', event.target.value);
-  };
+  // const handleSearchOptionChange = (event) => {
+  //   console.log("option change being called")
+  //   setSearchOption(event.target.value);
+  //   console.log('Selected Search Option:', event.target.value);
+  // };
 
   const handlePriceFilterChange = (event) => {
     const selectedValue = event.target.value;
@@ -156,6 +156,11 @@ const SearchBar = ({
           </button> */}
   
         </form>
+
+        <button class="clear-filters" onClick={handleClearSearch}>
+          Clear Filter
+        </button>
+
       </div>
     </>
 

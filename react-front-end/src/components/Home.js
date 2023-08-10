@@ -50,17 +50,6 @@ const Home = () => {
     })
   }
 
-  // const fetchThreeTutors = async () => {
-  //   try {
-  //     const response = await axios.get("/api/tutors"); // Replace "/api/tutors" with the correct backend route to fetch tutors
-  //     const data = response.data;
-  //     // Set the first three tutors to the state
-  //     setTutors(data);
-  //   } catch (error) {
-  //     console.error("Error fetching tutors:", error);
-  //   }
-  // };
-
   const handleSearchClose = () => {
     setSearchResults([]);
     setFilteredTutors([]);
@@ -161,6 +150,7 @@ const Home = () => {
           onSubjectFilter={classSubjectFilter}
           onPriceFilter={classPriceFilter}
           onTutorLocationFilter={tutorLocationFilter}
+          handleClearSearch={handleSearchClose}
         />
 
         {newUser && (
@@ -274,6 +264,9 @@ const Home = () => {
             </a>
           ))}
         </ul>
+
+
+ 
 
 
   
