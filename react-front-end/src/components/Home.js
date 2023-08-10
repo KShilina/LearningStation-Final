@@ -38,33 +38,35 @@ const Home = () => {
         })
     }
   }, [isAuthenticated]);
-
   console.log(newUser)
+
   //For the search bar
   const handleSearch = (searchTerm) => {
     axios
-    .get(`/api/search?searchTerm=${searchTerm}`)
-    .then((response) => {
-      // handle success
-      console.log(response.data); // The search results received from the API
-      setSearchResults(response.data); // Update the state with the search results
-    })
-    .catch((error) => {
-      // handle error if needed
-      console.error('Error fetching search results:', error);
-    });
-  };
-
-  const handleFilter = (subjectName) => {
-    axios
-      .get(`/api/classes/subject/${subjectName}`)
+      .get(`/api/search?searchTerm=${searchTerm}`)
       .then((response) => {
-        setClasses(response.data);
+        setSearchResults(response.data); // Update the state with the search 
+        setFilteredTutors([])
+        setFilteredClassPrices([])
+        setClasses([])
+
       })
       .catch((error) => {
-        console.error("Error fetching classes:", error);
+        // handle error if needed
+        console.error('Error fetching search results:', error);
       });
   };
+
+  // const handleFilter = (subjectName) => {
+  //   axios
+  //     .get(`/api/classes/subject/${subjectName}`)
+  //     .then((response) => {
+  //       setClasses(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching classes:", error);
+  //     });
+  // };
 
   const fetchThreeTutors = async () => {
     try {
@@ -77,49 +79,58 @@ const Home = () => {
     }
   };
 
-  // filter Class subjects
-  const classSubjectFilter = async (subjectName) => {
-    console.log(subjectName)
-    try {
-      const response = await axios.get(`/api/classes/subject/${subjectName}`);
-      const data = response.data;
-      // Set setClasses as the state and rest to empty
-      setClasses(data);
-      setFilteredTutors([])
-      setFilteredClassPrices([])
-    } catch (error) {
-      console.error("Error fetching classes:", error);
-    }
+  // filter Tutor by expertise/subjects
+  const classSubjectFilter = (subjectName) => {
+    console.log(subjectName);
+    axios
+      .get(`/api/tutors/expertise/${subjectName}`)
+      .then((response) => {
+        const data = response.data;
+        // Set setClasses as the state and rest to empty
+        setClasses(data);
+        setFilteredTutors([]);
+        setFilteredClassPrices([]);
+        setSearchResults([]);
+      })
+      .catch((error) => {
+        console.error("Error fetching classes:", error);
+      });
   };
 
   //filter class prices
   const classPriceFilter = async (classPrice) => {
     console.log(classPrice)
-    try {
-      const response = await axios.get(`/api/classes/class_price/${classPrice}`);
-      const data = response.data;
-      // Set setFilteredClassPrices as the state and rest to empty
-      setFilteredClassPrices(data)
-      setClasses([]);
-      setFilteredTutors([])
-    } catch (error) {
-      console.error("Error fetching classes:", error);
-    }
+    axios
+      .get(`/api/classes/class_price/${classPrice}`)
+      .then((response) => {
+        const data = response.data;
+        // Set setFilteredClassPrices as the state and rest to empty
+        setFilteredClassPrices(data)
+        setClasses([])
+        setFilteredTutors([])
+        setSearchResults([])
+      })
+      .catch ((error) => {
+        console.error("Error fetching classes:", error);
+      });
   };
 
   //filters tutor locations
   const tutorLocationFilter = async (locationName) => {
     console.log(locationName)
-    try {
-      const response = await axios.get(`/api/tutors/location/${locationName}`);
-      const data = response.data;
-      // Set setFilteredTutors as the state and rest to empty
-      setFilteredTutors(data);
-      setFilteredClassPrices([])
-      setClasses([])
-    } catch (error) {
-      console.error("Error fetching tutors:", error);
-    }
+    axios
+      .get(`/api/tutors/location/${locationName}`)
+      .then((response) => {
+        const data = response.data;
+        // Set setFilteredTutors as the state and rest to empty
+        setFilteredTutors(data)
+        setFilteredClassPrices([])
+        setClasses([])
+        setSearchResults([]);
+      })
+      .catch ((error) => {
+        console.error("Error fetching tutors:", error);
+      })
   };
 
   return (
@@ -129,8 +140,6 @@ const Home = () => {
         
         <Navbar />
 
-
-        
         <div class="header-text">
           <img class="header-image" src={process.env.PUBLIC_URL + '/images/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg'} alt="headerImg" />
           

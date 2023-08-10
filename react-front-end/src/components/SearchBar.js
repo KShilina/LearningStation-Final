@@ -3,7 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./SearchBar.scss";
 
 
-const SearchBar = ({ onSearch, onTutorLocationFilter, onSubjectFilter, onPriceFilter }) => {
+const SearchBar = ({
+  onSearch,
+  onTutorLocationFilter,
+  onSubjectFilter,
+  onPriceFilter
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchOption, setSearchOption] = useState('');
   // Default to searching by subject

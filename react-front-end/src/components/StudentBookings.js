@@ -10,7 +10,8 @@ const StudentBookings = () => {
     // Function to fetch bookings related to the logged-in student
     const fetchStudentBookings = async () => {
       try {
-        const response = await axios.get(`/api/bookings/students/1/bookings`);
+        const studentId = sessionStorage.getItem('student_id');
+        const response = await axios.get(`/api/bookings/students/${studentId}/bookings`);
         setBookings(response.data);
       } catch (error) {
         console.error("Error fetching bookings:", error);

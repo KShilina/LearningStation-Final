@@ -95,22 +95,39 @@ module.exports = (pool) => {
     }
   });
 
-    // Route to get tutor by location
-    router.get('/location/:location', async (req, res) => {
-      try {
-        const { location } = req.params;
-        const tutorsByLocation = await pool.query('SELECT * FROM tutors WHERE location ILIKE $1', [`%${location}%`]);
-    
-        if (tutorsByLocation.rows.length === 0) {
-          return res.status(404).json({ error: 'No tutors found for the given location' });
-        }
-    
-        res.json(tutorsByLocation.rows);
-      } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ error: 'Server Error' });
+  // Route to get tutor by location
+  router.get('/location/:location', async (req, res) => {
+    try {
+      const { location } = req.params;
+      const tutorsByLocation = await pool.query('SELECT * FROM tutors WHERE location ILIKE $1', [`%${location}%`]);
+  
+      if (tutorsByLocation.rows.length === 0) {
+        return res.status(404).json({ error: 'No tutors found for the given location' });
       }
-    });
+  
+      res.json(tutorsByLocation.rows);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).json({ error: 'Server Error' });
+    }
+  });
+
+  // Route to get tutor by expertise
+  router.get('/expertise/:expertise', async (req, res) => {
+    try {
+      const { expertise } = req.params;
+      const tutorsByExpertise = await pool.query('SELECT * FROM tutors WHERE expertise ILIKE $1', [`%${expertise}%`]);
+  
+      if (tutorsByExpertise.rows.length === 0) {
+        return res.status(404).json({ error: 'No tutors found for the given expertise' });
+      }
+  
+      res.json(tutorsByExpertise.rows);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).json({ error: 'Server Error' });
+    }
+  });
 
   
 // add a tutor
