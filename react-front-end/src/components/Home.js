@@ -199,6 +199,11 @@ const Home = () => {
         {/* Display the filtered classes subjects */}
         <ul class="search-card">
           {classes.map((classInfo) => (
+            <a
+              key={classInfo.class_id}
+              class="search-card-item"
+              href={`/tutors/${classInfo.tutor_id}`}
+            >
             <li key={classInfo.tutor_id} class="search-card-item">
               <div class="search-card-image">
                 <img src = {classInfo.image} alt = {`${classInfo.first_name} pic`} />
@@ -211,16 +216,22 @@ const Home = () => {
                 <p>BIO: {classInfo.quick_bio}</p>
                 <p>{classInfo.class_price} per class</p>
               </div>
-              <button className="close-button" onClick={handleSearchClose}>
+              {/* <button className="close-button" onClick={handleSearchClose}>
                 X
-              </button>
+              </button> */}
             </li>
+            </a>
           ))}
         </ul>
   
         {/* Display the filtered tutor locations */}
         <ul class="search-card">
           {filteredTutors.map((TutorInfo) => (
+            <a
+              key={TutorInfo.class_id}
+              class="search-card-item"
+              href={`/tutors/${TutorInfo.tutor_id}`}
+            >
             <li key={TutorInfo.tutor_id} class="search-card-item">
             <div class="search-card-image">
               <img src = {TutorInfo.image} alt = {`${TutorInfo.first_name} pic`} />
@@ -232,16 +243,22 @@ const Home = () => {
               <p>BIO: {TutorInfo.quick_bio}</p>
               <p>{TutorInfo.class_price} per class</p>
             </div>
-            <button className="close-button" onClick={handleSearchClose}>
+            {/* <button className="close-button" onClick={handleSearchClose}>
               X
-            </button>
+            </button> */}
             </li>
+            </a>
           ))}
         </ul>
   
         {/* Display the filtered class prices */}
         <ul class="search-card">
           {filteredClassPrices.map((ClassInfo) => (
+            <a
+              key={ClassInfo.class_id}
+              class="search-card-item"
+              href={`/tutors/${ClassInfo.tutor_id}`}
+            >
             <li key={ClassInfo.class_id} class="search-card-item">
               <div class="search-card-image">
                 <img src = {ClassInfo.image} alt = {`${ClassInfo.first_name} pic`} />
@@ -253,10 +270,8 @@ const Home = () => {
                 <p>BIO: {ClassInfo.subject}</p>
                 <p>{ClassInfo.class_price} per class</p>
               </div>
-              <button className="close-button" onClick={handleSearchClose}>
-                X
-              </button>
             </li>
+            </a>
           ))}
         </ul>
 
