@@ -20,6 +20,11 @@
   justify-content: flex-start;
   font-size: 24px;
   font-weight: bold;
+  color:white;
+  text-decoration: none;
+  &:hover {
+    box-shadow: 0 0 7px rgba(0,0,0,.50);
+  }
 }
 
 /* Navbar.scss */

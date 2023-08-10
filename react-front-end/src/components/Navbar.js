@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <nav className="Navbar">
-      <div className="logo">Learning Station</div>
+      <Link to="/" className="logo">Learning Station</Link>
       <ul className="nav-links">
         <li>
           <Link to="/">Home</Link>
@@ -17,6 +17,10 @@ const Navbar = () => {
 
         <li>
           <Link to="/about">About</Link>
+        </li>
+
+        <li>
+          <Link to="/lessonPlanWriter">Learning Playground</Link>
         </li>
 
         {isAuthenticated && !isLoading ? (
