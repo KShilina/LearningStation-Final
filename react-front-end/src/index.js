@@ -18,7 +18,7 @@ import StudentMessages from "./components/StudentMessages";
 import StudentBookings from "./components/StudentBookings";
 import LessonPlanWriter from "./components/LessonPlanWriter";
 import Profile from "./components/Profile";
-import SuccessPage from "./components/SuccessPage";
+// import SuccessPage from "./components/SuccessPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
@@ -41,7 +41,7 @@ export default function Index() {
         <Route path="/studentBookings" element={<StudentBookings />} />
         <Route path="/lessonPlanWriter" element={<LessonPlanWriter />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/success" component={<SuccessPage />} />
+        {/* <Route path="/success" component={<SuccessPage />} /> */}
       </Routes>
     </BrowserRouter>
   );
