@@ -8,24 +8,48 @@
   margin-bottom: 2rem; /* Add spacing below the header */
 }
 
-.header-image-std-bookings{
+.header-image-std-bookings {
   width: 100%; /* Adjust the width as needed */
   height: auto; /* This ensures the aspect ratio is maintained */
   max-height: 650px; /* Adjust as needed */
   display: block;
-  margin-bottom: 5%; /* Center the image horizontally */
+  margin-bottom: 2%; /* Center the image horizontally */
   top: 0;
 }
-
-ul {
-  list-style-type: none; /* Remove default list bullets */
-  padding: 0; /* Remove default padding for the list */
+.booking-table {
+  h1 {
+    color: #ad8d76;
+    text-align: center;
+    margin-bottom: 2%;
+  }
 }
 
-li {
-  margin-bottom: 1rem; /* Add spacing between each booking entry */
-  // border: 1px solid #ccc; /* Add a border to each booking entry */
-  padding: 1rem; /* Add padding to each booking entry */
+p {
+  color: #ad8d76;
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 2rem; /* Add spacing below the table */
+}
+
+table th,
+table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #ad8d76;
+}
+
+/* Style the table header row */
+table th {
+  background-color: #f2f2f2;
+  // background-color: #B4B3AF;
+  font-weight: bold;
 }
 
 /* Media query for smaller screens */
