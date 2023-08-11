@@ -1,0 +1,53 @@
+// // App.scss
+// .appContainer {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 100%;
+// }
+
+// .appBar {
+//   border-radius: 15px;
+//   margin: 30px 100px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   width: 600px;
+//   border: 2px solid black;
+
+//   @media (max-width: 600px) {
+//     width: 90%;
+//   }
+// }
+
+// .appImage {
+//   margin-left: 15px;
+// }
+
+// App.scss
+// App.scss
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #1a1321; // Darker purple background color
+}
+
+.appBar {
+  border-radius: 15px;
+  margin: 30px 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  border: 2px solid #4a3d68; // Lighter purple border
+  background-color: #33294d; // Slightly lighter purple background color
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.image {
+  margin-left: 15px;
+}

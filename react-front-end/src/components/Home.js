@@ -40,6 +40,26 @@ const Home = () => {
   }, [isAuthenticated]);
   console.log(newUser);
 
+  const fetchThreeTutors = async () => {
+    axios
+      .get("/api/tutors")
+      .then((response) => {
+        setTutors(response.data);
+      })
+      .catch ((error) => {
+        console.error("Error fetching tutors:", error);
+    })
+  }
+
+  const handleSearchClose = () => {
+    setSearchResults([]);
+    setFilteredTutors([]);
+    setFilteredClassPrices([]);
+    setClasses([])
+  };
+
+  //-------SEARCH BARS-------
+
   //For the search bar
   const handleSearch = (searchTerm) => {
     axios
@@ -54,28 +74,6 @@ const Home = () => {
         // handle error if needed
         console.error("Error fetching search results:", error);
       });
-  };
-
-  // const handleFilter = (subjectName) => {
-  //   axios
-  //     .get(`/api/classes/subject/${subjectName}`)
-  //     .then((response) => {
-  //       setClasses(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching classes:", error);
-  //     });
-  // };
-
-  const fetchThreeTutors = async () => {
-    try {
-      const response = await axios.get("/api/tutors"); // Replace "/api/tutors" with the correct backend route to fetch tutors
-      const data = response.data;
-      // Set the first three tutors to the state
-      setTutors(data);
-    } catch (error) {
-      console.error("Error fetching tutors:", error);
-    }
   };
 
   // filter Tutor by expertise/subjects
@@ -94,6 +92,24 @@ const Home = () => {
       .catch((error) => {
         console.error("Error fetching classes:", error);
       });
+  };
+
+  //filters tutor locations
+  const tutorLocationFilter = async (locationName) => {
+    console.log(locationName)
+    axios
+      .get(`/api/tutors/location/${locationName}`)
+      .then((response) => {
+        const data = response.data;
+        // Set setFilteredTutors as the state and rest to empty
+        setFilteredTutors(data)
+        setFilteredClassPrices([])
+        setClasses([])
+        setSearchResults([]);
+      })
+      .catch ((error) => {
+        console.error("Error fetching tutors:", error);
+      })
   };
 
   //filter class prices
@@ -131,6 +147,7 @@ const Home = () => {
         console.error("Error fetching tutors:", error);
       });
   };
+  //-------SEARCH BARS-------
 
   return (
     <div class="main-container">
@@ -155,6 +172,7 @@ const Home = () => {
           onSubjectFilter={classSubjectFilter}
           onPriceFilter={classPriceFilter}
           onTutorLocationFilter={tutorLocationFilter}
+          handleClearSearch={handleSearchClose}
         />
 
         {newUser && <h1> Add New User Form Here </h1>}
@@ -162,39 +180,78 @@ const Home = () => {
         {/* Display the string searchbar results */}
         <ul class="search-card">
           {searchResults.map((result) => (
+            <a
+              key={result.class_id}
+              class="search-card-item"
+              href={`/tutors/${result.tutor_id}`}
+            >
             <li key={result.class_id} class="search-card-item">
               <div class="search-card-image">
                 <img src={result.image} alt={`${result.first_name} pic`} />
               </div>
 
               <div class="search-card-info">
+
                 <p>
                   {result.first_name} {result.last_name}
                 </p>
                 <p> Location: {result.location} </p>
+
+
                 <p> Expert in {result.expertise}</p>
+                <p> Location: {result.location} </p>
                 <p>BIO: {result.quick_bio}</p>
+                <p>{result.quick_bio} per class</p>
               </div>
+
+
+              {/* <button className="close-button" onClick={handleSearchClose}>
+                X
+              </button> */}
+
             </li>
+            </a>
           ))}
         </ul>
 
         {/* Display the filtered classes subjects */}
         <ul class="search-card">
           {classes.map((classInfo) => (
-            <li key={classInfo.class_id} class="search-card-item">
-              <p>Class Name: {classInfo.class_name}</p>
-              <p>Expert in {classInfo.subject}</p>
-              <p>Price: {classInfo.class_price}</p>
-              {/* Add other class information as needed */}
+            <a
+              key={classInfo.class_id}
+              class="search-card-item"
+              href={`/tutors/${classInfo.tutor_id}`}
+            >
+            <li key={classInfo.tutor_id} class="search-card-item">
+              <div class="search-card-image">
+                <img src = {classInfo.image} alt = {`${classInfo.first_name} pic`} />
+              </div>
+
+              <div class="search-card-info">
+                <p>{classInfo.first_name} {classInfo.last_name}</p>
+                <p>Expert in {classInfo.expertise}</p>
+                <p>Location: {classInfo.location}</p>
+                <p>BIO: {classInfo.quick_bio}</p>
+                <p>{classInfo.class_price} per class</p>
+              </div>
+              {/* <button className="close-button" onClick={handleSearchClose}>
+                X
+              </button> */}
             </li>
+            </a>
           ))}
         </ul>
 
         {/* Display the filtered tutor locations */}
         <ul class="search-card">
           {filteredTutors.map((TutorInfo) => (
+            <a
+              key={TutorInfo.class_id}
+              class="search-card-item"
+              href={`/tutors/${TutorInfo.tutor_id}`}
+            >
             <li key={TutorInfo.tutor_id} class="search-card-item">
+
               <div class="search-card-image">
                 <img
                   src={TutorInfo.image}
@@ -210,22 +267,59 @@ const Home = () => {
                 <p>Location: {TutorInfo.location}</p>
                 <p>BIO: {TutorInfo.quick_bio}</p>
               </div>
+            <div class="search-card-image">
+              <img src = {TutorInfo.image} alt = {`${TutorInfo.first_name} pic`} />
+            </div>
+            <div class="search-card-info">
+              <p>{TutorInfo.first_name} {TutorInfo.last_name}</p>
+              <p>Expert in {TutorInfo.expertise}</p>
+              <p>Location: {TutorInfo.location}</p>
+              <p>BIO: {TutorInfo.quick_bio}</p>
+              <p>{TutorInfo.class_price} per class</p>
+            </div>
+            {/* <button className="close-button" onClick={handleSearchClose}>
+              X
+            </button> */}
+
             </li>
+            </a>
           ))}
         </ul>
 
         {/* Display the filtered class prices */}
-        <ul>
+        <ul class="search-card">
           {filteredClassPrices.map((ClassInfo) => (
+            <a
+              key={ClassInfo.class_id}
+              class="search-card-item"
+              href={`/tutors/${ClassInfo.tutor_id}`}
+            >
             <li key={ClassInfo.class_id} class="search-card-item">
-              <p> Class Name: </p>
-              <p>Subject: {ClassInfo.subject}</p>
-              <p>price: {ClassInfo.class_price}</p>
+              <div class="search-card-image">
+                <img src = {ClassInfo.image} alt = {`${ClassInfo.first_name} pic`} />
+                </div>
+                <div class="search-card-info">
+                <p>{ClassInfo.first_name} {ClassInfo.last_name}</p>
+                <p>Expert in {ClassInfo.subject}</p>
+                <p>location {ClassInfo.location}</p>
+                <p>BIO: {ClassInfo.subject}</p>
+                <p>{ClassInfo.class_price} per class</p>
+              </div>
             </li>
+            </a>
           ))}
         </ul>
       </div>{" "}
       {/* background-image div */}
+
+
+
+ 
+
+
+  
+      </div> {/* background-image div */}
+
       <div className="tutor-container">
         {tutors.map((tutor) => (
           <TutorCard key={tutor.tutor_id} tutor={tutor} />
