@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
+import "./StudentBookings.scss";
 
 const StudentBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -24,7 +26,19 @@ const StudentBookings = () => {
 
   return (
     <section>
-      <h2>My Bookings</h2>
+      <div class="header-text">
+          <img
+            class="header-image-std-bookings"
+            src={
+              process.env.PUBLIC_URL +
+              "/images/thought-catalog-505eectW54k-unsplash.jpg"
+            }
+            alt="headerImg"
+          />
+
+          <h1>My Bookings</h1>
+        </div>
+      
       {bookings.length === 0 ? (
         <p>No bookings</p>
       ) : (
@@ -41,6 +55,7 @@ const StudentBookings = () => {
           ))}
         </ul>
       )}
+      <Footer />
     </section>
   );
 };

@@ -7,15 +7,27 @@
   margin-bottom: 20px;
 }
 
+.header-image-std {
+  width: 100%; /* Adjust the width as needed */
+  height: auto; /* This ensures the aspect ratio is maintained */
+  max-height: 650px; /* Adjust as needed */
+  display: block;
+  margin-bottom: 5%; /* Center the image horizontally */
+  top: 0;
+}
+
 // Styles for the navigation links
 .student-nav-links {
+  display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
+  justify-content: center;
 
   li {
     display: inline-block;
     margin-right: 20px;
+    border:none;
 
     &:last-child {
       margin-right: 0;
@@ -24,9 +36,10 @@
     a {
       text-decoration: none;
       font-size: 16px;
+      color:#8D999E;
 
       &:hover {
-        color: #007bff; // Change to your preferred hover color
+        color: #AD8D76; // Change to your preferred hover color
       }
     }
   }

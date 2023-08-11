@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./StudentPage.scss";
 import { Link } from "react-router-dom"; // Import the Link component
 import { useAuth0 } from "@auth0/auth0-react";
-import axios from "axios";
+import Footer from "./Footer";
 
 const StudentPage = () => {
 
@@ -18,7 +18,19 @@ const StudentPage = () => {
   return (
     isAuthenticated && !isLoading && (
     <div>
-      <h1 className="header">Welcome to Student Page</h1>
+      <div class="header-text">
+          <img
+            class="header-image-std"
+            src={
+              process.env.PUBLIC_URL +
+              "/images/christin-hume-Hcfwew744z4-unsplash.jpg"
+            }
+            alt="headerImg"
+          />
+
+          <h1>Welcome to Student Page</h1>
+        </div>
+      
       <nav>
         <ul className="student-nav-links">
           {/* Use Link instead of a */}
@@ -36,6 +48,7 @@ const StudentPage = () => {
           </li>
         </ul>
       </nav>
+      <Footer />
     </div>
   ))
 };

@@ -43,14 +43,13 @@ export default function Index() {
 
         <Route path="/tutors/:id" element={<TutorPage />} />
 
-        <Route path="/StudentPage" element={<StudentPage />} /> 
-        <Route path="/StudentMessages" element={<StudentMessages />} /> 
-        <Route path="/StudentBookings" element={<StudentBookings />} /> 
-        <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} /> 
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/VideoComponent" element={<VideoComponent />} />
-        
-
+        <Route path="/studentPage" element={<StudentPage />} />
+        <Route path="/studentMessages" element={<StudentMessages />} />
+        <Route path="/studentBookings" element={<StudentBookings />} />
+        <Route path="/lessonPlanWriter" element={<LessonPlanWriter />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/videoComponent" element={<VideoComponent />} />
+        {/* <Route path="/success" component={<SuccessPage />} /> */}
       </Routes>
     </BrowserRouter>
   );
