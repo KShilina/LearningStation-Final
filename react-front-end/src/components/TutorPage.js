@@ -4,8 +4,9 @@ import axios from "axios";
 import "./TutorPage.scss";
 import BookingCalendar from "./BookingCalendar";
 import Footer from "./Footer";
-
 import CheckoutForm from "./CheckoutForm"; // Import your PaymentForm component
+import Navbar from "./Navbar"
+
 
 const TutorPage = () => {
   const { id } = useParams();
@@ -73,39 +74,51 @@ const TutorPage = () => {
     return <div>Loading tutor information...</div>;
   }
 
+  //---------RETURN---------
+
   return (
-    <div className="tutor-card">
-      <img
-        className="tutor-image"
-        src={tutor.image}
-        alt={`${tutor.name}'s pic`}
-      />
-      <div className="info-container">
-        <div className="tutor-info">
-          <h3>{tutor.name}</h3>
-          <p>
-            Name: {tutor.first_name} {tutor.last_name}
-          </p>
-          <p>Expertise: {tutor.expertise}</p>
-          <p>About_Me: {tutor.quick_bio}</p>
-          <p>avg_rating: {tutor.avg_rating}</p>
-          <p>avg_class_prices: {tutor.avg_class_prices}</p>
-          <p>num_students_booked: {tutor.num_students_booked}</p>
+    <div className="tutor-page-body">
+
+    <Navbar />
+
+      <div calss="tutor-page-info-card">
+  
+        <div class="tutor-page-img">
+          <img className="tutor-image"
+            src={tutor.image}
+            alt={`${tutor.name}'s pic`}
+          />
         </div>
-        <div className="buttons">
-          {/* <button className="book-class-button" onClick={handleBookClass}>BOOK a Class</button> */}
-          {/* Render the CheckoutForm component when showCheckoutForm is true */}
-
-          {/* <button className="book-class-button">BOOK a Class</button> */}
-          <BookingCalendar tutor={tutor} />
-          {showCheckoutForm && <CheckoutForm />}
-
-          <button className="message-button">MESSAGE</button>
+  
+        <div className="info-container">
+          <div className="tutor-page-info">
+            <h3>{tutor.name}</h3>
+            <p> {tutor.first_name} {tutor.last_name} </p>
+            <p>Expertise: {tutor.expertise}</p>
+            <p>About_Me: {tutor.quick_bio}</p>
+            <p>avg_rating: {tutor.avg_rating}</p>
+            <p>avg_class_prices: {tutor.avg_class_prices}</p>
+            <p>num_students_booked: {tutor.num_students_booked}</p>
+          </div>
+          <div className="buttons">
+            {/* <button className="book-class-button" onClick={handleBookClass}>BOOK a Class</button> */}
+            {/* Render the CheckoutForm component when showCheckoutForm is true */}
+  
+            {/* <button className="book-class-button">BOOK a Class</button> */}
+            <BookingCalendar tutor={tutor} />
+            {showCheckoutForm && <CheckoutForm />}
+  
+            <button className="message-button">MESSAGE</button>
+          </div>
         </div>
       </div>
+  
       <div className="reviews-container">
+
         <h3>Reviews</h3>
+
         <button onClick={handleShowReviewForm}>Write a Review</button>
+
         {showReviewForm && (
           <div className="review-form">
             <select
@@ -126,6 +139,7 @@ const TutorPage = () => {
             <button onClick={handleReviewSubmit}>Submit Review</button>
           </div>
         )}
+
         <ul className="reviews-list">
           {reviews.map((review) => (
             <li key={review.review_id}>
@@ -135,8 +149,12 @@ const TutorPage = () => {
             </li>
           ))}
         </ul>
+
       </div>
-      <Footer />
+      
+  
+        <Footer />
+
     </div>
   );
 };
