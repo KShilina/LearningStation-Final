@@ -1,9 +1,9 @@
-// // .tutor-page-container {
-// //   display: flex;
-// //   justify-content: center;
-// //   align-items: center;
-// //   height: 100vh; // Assuming you want the card centered vertically as well
-// // }
+// .tutor-page-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh; // Assuming you want the card centered vertically as well
+// }
 
 // .tutor-card {
 //   width: 85%;
@@ -92,6 +92,8 @@
 //   }
 // }
 
+
+
 .tutor-card {
   width: 85%;
   display: flex;
@@ -99,7 +101,7 @@
   gap: 15%;
   justify-content: center;
   background-color: #f1f1f1;
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -178,3 +180,6 @@
     }
   }
 }
+
+
+

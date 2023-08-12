@@ -1,0 +1,61 @@
+/* studentBookings.scss */
+.section {
+  padding: 2rem; /* Add some spacing around the content */
+}
+
+.header-text {
+  text-align: center;
+  margin-bottom: 2rem; /* Add spacing below the header */
+}
+
+.header-image-std-bookings {
+  width: 100%; /* Adjust the width as needed */
+  height: auto; /* This ensures the aspect ratio is maintained */
+  max-height: 650px; /* Adjust as needed */
+  display: block;
+  margin-bottom: 2%; /* Center the image horizontally */
+  top: 0;
+  object-fit: cover;
+}
+.booking-table {
+  h1 {
+    color: #ad8d76;
+    text-align: center;
+    margin-bottom: 2%;
+  }
+}
+
+p {
+  color: #ad8d76;
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 2rem; /* Add spacing below the table */
+}
+
+table th,
+table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #ad8d76;
+}
+
+/* Style the table header row */
+table th {
+  background-color: #f2f2f2;
+  // background-color: #B4B3AF;
+  font-weight: bold;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .header-text {
+    font-size: 1.5rem; /* Decrease font size for smaller screens */
+  }
+}
