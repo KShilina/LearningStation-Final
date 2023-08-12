@@ -9,6 +9,7 @@ import TutorPage from "./TutorPage"
 import './Home.scss';
 import BookingCalendar from "./BookingCalendar"
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -145,6 +146,20 @@ const Home = () => {
           <h1>Start your learning journey today!</h1>
         </div>
 
+        <div class="text-area">
+          <div class="text-quotes">
+            <h1 class="quote">
+              “The cure for boredom is curiosity. There is no cure for curiosity.”
+              <br></br>
+              -Dorothy Parker
+            </h1>
+  
+            <h1 class="mission">
+            Our mission is to make education accessible and enjoyable for everyone, sparking the flames of curiosity for students and offering a platform for tutors to passionately share their expertise. Here learning knows no bounds and knowledge becomes an adventure.
+            </h1>
+          </div>
+        </div>
+
         <SearchBar
           onSearch={handleSearch}
           onSubjectFilter={classSubjectFilter}
@@ -156,6 +171,8 @@ const Home = () => {
         {newUser && (
           <h1> Add New User Form Here </h1>
         )}
+
+        {/* <h1 class="meet-tutor-h1">Meet some of our tutors.</h1> */}
 
         {/* Display the string searchbar results */}
         <ul class="search-card">
@@ -257,7 +274,7 @@ const Home = () => {
                 <p>{ClassInfo.first_name} {ClassInfo.last_name}</p>
                 <p>Expert in {ClassInfo.subject}</p>
                 <p>location {ClassInfo.location}</p>
-                <p>BIO: {ClassInfo.subject}</p>
+                <p>BIO: {ClassInfo.quick_bio}</p>
                 <p>{ClassInfo.class_price} per class</p>
               </div>
             </li>
@@ -265,22 +282,33 @@ const Home = () => {
           ))}
         </ul>
 
-
- 
-
-
-  
       </div> {/* background-image div */}
 
 
-
       <div className="tutor-container">
-        {tutors.map((tutor) => (
+        {/* Display only three tutors */}
+        {tutors.slice(0, 3).map((tutor) => (
           <TutorCard key={tutor.tutor_id} tutor={tutor} />
         ))}
       </div>
 
-      
+      <div class="ai-playground-box">
+
+        <img class="ai-playground-image" src={process.env.PUBLIC_URL + '/images/annie-spratt-QckxruozjRg-unsplash.jpg'} alt="aiplaygroundImg" />
+
+        <div class="ai-playground-box-content">
+          <h1>
+            Let our AI Playground tool be your dynamic companion for an engaging and empowering educational journey.
+          </h1>
+  
+  
+          <Link
+            to="/LessonPlanWriter" className="btn btn-primary">AI Playground
+          </Link>
+        </div>
+
+      </div>
+
 
     </div>
   );
