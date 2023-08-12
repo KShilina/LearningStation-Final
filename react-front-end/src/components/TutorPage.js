@@ -74,7 +74,7 @@ const TutorPage = () => {
   }
 
   return (
-    <div className="tutor-card">
+    <div className="tutor-page-card">
       <img
         className="tutor-image"
         src={tutor.image}
