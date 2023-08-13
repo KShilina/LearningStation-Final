@@ -8,6 +8,17 @@
   margin-bottom: 2rem; /* Add spacing below the header */
 }
 
+.header-text-bookings {
+  position: relative;
+
+  h1 {
+    position: absolute;
+    top: 60%;
+    color: white;
+    margin-left: 2vw;
+  }
+}
+
 .header-image-std-bookings {
   width: 100%; /* Adjust the width as needed */
   height: auto; /* This ensures the aspect ratio is maintained */

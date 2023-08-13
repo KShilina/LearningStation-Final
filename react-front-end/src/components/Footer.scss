@@ -4,17 +4,35 @@ body {
   padding: 0;
 }
 
+// .footer {
+//   background-color: #433B2F;
+//   color: white;
+//   text-align: center;
+//   padding: 20px;
+//   // margin-bottom: 5%;
+//   margin-top: 5%;
+//   flex-grow: 0;
+//   margin-bottom: 0%;
+//   position:static;
+//   bottom: 0px;
+// }
+
 .footer {
+  display: flex;
   background-color: #433B2F;
+  justify-content: center;
   color: white;
   text-align: center;
   padding: 20px;
-  // margin-bottom: 5%;
-  margin-top: 5%;
-  flex-grow: 0;
-  margin-bottom: 0%;
+  // margin-top: 5%;
+  margin-bottom: -10%;
   position:static;
-  bottom: 0px;
+  margin-top:25px;
+
+  .footer-content{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 }
 
 
