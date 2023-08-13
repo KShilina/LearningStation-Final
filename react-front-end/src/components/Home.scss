@@ -31,47 +31,70 @@
   list-style: none;
   margin: 0;
   padding: 1px;
+  max-height: 20%;
+  // //addes styles
+  position: absolute; /* Set to relative positioning */
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: block; /* Display results */
+  z-index: 1; /* Ensure the results appear above the background image */
+
+
   
-}
 
-/* Apply styles to each search result item */
-.search-card-item {
+  /* Apply styles to each search result item */
+  .search-card-item {
+    display: flex;
+    align-items: center;
+    // justify-content: space-around;
+    justify-content: flex-start;
+    // border: 1px solid #ccc;
+    // border: solid 1px #504b4b;
+    margin-bottom: 10px;
+    // width: 100%;
+
+  }
+
+  .search-card-item-li{
   display: flex;
-  align-items: center;
-  // justify-content: space-around;
-  justify-content: flex-start;
-  // border: 1px solid #ccc;
-  border-top: 1px solid #000000;
-  margin-bottom: 10px;
-  padding: 10px;
-  width: 100%;
+  border: solid 1px #504b4b;
+  background-color: #ebebeb;
+  width: 1000px;
+      :hover{
+      border: solid 1px #d5d4d4;
+     }
+  }
 
-}
+  .search-card-item-a{
+    display: flex;
+    align-items: center;
+    // border: solid 1px #504b4b;
+    
+    }
+  
+  /* Apply styles to the info section of each result */
+  .search-card-info {
+    display: flex;
+    // align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    // align-items: center;
+    padding-right: 10px;
+    padding-left: 10%;
+    color: black;
+  
+  }
+  
+  /* Style the profile image */
+  .search-card-image {
+    display: flex;
+    max-width: 150px;
+    min-height: 200px;
+    object-fit: cover;
+    margin-left: 30px;
+  }
 
-/* Apply styles to the info section of each result */
-.search-card-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  // align-items: center;
-  padding-right: 10px;
-  padding-left: 40px;
-  color: black;
-  text-decoration-line: none;
-}
-
-/* Apply styles to the image section of each result */
-.search-card-image {
-  width: auto;
-  height: 40vh;
-  // overflow: hidden;
-}
-
-/* Style the profile image */
-.search-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 //------------QUOTE BOX-----------
@@ -83,7 +106,7 @@
   // background-color: #B4B3AF;
   background-color: #f2f2f2;
   width: 100%;
-  height: 40%;
+  height: 25%;
   margin-bottom: 1%;
   font-family: 'Montserrat', sans-serif;
 

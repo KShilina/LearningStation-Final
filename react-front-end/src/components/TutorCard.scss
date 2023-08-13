@@ -1,4 +1,4 @@
-.tutor-card-container{
+.tutor-card-content{
   /* Style for the whole tutor card */
   .tutor-card {
     display: flex;
@@ -40,13 +40,13 @@
 }
 
   /* Alternating styles for tutor cards */
-  .tutor-card:nth-child(even) .tutor-card {
+  .tutor-card-content:nth-child(even) .tutor-card {
     // justify-content: flex-start;
     flex-direction: row;
     padding: 0 0 0 20px;
   }
   
-  .tutor-card:nth-child(odd) .tutor-card {
+  .tutor-card-content:nth-child(odd) .tutor-card {
     // justify-content: flex-end;
     flex-direction: row-reverse;
     padding: 0 20px 0 0;

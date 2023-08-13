@@ -181,108 +181,113 @@ const Home = () => {
         {/* Display the string searchbar results */}
         <ul class="search-card">
           {searchResults.map((result) => (
-            <a
-              key={result.class_id}
-              class="search-card-item"
-              href={`/tutors/${result.tutor_id}`}
-            >
-            <li key={result.class_id} class="search-card-item">
 
-              <div class="search-card-image">
-                <img src={result.image} alt={`${result.first_name} pic`} />
-              </div>
+            <div class="search-card-item">
 
-              <div class="search-card-info">
-                <p>{result.first_name} {result.last_name}</p>
-                <p> Expert in {result.expertise}</p>
-                <p> Location: {result.location} </p>
-                <p>BIO: {result.quick_bio}</p>
-                <p>{result.quick_bio} per class</p>
+                <a
+                  class="search-card-item-a"
+                  key={result.class_id}
+                  href={`/tutors/${result.tutor_id}`} >
+    
+                  <li key={result.class_id} class="search-card-item-li">
+                    
+                    <img class="search-result-tutor-img" src={result.image} alt={`${result.first_name} pic`} />
+      
+                    <div class="search-card-info">
+                      <p>{result.first_name} {result.last_name}</p>
+                      <p> Expert in {result.expertise}</p>
+                      <p> Location: {result.location} </p>
+                      <p>BIO: {result.quick_bio}</p>
+                      <p>{result.quick_bio} per class</p>
+                    </div>
+
+                  </li>
+                </a>
               </div>
-              {/* <button className="close-button" onClick={handleSearchClose}>
-                X
-              </button> */}
-            </li>
-            </a>
           ))}
         </ul>
 
         {/* Display the filtered classes subjects */}
         <ul class="search-card">
           {classes.map((classInfo) => (
-            <a
-              key={classInfo.class_id}
-              class="search-card-item"
-              href={`/tutors/${classInfo.tutor_id}`}
-            >
-            <li key={classInfo.tutor_id} class="search-card-item">
-              <div class="search-card-image">
-                <img src = {classInfo.image} alt = {`${classInfo.first_name} pic`} />
-              </div>
 
-              <div class="search-card-info">
-                <p>{classInfo.first_name} {classInfo.last_name}</p>
-                <p>Expert in {classInfo.expertise}</p>
-                <p>Location: {classInfo.location}</p>
-                <p>BIO: {classInfo.quick_bio}</p>
-                <p>{classInfo.class_price} per class</p>
-              </div>
-              {/* <button className="close-button" onClick={handleSearchClose}>
-                X
-              </button> */}
-            </li>
-            </a>
+          <div class="search-card-item">
+              <a
+                class="search-card-item-a"
+                key={classInfo.class_id}
+                href={`/tutors/${classInfo.tutor_id}`}
+              >
+                <li key={classInfo.tutor_id} class="search-card-item-li">
+                  
+                  <img class="search-card-image" src = {classInfo.image} alt = {`${classInfo.first_name} pic`} />
+    
+                  <div class="search-card-info">
+                    <p>{classInfo.first_name} {classInfo.last_name}</p>
+                    <p>Expert in {classInfo.expertise}</p>
+                    <p>Location: {classInfo.location}</p>
+                    <p>BIO: {classInfo.quick_bio}</p>
+                    <p>{classInfo.class_price} per class</p>
+                  </div>
+
+                </li>
+              </a>
+            </div>
           ))}
         </ul>
   
         {/* Display the filtered tutor locations */}
         <ul class="search-card">
           {filteredTutors.map((TutorInfo) => (
+
+          <div class="search-card-item">
+
             <a
+              class="search-card-item-a"
               key={TutorInfo.class_id}
-              class="search-card-item"
               href={`/tutors/${TutorInfo.tutor_id}`}
             >
-            <li key={TutorInfo.tutor_id} class="search-card-item">
-            <div class="search-card-image">
-              <img src = {TutorInfo.image} alt = {`${TutorInfo.first_name} pic`} />
-            </div>
-            <div class="search-card-info">
-              <p>{TutorInfo.first_name} {TutorInfo.last_name}</p>
-              <p>Expert in {TutorInfo.expertise}</p>
-              <p>Location: {TutorInfo.location}</p>
-              <p>BIO: {TutorInfo.quick_bio}</p>
-              <p>{TutorInfo.class_price} per class</p>
-            </div>
-            {/* <button className="close-button" onClick={handleSearchClose}>
-              X
-            </button> */}
-            </li>
+              <li key={TutorInfo.tutor_id} class="search-card-item-li">
+              
+                <img class="search-card-image" src = {TutorInfo.image} alt = {`${TutorInfo.first_name} pic`} />
+              
+                <div class="search-card-info">
+                  <p>{TutorInfo.first_name} {TutorInfo.last_name}</p>
+                  <p>Expert in {TutorInfo.expertise}</p>
+                  <p>Location: {TutorInfo.location}</p>
+                  <p>BIO: {TutorInfo.quick_bio}</p>
+                  <p>{TutorInfo.class_price} per class</p>
+                </div>
+              </li>
             </a>
+
+          </div>
           ))}
         </ul>
   
         {/* Display the filtered class prices */}
         <ul class="search-card">
           {filteredClassPrices.map((ClassInfo) => (
+
+          <div class="search-card-item">
             <a
               key={ClassInfo.class_id}
-              class="search-card-item"
+              class="search-card-item-a"
               href={`/tutors/${ClassInfo.tutor_id}`}
             >
-            <li key={ClassInfo.class_id} class="search-card-item">
-              <div class="search-card-image">
-                <img src = {ClassInfo.image} alt = {`${ClassInfo.first_name} pic`} />
+              <li key={ClassInfo.class_id} class="search-card-item-li">
+                <div class="search-card-image">
+                  <img class="search-card-image" src = {ClassInfo.image} alt = {`${ClassInfo.first_name} pic`} />
+                  </div>
+                  <div class="search-card-info">
+                  <p>{ClassInfo.first_name} {ClassInfo.last_name}</p>
+                  <p>Expert in {ClassInfo.subject}</p>
+                  <p>Location: {ClassInfo.location}</p>
+                  <p>BIO: {ClassInfo.quick_bio}</p>
+                  <p>{ClassInfo.class_price} per class</p>
                 </div>
-                <div class="search-card-info">
-                <p>{ClassInfo.first_name} {ClassInfo.last_name}</p>
-                <p>Expert in {ClassInfo.subject}</p>
-                <p>location {ClassInfo.location}</p>
-                <p>BIO: {ClassInfo.quick_bio}</p>
-                <p>{ClassInfo.class_price} per class</p>
-              </div>
-            </li>
+              </li>
             </a>
+          </div>
           ))}
         </ul>
 
@@ -303,7 +308,7 @@ const Home = () => {
         <div class="ai-playground-box-content">
 
           <h1 class="ai-playground-h1">
-          Empower Your Education with AI: Your 24/7 Student Success Partner!
+          Your 24/7 AI Student Success Partner!
           </h1>
 
           <p class="ai-playground-p">
