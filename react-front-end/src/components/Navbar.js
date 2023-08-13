@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className="Navbar">
       <Link to="/" className="logo">
-        Learning Station
+        Learning Station 
       </Link>
       <ul className="nav-links">
         <li>
