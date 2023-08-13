@@ -160,6 +160,9 @@ const Home = () => {
           </div>
         </div>
 
+
+
+
         <SearchBar
           onSearch={handleSearch}
           onSubjectFilter={classSubjectFilter}

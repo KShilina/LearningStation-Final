@@ -28,7 +28,7 @@ const StudentBookings = () => {
 
   return (
     <section>
-      <div class="header-text">
+      <div class="header-student-booking-text">
         <img
           class="header-image-std-bookings"
           src={
