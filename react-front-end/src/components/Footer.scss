@@ -8,7 +8,6 @@ body {
 
 <<<<<<< HEAD
 
-=======
 // .footer {
 //   background-color: #433B2F;
 //   color: white;
@@ -21,7 +20,7 @@ body {
 //   position:static;
 //   bottom: 0px;
 // }
->>>>>>> fix/styleMyBookings
+
 
 .footer {
   display: flex;
@@ -30,17 +29,14 @@ body {
   color: white;
   text-align: center;
   padding: 20px;
-<<<<<<< HEAD
+
 
   // margin-top: 5%;
   margin-bottom: -10%;
   position:static;
-=======
-  // margin-top: 5%;
-  margin-bottom: -10%;
-  position:static;
+
   margin-top:25px;
->>>>>>> fix/styleMyBookings
+
 
   .footer-content{
     margin-bottom: 10px;
@@ -53,17 +49,14 @@ body {
 
 
 
-.footer-content{
-  margin-bottom: 10px;
-  margin-top: 10px;
 }
 
-.footer a {
-  color: white;
-  text-decoration: none;
-}
+  .footer-content{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
 
 .footer a:hover {
   text-decoration: underline;
->>>>>>> fix/styleMyBookings
 }
