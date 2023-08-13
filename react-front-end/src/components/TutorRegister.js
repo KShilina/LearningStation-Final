@@ -47,7 +47,7 @@ const TutorRegister = () => {
 
   return (
     <div className="form-container">
-      <h1>Teach online</h1>
+      <h1 class="h1-tutor-register">Teach online</h1>
       <h2>Earn money on your schedule</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

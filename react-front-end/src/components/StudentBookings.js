@@ -28,7 +28,8 @@ const StudentBookings = () => {
 
   return (
     <section>
-      <div class="header-text">
+      <div class="header-student-booking-text">
+       <div className="header-text-bookings">
         <img
           class="header-image-std-bookings"
           src={
@@ -37,12 +38,13 @@ const StudentBookings = () => {
           }
           alt="headerImg"
         />
-
         <h1>My Bookings</h1>
+        </div>
       </div>
 
+      {/* <div class="student-booking-content"> */}
       {bookings.length === 0 ? (
-        <p>No bookings</p>
+        <p class="no-booking-message"> No bookings </p>
       ) : (
         <div className="booking-table">
           <h1>Booking Details</h1>
@@ -69,7 +71,8 @@ const StudentBookings = () => {
           </table>
         </div>
       )}
-      
+      {/* </div> */}
+
       <nav>
         <ul className="student-nav-links">
           {/* Use Link instead of a */}
