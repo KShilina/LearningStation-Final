@@ -36,7 +36,7 @@
   position: absolute; /* Set to relative positioning */
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: block; /* Display results */
+  
   z-index: 1; /* Ensure the results appear above the background image */
 
 
@@ -196,7 +196,7 @@
   }
 
   .ai-playground-link {
-    display: inline-block;
+    // display: inline-block;
     padding: 10px 20px;
     background-color: #B4B3AF;
     color: white;

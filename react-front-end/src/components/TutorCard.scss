@@ -1,12 +1,18 @@
-.tutor-card-content{
+.tutor-card{
   /* Style for the whole tutor card */
-  .tutor-card {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  .tutor-card-content {
     display: flex;
+ 
     justify-content: space-around;
     align-items: center;
     text-decoration: none;
     // background-color: #f5f5f5;
     padding: 10px;
+    margin: 2vh;
     margin-bottom: 15px;
     padding-left: 50px;
     padding-right: 50px;
@@ -40,14 +46,12 @@
 }
 
   /* Alternating styles for tutor cards */
-  .tutor-card-content:nth-child(even) .tutor-card {
-    // justify-content: flex-start;
+  .tutor-card:nth-child(even) .tutor-card-content {
     flex-direction: row;
     padding: 0 0 0 20px;
   }
   
-  .tutor-card-content:nth-child(odd) .tutor-card {
-    // justify-content: flex-end;
+  .tutor-card:nth-child(odd) .tutor-card-content {
     flex-direction: row-reverse;
     padding: 0 20px 0 0;
   }
