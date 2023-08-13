@@ -1,78 +1,58 @@
-// Navbar.scss
+//-------LIGHTMODE------
+
+// to use: <Navbar />
 
 .Navbar {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between; /* Add this line to separate logo and nav-links */
   background-color: transparent;
   padding: 10px;
   font-family: 'Roboto', sans-serif;
-  position: absolute; /* Ensure the navbar is a positioned element */
-  // position: fixed;
-  z-index: 100; /* Set a higher z-index value to bring the navbar to the front 
-  */
-  width:100%;
-}
+  position: absolute;
+  z-index: 100;
+  width: 100%;
 
-.NavbarDark {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Add this line to separate logo and nav-links */
-  // background-color: transparent;
-  background-color: #6a5acd;
-  padding: 10px;
-  font-family: 'Roboto', sans-serif;
-  position: absolute; /* Ensure the navbar is a positioned element */
-  // position: fixed;
-  z-index: 100; /* Set a higher z-index value to bring the navbar to the front 
-  */
-  width:100%;
-}
-
-.logo {
-  display: flex;
-  justify-content: flex-start;
-  font-size: 24px;
-  font-weight: bold;
-  color:white;
-  text-decoration: none;
-  &:hover {
-    box-shadow: 0 0 7px rgba(0,0,0,.50);
-  }
-}
-
-/* Navbar.scss */
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  color: white;
-  
-
-
-  .li {
+  .navbar-content {
     display: flex;
-    display: inline-block;
-    align-items: center;
-    margin-left: 20px;
     justify-content: space-between;
-  
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  .logo {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: white !important;
+    font-size: 1.3rem;
+    
   }
 
   a {
-    // display: flex;
-    align-items: center;
-    justify-content: space-around;
+    margin-right: 20px; /* Adjust the value to your preference */
     text-decoration: none;
-    color: white;
-    margin-right: 2vw;
-
+    color: white !important;
+    
     &:hover {
-      box-shadow: 0 0 7px rgba(0,0,0,.50);
+      box-shadow: none;
     }
   }
 
@@ -84,16 +64,80 @@
     &:hover {
       box-shadow: 0 0 7px rgba(0,0,0,.50);
       background-color: #AD8D76;
-    
     }
   }
 
-  .login-icon{
-    color: white;
+}
+
+//-------DARK MODE NAV-------
+
+//to use: <Navbar mode="dark"/>
+
+.NavbarDark {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: transparent;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  // padding-bottom: 30%;
+
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    width: 100%;
   }
 
-  
-  
+  .logo {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: black !important;
+    font-size: 1.3rem;
+  }
+
+  a {
+    margin-right: 20px; /* Adjust the value to your preference */
+    text-decoration: none;
+    color: black !important;
+    
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  .login-logout-btn{
+    background-color: #b4b3af;
+    border-radius: 4%;
+    padding: 5px 10px;
+
+    &:hover {
+      box-shadow: 0 0 7px rgba(0,0,0,.50);
+      background-color: #AD8D76;
+    }
+  }
+
 }
 
 

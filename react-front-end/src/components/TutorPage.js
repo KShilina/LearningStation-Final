@@ -79,9 +79,11 @@ const TutorPage = () => {
   return (
     <div className="tutor-page-body">
 
-    <Navbar mode="Dark"/>
+    <Navbar mode="dark"/>
+    
+    
 
-      <div calss="tutor-page-info-card">
+      <div class="tutor-page-info-card">
   
         <div class="tutor-page-img">
           <img className="tutor-image"

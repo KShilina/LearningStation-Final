@@ -10,48 +10,56 @@ const Navbar = ({mode=""}) => {
     useAuth0();
 
   return (
-    <nav className={`Navbar${mode}`}>
-      <Link to="/" className="logo">
-        Learning Station
-      </Link>
-      <ul className="nav-links">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
+    <nav className={`Navbar ${mode === 'dark' ? 'NavbarDark' : ''}`}>
+      <div class="navbar-content">
 
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-
-        <li>
-          <Link to="/lessonPlanWriter">Learning Playground</Link>
-        </li>
-
-        {isAuthenticated && !isLoading ? (
-          <li>
-            <Link to="/StudentPage">Hello, {user.name}</Link>
-            <button
-              className="login-logout-btn"
-              onClick={() => logout({ returnTo: window.location.origin })}
-            >
-              Logout
-            </button>
-          </li>
-        ) : (
-          <li>
-            <button
-              className="login-logout-btn"
-              onClick={() => loginWithRedirect()}
-            >
-              <FontAwesomeIcon
-                icon={faSignInAlt}
-                style={{ marginRight: "0.5rem" }}
-              />
-              Login
-            </button>
-          </li>
-        )}
-      </ul>
+        <div class="logo">
+          <Link to="/" className="logo">
+            Learning Station
+          </Link>
+        </div>
+        
+        
+          <ul className="nav-links">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+    
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+    
+            <li>
+              <Link to="/lessonPlanWriter">Learning Playground</Link>
+            </li>
+    
+            {isAuthenticated && !isLoading ? (
+              <li>
+                <Link to="/StudentPage">Hello, {user.name}</Link>
+                <button
+                  className="login-logout-btn"
+                  onClick={() => logout({ returnTo: window.location.origin })}
+                >
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <li>
+                <button
+                  className="login-logout-btn"
+                  onClick={() => loginWithRedirect()}
+                >
+                  <FontAwesomeIcon
+                    icon={faSignInAlt}
+                    style={{ marginRight: "0.5rem" }}
+                  />
+                  Login
+                </button>
+              </li>
+            )}
+          </ul>
+        
+      </div>
     </nav>
   );
 };
