@@ -12,7 +12,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from "./Footer";
+
 
 
 
