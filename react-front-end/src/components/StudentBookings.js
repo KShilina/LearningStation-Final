@@ -29,6 +29,7 @@ const StudentBookings = () => {
   return (
     <section>
       <div class="header-student-booking-text">
+       <div className="header-text-bookings">
         <img
           class="header-image-std-bookings"
           src={
@@ -37,44 +38,41 @@ const StudentBookings = () => {
           }
           alt="headerImg"
         />
-
         <h1>My Bookings</h1>
+        </div>
       </div>
 
-        {/* <div class="student-booking-content"> */}
-            {bookings.length === 0 ? (
-              
-              <p class="no-booking-message"> No bookings </p>
-            ) : (
-  
-          <div className="booking-table">
-            <h1>Booking Details</h1>
-            <table>
-              <thead>
-                <tr>
-                  <th>Booking ID</th>
-                  <th>Class ID</th>
-                  <th>Booking Date</th>
-                  <th>Payment Confirmed</th>
+      {/* <div class="student-booking-content"> */}
+      {bookings.length === 0 ? (
+        <p class="no-booking-message"> No bookings </p>
+      ) : (
+        <div className="booking-table">
+          <h1>Booking Details</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Booking ID</th>
+                <th>Class ID</th>
+                <th>Booking Date</th>
+                <th>Payment Confirmed</th>
+              </tr>
+            </thead>
+            <tbody>
+              {bookings.map((booking) => (
+                <tr key={booking.booking_id}>
+                  <td>{booking.booking_id}</td>
+                  <td>{booking.class_id}</td>
+                  <td>{booking.booking_date}</td>
+                  <td>{booking.payment_confirmed ? "❌" : "✅"}</td>{" "}
+                  {/* Conditional rendering */}
                 </tr>
-              </thead>
-              <tbody>
-                {bookings.map((booking) => (
-                  <tr key={booking.booking_id}>
-                    <td>{booking.booking_id}</td>
-                    <td>{booking.class_id}</td>
-                    <td>{booking.booking_date}</td>
-                    <td>{booking.payment_confirmed ? "❌" : "✅"}</td>{" "}
-                    {/* Conditional rendering */}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          )}
-        {/* </div> */}
-      
-      
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      {/* </div> */}
+
       <nav>
         <ul className="student-nav-links">
           {/* Use Link instead of a */}
