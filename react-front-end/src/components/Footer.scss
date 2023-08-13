@@ -1,21 +1,12 @@
 /* Footer.scss */
+
+
 body {
   margin: 0;
   padding: 0;
 }
 
-// .footer {
-//   background-color: #433B2F;
-//   color: white;
-//   text-align: center;
-//   padding: 20px;
-//   // margin-bottom: 5%;
-//   margin-top: 5%;
-//   flex-grow: 0;
-//   margin-bottom: 0%;
-//   position:static;
-//   bottom: 0px;
-// }
+
 
 .footer {
   display: flex;
@@ -24,6 +15,7 @@ body {
   color: white;
   text-align: center;
   padding: 20px;
+
   // margin-top: 5%;
   margin-bottom: -10%;
   position:static;
@@ -37,16 +29,13 @@ body {
 
 
 
-.footer-content{
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
+  // margin-top: 5%;
+  margin-bottom: -10%;
+  position:static;
 
-.footer a {
-  color: white;
-  text-decoration: none;
-}
+  .footer-content{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 
-.footer a:hover {
-  text-decoration: underline;
 }
