@@ -10,6 +10,7 @@ import './Home.scss';
 // import BookingCalendar from "./BookingCalendar"
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -146,15 +147,15 @@ const Home = () => {
           <h1>Start your learning journey today!</h1>
         </div>
 
-        <div class="text-area">
+        <div class="quote-text-area">
           <div class="text-quotes">
-            <h1 class="quote">
+            <h1 class="quote-quote">
               “The cure for boredom is curiosity. There is no cure for curiosity.”
               <br></br>
               -Dorothy Parker
             </h1>
   
-            <h1 class="mission">
+            <h1 class="quote-mission">
             Our mission is to make education accessible and enjoyable for everyone, sparking the flames of curiosity for students and offering a platform for tutors to passionately share their expertise. Here learning knows no bounds and knowledge becomes an adventure.
             </h1>
           </div>
@@ -297,22 +298,28 @@ const Home = () => {
 
       <div class="ai-playground-box">
 
-        <img class="ai-playground-image" src={process.env.PUBLIC_URL + '/images/annie-spratt-QckxruozjRg-unsplash.jpg'} alt="aiplaygroundImg" />
+        <img class="ai-playground-image" src={process.env.PUBLIC_URL + '/images/hitesh-choudhary-t1PaIbMTJIM-unsplash.jpg'} alt="aiplaygroundImg" />
 
         <div class="ai-playground-box-content">
-          <h1>
-            Let our AI Playground tool be your dynamic companion for an engaging and empowering educational journey.
+
+          <h1 class="ai-playground-h1">
+          Empower Your Education with AI: Your 24/7 Student Success Partner!
           </h1>
+
+          <p class="ai-playground-p">
+          Welcome to our enhanced learning experience where AI is at your service. Unleash the power of our new AI tool designed to assist students in every step of their journey, providing personalized support and guidance. Try it today and witness the future of education firsthand.
+          </p>
   
   
-          <Link
-            to="/LessonPlanWriter" className="btn btn-primary">AI Playground
+          <Link class="ai-playground-link" to="/LessonPlanWriter" className="btn btn-primary">
+            Try AI-Playground
           </Link>
+
         </div>
 
       </div>
 
-
+          <Footer />
     </div>
   );
 };
