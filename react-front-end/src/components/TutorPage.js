@@ -145,7 +145,7 @@ const TutorPage = () => {
         <ul className="reviews-list">
           {reviews.map((review) => (
             <li key={review.review_id}>
-              <p>Rating: {review.rating}</p>
+              <p>Rating: {review.rating} ⭐</p>
               <p>Comment: {review.comment}</p>
               <p>Review Date: {review.review_date}</p>
             </li>
