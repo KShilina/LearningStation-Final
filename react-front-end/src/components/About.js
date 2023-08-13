@@ -1,10 +1,21 @@
 import React from "react";
 import './About.scss';
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const About = () => {
   return (
     <div className="about-container">
-      <h2>About Us</h2>
+      
+          <Navbar />
+          <div class="header-text">
+    <img class="header-image" src={process.env.PUBLIC_URL + '/images/About.jpg'} alt="headerImg" />
+    
+    
+    <h1>WHAT WE DO</h1>
+  </div>
+   <div className="about-paragraph">
+      <h2 style={{textAlign: "center"}}>About Us</h2>
       <p>
         Welcome to our Learning Station! We are a team of passionate educators
         and tutors dedicated to providing high-quality online learning
@@ -24,8 +35,12 @@ const About = () => {
         Join us on this exciting learning journey and unlock your full
         potential!🌱🌱🌱
       </p>
+      </div>
+      <Footer />
     </div>
   );
 };
 
 export default About;
+
+
