@@ -5,12 +5,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = () => {
+const Navbar = ({mode=""}) => {
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
     useAuth0();
 
   return (
-    <nav className="Navbar">
+    <nav className={`Navbar${mode}`}>
       <Link to="/" className="logo">
         Learning Station
       </Link>

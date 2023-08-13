@@ -5,7 +5,21 @@
   align-items: center;
   justify-content: space-between; /* Add this line to separate logo and nav-links */
   background-color: transparent;
-  color: white;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  position: absolute; /* Ensure the navbar is a positioned element */
+  // position: fixed;
+  z-index: 100; /* Set a higher z-index value to bring the navbar to the front 
+  */
+  width:100%;
+}
+
+.NavbarDark {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Add this line to separate logo and nav-links */
+  // background-color: transparent;
+  background-color: #6a5acd;
   padding: 10px;
   font-family: 'Roboto', sans-serif;
   position: absolute; /* Ensure the navbar is a positioned element */

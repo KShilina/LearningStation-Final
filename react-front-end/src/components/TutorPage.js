@@ -79,7 +79,7 @@ const TutorPage = () => {
   return (
     <div className="tutor-page-body">
 
-    <Navbar />
+    <Navbar mode="Dark"/>
 
       <div calss="tutor-page-info-card">
   
