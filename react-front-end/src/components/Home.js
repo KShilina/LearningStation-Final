@@ -11,6 +11,7 @@ import './Home.scss';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 // import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from "./Footer";
 
 
 
@@ -309,11 +310,12 @@ const Home = () => {
             to="/LessonPlanWriter" className="btn btn-primary">AI Playground
           </Link>
         </div>
-
+       
       </div>
-
-
+      
+      <Footer />
     </div>
+    
   );
 };
 
