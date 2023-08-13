@@ -5,9 +5,9 @@ import SearchBar from './SearchBar';
 import Navbar from "./Navbar";
 import TutorCard from "./TutorCard";
 import { useEffect } from "react";
-import TutorPage from "./TutorPage"
+// import TutorPage from "./TutorPage"
 import './Home.scss';
-import BookingCalendar from "./BookingCalendar"
+// import BookingCalendar from "./BookingCalendar"
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -160,6 +160,9 @@ const Home = () => {
           </div>
         </div>
 
+
+
+
         <SearchBar
           onSearch={handleSearch}
           onSubjectFilter={classSubjectFilter}
@@ -285,7 +288,7 @@ const Home = () => {
       </div> {/* background-image div */}
 
 
-      <div className="tutor-container">
+      <div className="tutor-card-container">
         {/* Display only three tutors */}
         {tutors.slice(0, 3).map((tutor) => (
           <TutorCard key={tutor.tutor_id} tutor={tutor} />
