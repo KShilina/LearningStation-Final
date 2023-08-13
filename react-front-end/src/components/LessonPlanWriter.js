@@ -175,6 +175,7 @@ const LessonPlanWriter = () => {
                 whiteSpace: "pre-wrap",
                 backgroundColor: "#F2F2F2",
                 color: "#AD8D76",
+                padding: "20px",
               }}
             >
               {apiResponse}
