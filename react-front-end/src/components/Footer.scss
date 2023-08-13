@@ -1,4 +1,8 @@
 /* Footer.scss */
+body {
+  margin: 0;
+  padding: 0;
+}
 
 .footer {
   background-color: #433B2F;
@@ -7,7 +11,13 @@
   padding: 20px;
   // margin-bottom: 5%;
   margin-top: 5%;
+  flex-grow: 0;
+  margin-bottom: 0%;
+  position:static;
+  bottom: 0px;
 }
+
+
 
 .footer-content{
   margin-bottom: 10px;
