@@ -53,50 +53,63 @@
         margin-left: 25%;
       }
       
-      .book-class-button,
+      
       .message-button {
-        background-color: slateblue;
-        color: #fff;
-        border: none;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        border: solid 1px rgb(175, 175, 175);
         padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
       
         &:hover {
-          background-color: #0056b3;
+          background-color: rgb(217, 217, 217);
+        }
+      }
+
+      .btn-primary {
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        border: solid 1px rgb(175, 175, 175);
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      
+        &:hover {
+          background-color: rgb(217, 217, 217);
         }
       }
 
     }
   }
-}
-//   .reviews-container {
-//     width: 100%;
-//     margin-top: 20px;
-  
-//     h3 {
-//       font-size: 18px;
-//       margin-bottom: 10px;
-//     }
-  
-//     .reviews-list {
-//       list-style: none;
-//       padding: 0;
-  
-//       li {
-//         border: 1px solid #ccc;
-//         border-radius: 5px;
-//         padding: 10px;
-//         margin-bottom: 10px;
-//         background-color: #fff;
-//         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-//       }
-  
-//       p {
-//         margin: 5px 0;
-//       }
-//     }
-//   }
 
-// }
+  .reviews-container {
+    width: 100%;
+    margin-top: 20px;
+  
+    h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  
+    .reviews-list {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+  
+      p {
+        margin: 5px 0;
+      }
+    }
+  }
+
+}
   
