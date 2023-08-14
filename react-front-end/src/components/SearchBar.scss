@@ -1,16 +1,15 @@
 .search-filter-bars {
   display: flex;
   // justify-content: space-between;
-  justify-content: flex-start;
-  align-items: center;
-  // position: fixed;
+  justify-content: center;
 }
 
 /* Apply this style to each form element for consistent spacing */
 .search-filter-bars form {
   display: flex;
   align-items: center;
-  margin-right: 20px; /* Adjust as needed */
+  margin-right: 20px;
+  margin-bottom: 4vh;
 }
 
 /* Style the select and button within each form */
@@ -29,7 +28,10 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: 1vh;
+  margin-bottom: 1.5vh;
+  margin-top: 4vh;
+  padding-left: 4vw;
+  padding-right: 4vw;
 
   .text-search-submit-btn{
     margin-left: 1vh;
