@@ -8,19 +8,22 @@
   flex-grow: 1;
   width: 100%;
   padding-right: -20px;
+  background-color: #ECEFF0;
 
   .tutor-page-content {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 70%;
     height: auto;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     // padding: 20px;
     box-sizing: border-box;
-    margin: 0 auto;
+    // margin: 0 auto;
+    margin-left:7%;
+    margin-right:20%;
     margin-bottom: 20px;
     margin-top: 10%;
   
@@ -45,7 +48,14 @@
         flex-direction: column;
         justify-content: flex-end;
         width: 30%;
-        margin-left: 30%;
+        margin-left: 25%;
+        p{
+          // color:#AD8D76;
+          color:#666666;
+        }
+        h3{
+          color:#6F757A;
+        }
       }
     
       .buttons {
@@ -56,28 +66,28 @@
       
       
       .message-button {
-        background-color: rgb(255, 255, 255);
-        color: rgb(0, 0, 0);
+        background-color: 4CAF4F;
+        color: white;
         border: solid 1px rgb(175, 175, 175);
         padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
       
         &:hover {
-          background-color: rgb(217, 217, 217);
+          background-color:rgb(143, 237, 132);
         }
       }
 
       .btn-primary {
-        background-color: rgb(255, 255, 255);
-        color: rgb(0, 0, 0);
+        background-color:4CAF4F;
+        color: white;
         border: solid 1px rgb(175, 175, 175);
         padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
       
         &:hover {
-          background-color: rgb(217, 217, 217);
+          background-color: rgb(143, 237, 132);
         }
       }
 
@@ -87,10 +97,13 @@
   .reviews-container {
     width: 100%;
     margin-top: 20px;
+    
   
     h3 {
       font-size: 18px;
       margin-bottom: 10px;
+      margin-left:7%;
+      color:#6F757A;
     }
   
     .reviews-list {
@@ -111,7 +124,15 @@
       p {
         margin: 5px 0;
       }
+
+      
+
     }
+  }
+
+  .review-btn{
+    margin-left: 7%;
+    margin-bottom: 1%;
   }
 
 }

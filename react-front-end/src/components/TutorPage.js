@@ -117,7 +117,7 @@ const TutorPage = () => {
 
         <h3>{tutor.first_name}'s Reviews</h3>
 
-        <button onClick={handleShowReviewForm}>Write a Review</button>
+        <button className="review-btn" onClick={handleShowReviewForm}>Write a Review</button>
 
         {showReviewForm && (
           <div className="review-form">
@@ -143,7 +143,7 @@ const TutorPage = () => {
         <ul className="reviews-list">
           {reviews.map((review) => (
             <li key={review.review_id}>
-              <p>Rating: {review.rating} ⭐</p>
+              <p>Rating: ⭐{review.rating} </p>
               <p>Comment: {review.comment}</p>
               <p>Review Date: {review.review_date}</p>
             </li>
