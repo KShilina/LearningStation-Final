@@ -97,11 +97,11 @@ const TutorPage = () => {
         <div className="info-buttons-container">
           <div className="tutor-specific-info">
             <h3>{tutor.first_name} {tutor.last_name}</h3>
-            <p>Expertise: {tutor.expertise}</p>
-            <p>About {tutor.first_name}: {tutor.quick_bio}</p>
-            <p>Average student rating: {tutor.avg_rating}</p>
-            <p>tutor session price: {tutor.avg_class_prices}</p>
-            <p>Number of student taught: {tutor.num_students_booked}</p>
+            <p>🎓 Expertise: {tutor.expertise}</p>
+            <p>ℹ️ About {tutor.first_name}: {tutor.quick_bio}</p>
+            <p>📊 Average student rating: {tutor.avg_rating}</p>
+            <p>💲 Price: {tutor.avg_class_prices}</p>
+            <p>🧑🏻‍🎓 Number of student taught: {tutor.num_students_booked}</p>
           </div>
           <div className="buttons">
   

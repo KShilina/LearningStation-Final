@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        123 Demo Street, Toronto ON   |   +1 (647) 000-0000   |   email@learningStation.ca
+        123 Demo Street, Toronto ON   | ☎  +1 (647) 000-0000   |   email@learningStation.ca
         <br/>
         © {new Date().getFullYear()} Learning Station. All rights reserved.
       </div>

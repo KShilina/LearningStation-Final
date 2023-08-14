@@ -15,7 +15,7 @@ const Navbar = ({mode=""}) => {
 
         <div class="logo">
           <Link to="/" className="logo">
-            Learning Station
+            Learning𖠿Station
           </Link>
         </div>
         
