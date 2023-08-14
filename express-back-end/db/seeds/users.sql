@@ -97,7 +97,7 @@ VALUES
   (7, 'Computer Science', '$40.00'),
   (8, 'Spanish', '$22.00'),
   (9, 'Biology', '$26.00'),
-  (10, 'Music', '$32.00');
+  (10, 'Music', '$32.00'),
   (11, 'Foreign Languages', '$47.00');
 
 

@@ -28,7 +28,7 @@ const Home = () => {
     // Fetch three tutors from the backend when the component mounts
     fetchThreeTutors();
     if (isAuthenticated){
-      axios.post("http://localhost:8080/api/students/find",user)
+      axios.post("/api/students/find",user)
         .then(({data}) => {
           console.log(data)
           window.sessionStorage.setItem("first_name", data.first_name)
