@@ -29,6 +29,7 @@ const TutorPage = () => {
     try {
       const response = await axios.get(`/api/tutors/${tutorId}`);
       setTutor(response.data);
+      console.log(response.data, "fetch tutor info")
     } catch (error) {
       console.error("Error fetching tutor information:", error);
     }
@@ -82,8 +83,9 @@ const TutorPage = () => {
     <Navbar mode="dark"/>
     
     
+    
 
-      <div class="tutor-page-info-card">
+      <div class="tutor-page-content">
   
         <div class="tutor-page-img">
           <img className="tutor-image"
@@ -92,21 +94,17 @@ const TutorPage = () => {
           />
         </div>
   
-        <div className="info-container">
-          <div className="tutor-page-info">
-            <h3>{tutor.name}</h3>
-            <p> {tutor.first_name} {tutor.last_name} </p>
+        <div className="info-buttons-container">
+          <div className="tutor-specific-info">
+            <h3>{tutor.first_name} {tutor.last_name}</h3>
             <p>Expertise: {tutor.expertise}</p>
-            <p>About_Me: {tutor.quick_bio}</p>
-            <p>avg_rating: {tutor.avg_rating}</p>
-            <p>avg_class_prices: {tutor.avg_class_prices}</p>
-            <p>num_students_booked: {tutor.num_students_booked}</p>
+            <p>About {tutor.first_name}: {tutor.quick_bio}</p>
+            <p>Average student rating: {tutor.avg_rating}</p>
+            <p>tutor session price: {tutor.avg_class_prices}</p>
+            <p>Number of student taught: {tutor.num_students_booked}</p>
           </div>
           <div className="buttons">
-            {/* <button className="book-class-button" onClick={handleBookClass}>BOOK a Class</button> */}
-            {/* Render the CheckoutForm component when showCheckoutForm is true */}
   
-            {/* <button className="book-class-button">BOOK a Class</button> */}
             <BookingCalendar tutor={tutor} />
             {showCheckoutForm && <CheckoutForm />}
   
@@ -114,10 +112,10 @@ const TutorPage = () => {
           </div>
         </div>
       </div>
-  
+
       <div className="reviews-container">
 
-        <h3>Reviews</h3>
+        <h3>{tutor.first_name}'s Reviews</h3>
 
         <button onClick={handleShowReviewForm}>Write a Review</button>
 

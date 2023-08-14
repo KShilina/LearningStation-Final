@@ -4,59 +4,86 @@
 .tutor-page-body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; 
+  min-height: 100vh;
   flex-grow: 1;
+  width: 100%;
+  padding-right: -20px;
 
-  .tutor-page-info-card {
-    width: 85%;
+  .tutor-page-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
     background-color: #f1f1f1;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    // padding: 20px;
     box-sizing: border-box;
     margin: 0 auto;
     margin-bottom: 20px;
     margin-top: 10%;
-  }
   
-  .info-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  
-  .tutor-image {
-    border-radius: 5%;
-    width: 40vh; /* Adjust as needed */
-    height: auto;
-    object-fit: cover;
-  }
-  
-  .tutor-info {
-    flex: 1;
-  }
-  
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .book-class-button,
-  .message-button {
-    background-color: slateblue;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  
-    &:hover {
-      background-color: #0056b3;
+
+    .tutor-image {
+      display: flex;
+      justify-content: flex-start;
+      border-radius: 5%;
+      width: 40vh; /* Adjust as needed */
+      height: auto;
+      object-fit: cover;
+    }
+
+    .info-buttons-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width:100%;
+      
+      .tutor-specific-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 30%;
+        margin-left: 30%;
+      }
+    
+      .buttons {
+        display: flex;
+        gap: 10px;
+        margin-left: 25%;
+      }
+      
+      
+      .message-button {
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        border: solid 1px rgb(175, 175, 175);
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      
+        &:hover {
+          background-color: rgb(217, 217, 217);
+        }
+      }
+
+      .btn-primary {
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        border: solid 1px rgb(175, 175, 175);
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      
+        &:hover {
+          background-color: rgb(217, 217, 217);
+        }
+      }
+
     }
   }
-  
+
   .reviews-container {
     width: 100%;
     margin-top: 20px;
