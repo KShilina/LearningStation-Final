@@ -29,6 +29,7 @@ const TutorPage = () => {
     try {
       const response = await axios.get(`/api/tutors/${tutorId}`);
       setTutor(response.data);
+      console.log(response.data, "fetch tutor info")
     } catch (error) {
       console.error("Error fetching tutor information:", error);
     }
@@ -80,6 +81,7 @@ const TutorPage = () => {
     <div className="tutor-page-body">
 
     <Navbar mode="dark"/>
+    
     
     
 
