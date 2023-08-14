@@ -72,6 +72,7 @@ const searchRouter = require('./routes/search');
 const reviewsRouter = require('./routes/reviews');
 
 
+
 app.use('/api/students', studentsRouter(pool));
 app.use('/api/tutors', tutorsRouter(pool));
 app.use('/api/classes', classesRouter(pool));
@@ -80,7 +81,8 @@ app.use('/api/messages', messagesRouter(pool));
 app.use('/api/search', searchRouter(pool)); // Use the search route
 app.use('/api/reviews', reviewsRouter(pool));
 
-//socket connection 
+
+//socket video connection 
 io.on("connection", (socket) => {
 	console.log(socket.id)
 	socket.emit("me", socket.id);
@@ -97,8 +99,50 @@ io.on("connection", (socket) => {
 		io.to(data.to).emit("callAccepted", data.signal)
 	});
 });
-///
+//
 
+//---------socket chat connection---------
+const clients = {};
+
+// Allow socket.io to access session
+// const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
+// io.use(wrap(session));
+
+io.on('connection', client => {
+  const session = client.request.session;
+  const name = session?.user?.name; //figure out how to switch from cookies to session.
+
+  console.log("Client Connected!", name, " : ", client.id);
+  client.emit("system", `Welcome ${name}`);
+  client.broadcast.emit('system', `${name} has just joined`);
+
+  // Add this client.id to our clients lookup object
+  clients[name] = client.id;
+  console.log(clients);
+
+  client.on('message', data => {
+    console.log(data);
+    const {text, to} = data;
+    const from = name;
+
+    if (!to) {
+      client.broadcast.emit('public', {text, from});
+      return;
+    }
+
+    const id = clients[to];
+    console.log(`Sending message to ${to}:${id}`);
+    io.to(id).emit("private", {text, from});
+  });
+
+  client.on("disconnect", () => {
+    console.log("Client Disconnected", name, " : ", client.id);
+    client.broadcast.emit('system', `${name} has just left`);
+    delete clients[name];
+  });
+});
+
+//-------------
 
 server.listen(port, () => {
   // eslint-disable-next-line no-console
