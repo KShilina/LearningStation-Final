@@ -6,6 +6,7 @@ import BookingCalendar from "./BookingCalendar";
 import Footer from "./Footer";
 import CheckoutForm from "./CheckoutForm"; // Import your PaymentForm component
 import Navbar from "./Navbar"
+import ChatModal from "./ChatModal";
 
 
 const TutorPage = () => {
@@ -107,8 +108,10 @@ const TutorPage = () => {
   
             <BookingCalendar tutor={tutor} />
             {showCheckoutForm && <CheckoutForm />}
-  
-            <button className="message-button">MESSAGE</button>
+            
+            {/* <ChatModal /> */}
+            <ChatModal recipient={tutor} />
+            {/* <button className="message-button">MESSAGE</button> */}
           </div>
         </div>
       </div>

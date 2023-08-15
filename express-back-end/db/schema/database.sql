@@ -165,7 +165,7 @@ $$
 LANGUAGE plpgsql;
 
 ---
-DROP FUNCTION IF EXISTS update_num_students_booked();
+DROP FUNCTION IF EXISTS update_avg_class_prices();
 
 -- Create a trigger to update num_students_booked
 CREATE TRIGGER update_num_students_booked_trigger
@@ -173,16 +173,16 @@ AFTER INSERT OR UPDATE ON bookings
 FOR EACH STATEMENT
 EXECUTE FUNCTION update_num_students_booked();
 ----
-DROP TRIGGER IF EXISTS update_num_students_booked_trigger ON bookings;
+DROP TRIGGER IF EXISTS update_avg_class_prices_trigger ON classes;
 
 --------------------------------------------------------------------------------
 
 -- CHECKING TRIGGER 
  SELECT tgname AS trigger_name
 FROM pg_trigger
-WHERE tgname = 'update_num_students_booked_trigger';
+WHERE tgname = 'update_avg_class_prices_trigger';
 
 -- CHECKING TRIG FUNCTION
 SELECT proname AS function_name
 FROM pg_proc
-WHERE proname = 'function_name_here';
+WHERE proname = 'update_num_students_booked';

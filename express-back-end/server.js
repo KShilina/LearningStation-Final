@@ -9,6 +9,8 @@ const { Pool } = require('pg');
 const app = express();
 const server = require("http").createServer(app);
 const port = 8080;
+//added for chat
+const session = require('express-session')
 
 const io = require("socket.io")(server, {
 	cors: {
@@ -74,6 +76,7 @@ const searchRouter = require('./routes/search');
 const reviewsRouter = require('./routes/reviews');
 
 
+
 app.use('/api/students', studentsRouter(pool));
 app.use('/api/tutors', tutorsRouter(pool));
 app.use('/api/classes', classesRouter(pool));
@@ -82,7 +85,8 @@ app.use('/api/messages', messagesRouter(pool));
 app.use('/api/search', searchRouter(pool)); // Use the search route
 app.use('/api/reviews', reviewsRouter(pool));
 
-//socket connection 
+
+//socket video connection 
 io.on("connection", (socket) => {
 	console.log(socket.id)
 	socket.emit("me", socket.id);
@@ -99,8 +103,63 @@ io.on("connection", (socket) => {
 		io.to(data.to).emit("callAccepted", data.signal)
 	});
 });
-///
+//
 
+//---------socket chat connection---------
+const clients = {};
+
+// Allow socket.io to access session
+// const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
+// io.use(wrap(session));
+
+// let user = 0
+
+io.on('connection', client => {
+  const session = client.request.session;
+  console.log(client.handshake.query.name)
+  const name = session?.user?.name; //figure out how to switch from cookies to session.
+
+  
+  console.log("Client Connected!", name, " : ", client.id);
+  // client.emit("system", `Welcome ${name}`);
+  // client.broadcast.emit('system', `${user} has just joined`); // Change first_name to name
+
+  // Add this client.id to our clients lookup object
+  clients[client.handshake.query.name] = client.id;
+  console.log(clients);
+  // client.broadcast.emit("private", {from: "system", text: "testing send"})
+   
+
+  client.on('message', data => {
+    console.log(data);
+    const {text, to} = data;
+    const from = name;
+
+    if (!to) {
+      client.broadcast.emit('public', {text, from});
+      return;
+    }
+
+    const id = clients[to];
+    if (id) {
+    console.log(`Sending message to ${to}:${id}`);
+    // io.to(id).emit('private', {from: "system", text: "testing send"})
+    io.to(id).emit('private', {from, text}); //working 1-way message
+    } else {
+      // Handle case when recipient is not found
+      client.emit('system', `Recipient '${to}' not found.`);
+    }
+  });
+
+  client.on("disconnect", () => {
+    console.log("Client Disconnected", name, " : ", client.id);
+    // client.broadcast.emit('system', `${name} has just left`); // Change first_name to name
+    delete clients[name];
+  });
+});
+
+
+//-------------
 
 server.listen(port, () => {
   // eslint-disable-next-line no-console
