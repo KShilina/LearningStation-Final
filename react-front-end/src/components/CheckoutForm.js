@@ -31,7 +31,7 @@ const CheckoutForm = (props) => {
       //`Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: "https://learning-station-final.vercel.app/StudentBookings",
+        return_url: "https://learning-station.vercel.app/StudentBookings",
       },
       
     });
