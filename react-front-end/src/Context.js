@@ -14,6 +14,7 @@ const ContextProvider = ({ children }) => {
   const [name, setName] = useState('');
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
+  const [newUser, setNewUser] = useState('');
 
   const myVideo = useRef({});
   const userVideo = useRef({});
@@ -29,6 +30,8 @@ const ContextProvider = ({ children }) => {
       });
 
     socket.on('me', (id) => setMe(id));
+    
+    socket.on('lastConnectedUser', (id) => setNewUser(id));
 
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
@@ -94,6 +97,7 @@ const ContextProvider = ({ children }) => {
       setName,
       callEnded,
       me,
+      newUser,
       callUser,
       leaveCall,
       answerCall,

@@ -81,9 +81,17 @@ app.use('/api/search', searchRouter(pool)); // Use the search route
 app.use('/api/reviews', reviewsRouter(pool));
 
 //socket connection 
+let connections = [];
 io.on("connection", (socket) => {
 	console.log(socket.id)
-	socket.emit("me", socket.id);
+
+  connections.push(socket.id)
+
+
+  socket.emit("me", socket.id);
+
+
+  socket.broadcast.emit("lastConnectedUser", connections.pop());
 
 	socket.on("disconnect", () => {
 		socket.broadcast.emit("callEnded")

@@ -65,7 +65,7 @@ import { SocketContext } from '../../Context';
 import './Sidebar.scss'; // Import the SCSS file
 
 const Sidebar = ({ children }) => {
-  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
+  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser, newUser } = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState();
 
   console.log(me);
@@ -89,6 +89,19 @@ const Sidebar = ({ children }) => {
                   }}
                 >
                   Copy Your ID
+                </Button>
+              </CopyToClipboard>
+              <CopyToClipboard text={newUser}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  startIcon={<Assignment fontSize="large" />}
+                  onClick={() => {
+                    console.log('Copy button clicked:', newUser);
+                  }}
+                >
+                  Copy new User ID
                 </Button>
               </CopyToClipboard>
             </Grid>
