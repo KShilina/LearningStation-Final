@@ -28,10 +28,10 @@ const StudentBookings = () => {
 
   return (
     <section>
-      <div class="header-student-booking-text">
+      <div className="header-student-booking-text">
        <div className="header-text-bookings">
         <img
-          class="header-image-std-bookings"
+          className="header-image-std-bookings"
           src={
             process.env.PUBLIC_URL +
             "/images/thought-catalog-505eectW54k-unsplash.jpg"
@@ -42,9 +42,9 @@ const StudentBookings = () => {
         </div>
       </div>
 
-      {/* <div class="student-booking-content"> */}
+      {/* <div className="student-booking-content"> */}
       {bookings.length === 0 ? (
-        <p class="no-booking-message"> No bookings </p>
+        <p className="no-booking-message"> No bookings </p>
       ) : (
         <div className="booking-table">
           <h1>Booking Details</h1>

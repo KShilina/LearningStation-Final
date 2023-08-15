@@ -11,7 +11,7 @@ import './Home.scss';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -135,27 +135,27 @@ const Home = () => {
   //-------SEARCH BARS-------
 
   return (
-    <div class="main-container">
+    <div className="main-container">
 
-      <div class="background-image">
+      <div className="background-image">
         
         <Navbar />
 
-        <div class="header-text">
-          <img class="header-image" src={process.env.PUBLIC_URL + '/images/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg'} alt="headerImg" />
+        <div className="header-text">
+          <img className="header-image" src={process.env.PUBLIC_URL + '/images/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg'} alt="headerImg" />
           
           <h1>Start your learning journey today!</h1>
         </div>
 
-        <div class="quote-text-area">
-          <div class="text-quotes">
-            <h1 class="quote-quote">
+        <div className="quote-text-area">
+          <div className="text-quotes">
+            <h1 className="quote-quote">
               “The cure for boredom is curiosity. There is no cure for curiosity.”
               <br></br>
               -Dorothy Parker
             </h1>
   
-            <h1 class="quote-mission">
+            <h1 className="quote-mission">
             Our mission is to make education accessible and enjoyable for everyone, sparking the flames of curiosity for students and offering a platform for tutors to passionately share their expertise. Here learning knows no bounds and knowledge becomes an adventure.
             </h1>
           </div>
@@ -176,25 +176,25 @@ const Home = () => {
           <h1> Add New User Form Here </h1>
         )}
 
-        {/* <h1 class="meet-tutor-h1">Meet some of our tutors.</h1> */}
+        {/* <h1 className="meet-tutor-h1">Meet some of our tutors.</h1> */}
 
         {/* Display the string searchbar results */}
-        <ul class="search-card">
+        <ul className="search-card">
           {searchResults.map((result) => (
 
-            <div class="search-card-item">
+            <div className="search-card-item">
 
                 <a
-                  class="search-card-item-a"
+                  className="search-card-item-a" 
                   key={result.class_id}
                   href={`/tutors/${result.tutor_id}`} >
     
-                  <li key={result.class_id} class="search-card-item-li">
+                  <li key={result.class_id} className="search-card-item-li">
                     
-                    <img class="search-result-tutor-img" src={result.image} alt={`${result.first_name} pic`} />
+                    <img className="search-result-tutor-img" src={result.image} alt={`${result.first_name} pic`} />
       
-                    <div class="search-card-info">
-                      <p>{result.first_name} {result.last_name}</p>
+                    <div className="search-card-info">
+                      <p className="name">{result.first_name} {result.last_name}</p>
                       <p> Expert in {result.expertise}</p>
                       <p> Location: {result.location} </p>
                       <p>BIO: {result.quick_bio}</p>
@@ -208,20 +208,20 @@ const Home = () => {
         </ul>
 
         {/* Display the filtered classes subjects */}
-        <ul class="search-card">
+        <ul className="search-card">
           {classes.map((classInfo) => (
 
-          <div class="search-card-item">
+          <div className="search-card-item">
               <a
-                class="search-card-item-a"
+                className="search-card-item-a"
                 key={classInfo.class_id}
                 href={`/tutors/${classInfo.tutor_id}`}
               >
-                <li key={classInfo.tutor_id} class="search-card-item-li">
+                <li key={classInfo.tutor_id} className="search-card-item-li">
                   
-                  <img class="search-card-image" src = {classInfo.image} alt = {`${classInfo.first_name} pic`} />
+                  <img className="search-card-image" src = {classInfo.image} alt = {`${classInfo.first_name} pic`} />
     
-                  <div class="search-card-info">
+                  <div className="search-card-info">
                     <p>{classInfo.first_name} {classInfo.last_name}</p>
                     <p>Expert in {classInfo.expertise}</p>
                     <p>Location: {classInfo.location}</p>
@@ -236,21 +236,21 @@ const Home = () => {
         </ul>
   
         {/* Display the filtered tutor locations */}
-        <ul class="search-card">
+        <ul className="search-card">
           {filteredTutors.map((TutorInfo) => (
 
-          <div class="search-card-item">
+          <div className="search-card-item">
 
             <a
-              class="search-card-item-a"
+              className="search-card-item-a"
               key={TutorInfo.class_id}
               href={`/tutors/${TutorInfo.tutor_id}`}
             >
-              <li key={TutorInfo.tutor_id} class="search-card-item-li">
+              <li key={TutorInfo.tutor_id} className="search-card-item-li">
               
-                <img class="search-card-image" src = {TutorInfo.image} alt = {`${TutorInfo.first_name} pic`} />
+                <img className="search-card-image" src = {TutorInfo.image} alt = {`${TutorInfo.first_name} pic`} />
               
-                <div class="search-card-info">
+                <div className="search-card-info">
                   <p>{TutorInfo.first_name} {TutorInfo.last_name}</p>
                   <p>Expert in {TutorInfo.expertise}</p>
                   <p>Location: {TutorInfo.location}</p>
@@ -265,20 +265,20 @@ const Home = () => {
         </ul>
   
         {/* Display the filtered class prices */}
-        <ul class="search-card">
+        <ul className="search-card">
           {filteredClassPrices.map((ClassInfo) => (
 
-          <div class="search-card-item">
+          <div className="search-card-item">
             <a
               key={ClassInfo.class_id}
-              class="search-card-item-a"
+              className="search-card-item-a"
               href={`/tutors/${ClassInfo.tutor_id}`}
             >
-              <li key={ClassInfo.class_id} class="search-card-item-li">
-                <div class="search-card-image">
-                  <img class="search-card-image" src = {ClassInfo.image} alt = {`${ClassInfo.first_name} pic`} />
+              <li key={ClassInfo.class_id} className="search-card-item-li">
+                <div className="search-card-image">
+                  <img className="search-card-image" src = {ClassInfo.image} alt = {`${ClassInfo.first_name} pic`} />
                   </div>
-                  <div class="search-card-info">
+                  <div className="search-card-info">
                   <p>{ClassInfo.first_name} {ClassInfo.last_name}</p>
                   <p>Expert in {ClassInfo.subject}</p>
                   <p>Location: {ClassInfo.location}</p>
@@ -301,22 +301,22 @@ const Home = () => {
         ))}
       </div>
 
-      <div class="ai-playground-box">
+      <div className="ai-playground-box">
 
-        <img class="ai-playground-image" src={process.env.PUBLIC_URL + '/images/hitesh-choudhary-t1PaIbMTJIM-unsplash.jpg'} alt="aiplaygroundImg" />
+        <img className="ai-playground-image" src={process.env.PUBLIC_URL + '/images/hitesh-choudhary-t1PaIbMTJIM-unsplash.jpg'} alt="aiplaygroundImg" />
 
-        <div class="ai-playground-box-content">
+        <div className="ai-playground-box-content">
 
-          <h1 class="ai-playground-h1">
+          <h1 className="ai-playground-h1">
           Your 24/7 AI Student Success Partner!
           </h1>
 
-          <p class="ai-playground-p">
+          <p className="ai-playground-p">
           Welcome to our enhanced learning experience where AI is at your service. Unleash the power of our new AI tool designed to assist students in every step of their journey, providing personalized support and guidance. Try it today and witness the future of education firsthand.
           </p>
   
   
-          <Link class="ai-playground-link" to="/LessonPlanWriter" className="btn btn-primary">
+          <Link className="ai-playground-link" to="/LessonPlanWriter" className="btn btn-primary">
             Try AI-Playground
           </Link>
 

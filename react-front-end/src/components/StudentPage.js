@@ -18,9 +18,9 @@ const StudentPage = () => {
   return (
     isAuthenticated && !isLoading && (
     <div>
-      <div class="header-text">
+      <div className="header-text">
           <img
-            class="header-image-std"
+            className="header-image-std"
             src={
               process.env.PUBLIC_URL +
               "/images/christin-hume-Hcfwew744z4-unsplash.jpg"

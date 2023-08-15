@@ -11,9 +11,9 @@ const Navbar = ({mode=""}) => {
 
   return (
     <nav className={`Navbar ${mode === 'dark' ? 'NavbarDark' : ''}`}>
-      <div class="navbar-content">
+      <div className="navbar-content">
 
-        <div class="logo">
+        <div className="logo">
           <Link to="/" className="logo">
             Learning𖠿Station
           </Link>

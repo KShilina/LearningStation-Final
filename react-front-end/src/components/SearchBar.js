@@ -83,7 +83,7 @@ const SearchBar = ({
   return (
     <>
       
-        <form class="text-search-and-btn" onSubmit={handleSubmit}>
+        <form className="text-search-and-btn" onSubmit={handleSubmit}>
           <input
             type="text"
             value={searchTerm}
@@ -91,11 +91,11 @@ const SearchBar = ({
             placeholder="Search..."
           />
   
-          <button class="text-search-submit-btn" type="submit">Search</button>
+          <button className="text-search-submit-btn" type="submit">Search</button>
         </form>
       
 
-      <div class="search-filter-bars">
+      <div className="search-filter-bars">
         <form onSubmit={handleSubjectFilter}>
   
           <select value={searchOption} onChange={handleExpertiseFilterChange}> 
@@ -106,11 +106,11 @@ const SearchBar = ({
             <option value="Physics">Physics</option>
             <option value="Chemistry">Chemistry</option>
             <option value="Computer Science">Computer Science</option>
-            <option value="Foreign Languages">Foreign Languages</option>
+            {/* <option value="Foreign Languages">Foreign Languages</option> */}
             <option value="Biology">Biology</option>
             <option value="Music">Music</option>
             <option value="Science">Science</option>
-            <option value="Spanish">Spanish</option>
+            {/* <option value="Spanish">Spanish</option> */}
           </select>
   
           {/* <button type="submit" disabled={searchOption ? false : true}>
@@ -157,7 +157,7 @@ const SearchBar = ({
   
         </form>
 
-        <button class="clear-filters" onClick={handleClearSearch}>
+        <button className="clear-filters" onClick={handleClearSearch}>
           Clear Filter
         </button>
 

@@ -7,10 +7,10 @@ const TutorCard = ({ tutor, classes }) => {
   return (
     
     <Link to={`/tutors/${tutor.tutor_id}`} className="tutor-card">
-      <div class="tutor-card-content">
+      <div className="tutor-card-content">
         <div className="tutor-card-info">
           <h3>{tutor.name}</h3>
-          <p class="tutor-card-name" >{tutor.first_name} {tutor.last_name}</p>
+          <p className="tutor-card-name" >{tutor.first_name} {tutor.last_name}</p>
           <p>Expertise: {tutor.expertise}</p>
           <p>About Me: {tutor.quick_bio}</p>
           <p>Location: {tutor.location}</p>

@@ -8,8 +8,8 @@ const About = () => {
     <div className="about-container">
       
           <Navbar />
-          <div class="header-text">
-    <img class="header-image" src={process.env.PUBLIC_URL + '/images/About.jpg'} alt="headerImg" />
+          <div className="header-text">
+    <img className="header-image" src={process.env.PUBLIC_URL + '/images/About.jpg'} alt="headerImg" />
     
     
     <h1>WHAT WE DO</h1>

@@ -85,9 +85,9 @@ const TutorPage = () => {
     
     
 
-      <div class="tutor-page-content">
+      <div className="tutor-page-content">
   
-        <div class="tutor-page-img">
+        <div className="tutor-page-img">
           <img className="tutor-image"
             src={tutor.image}
             alt={`${tutor.name}'s pic`}
