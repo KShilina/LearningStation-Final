@@ -45,7 +45,8 @@ const Chat = function(props) {
 
 
   const send = function() {
-    socket.emit("message", {text, to});
+    // socket.emit("message", {text, to});
+    socket.emit("message", { text, to: to });
   };
 
   const list = messages.map((msg, i) => {
