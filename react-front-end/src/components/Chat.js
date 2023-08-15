@@ -11,8 +11,10 @@ const Chat = function(props) {
   const [text, setText] = useState("");
   const [to, setTo] = useState("");
 
+  const logName = sessionStorage.getItem("first_name");
+  console.log(logName)
   useEffect(() => {
-    const socket = io();
+    const socket = io({query:`name=${logName}`});
     setSocket(socket);
 
     socket.on('connect', () => {
@@ -32,6 +34,7 @@ const Chat = function(props) {
 
     socket.on("private", data => {
       // play();
+      console.log(data, "data")
       const message = `${data.from} says:  ${data.text}`;
       setMessages(prev => [message, ...prev]);
       // console.log(data);
