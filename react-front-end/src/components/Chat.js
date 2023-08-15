@@ -33,7 +33,6 @@ const Chat = function(props) {
     });
 
     socket.on("private", data => {
-      // play();
       console.log(data, "data")
       const message = `${data.from} says:  ${data.text}`;
       setMessages(prev => [message, ...prev]);
@@ -41,16 +40,23 @@ const Chat = function(props) {
     });
 
     return () => socket.disconnect(); // prevents memory leaks
-  }, []);
+  },[]);
 
 
   const send = function() {
-    // socket.emit("message", {text, to});
-    socket.emit("message", { text, to: to });
-  };
+    // socket.emit("message", {text, to});//extra code
+    // socket.emit("message", { text, to: to }); //working 1-way message
+      const senderName = sessionStorage.getItem("first_name"); // Get sender's name from sessionStorage
+      socket.emit("message", { text, to, senderName }); // Send the entered text message and sender's name ----added
+    };
+
 
   const list = messages.map((msg, i) => {
-    return <li key={i}>{msg}</li>;
+    // if (msg.from === "system") { //---added
+    //   return <li key={i}>{msg.text}</li>; //---added
+    // } //---added
+    // return <li key={i}>{msg.from} says: {msg.text}</li>; //---added
+    return <li key={i}>{msg}</li>;//working 1-way messaging
   });
 
   return (
