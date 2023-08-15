@@ -3,6 +3,7 @@ import axios from "axios";
 import Footer from "./Footer";
 import "./StudentBookings.scss";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const StudentBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -28,6 +29,7 @@ const StudentBookings = () => {
 
   return (
     <section>
+      <Navbar />
       <div className="header-student-booking-text">
        <div className="header-text-bookings">
         <img
@@ -78,12 +80,6 @@ const StudentBookings = () => {
           {/* Use Link instead of a */}
           <li>
             <Link to="/StudentMessages">Messages</Link>
-          </li>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/logout">Log out</Link>
           </li>
         </ul>
       </nav>
