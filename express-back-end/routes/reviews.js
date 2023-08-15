@@ -29,6 +29,7 @@ module.exports = (pool) => {
   // POST a review
   router.post('/', async (req, res) => {
     const { student_id, tutor_id, rating, comment } = req.body;
+    console.log(req.body, "req.body");
     try {
       const insertQuery = 'INSERT INTO reviews (student_id, tutor_id, rating, comment) VALUES ($1, $2, $3, $4) RETURNING *';
       const insertValues = [student_id, tutor_id, rating, comment];

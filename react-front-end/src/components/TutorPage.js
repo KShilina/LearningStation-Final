@@ -28,6 +28,12 @@ const TutorPage = () => {
   const fetchTutorInfo = async (tutorId) => {
     try {
       const response = await axios.get(`/api/tutors/${tutorId}`);
+
+      const tutorData = response.data;
+    
+    // Log the tutor data to see what's being fetched
+    console.log("Tutor Data:", tutorData);
+
       setTutor(response.data);
       console.log(response.data, "fetch tutor info")
     } catch (error) {
@@ -54,14 +60,19 @@ const TutorPage = () => {
   };
 
   const handleReviewSubmit = async () => {
+    console.log("handle review");
     try {
-      const response = await axios.post("/api/reviews", {
+      const reviewBody = {
         student_id: 1, // Replace with the actual student_id
         tutor_id: id,
         rating: newReviewRating,
         comment: newReviewComment,
-      });
+      }
+      console.log(reviewBody,"reviewBody");
+      const response = await axios.post("/api/reviews", reviewBody);
+      
       const newReview = response.data;
+      console.log(newReview,"newReview");
       setReviews([...reviews, newReview]);
       setNewReviewRating(5);
       setNewReviewComment("");
