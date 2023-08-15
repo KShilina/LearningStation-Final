@@ -30,7 +30,7 @@ const Navbar = ({mode=""}) => {
             </li>
     
             <li>
-              <Link to="/lessonPlanWriter">Learning Playground</Link>
+              <Link to="/lessonPlanWriter">AI-Playground</Link>
             </li>
     
             {isAuthenticated && !isLoading ? (
