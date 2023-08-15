@@ -182,7 +182,7 @@ const Home = () => {
           handleClearSearch={handleSearchClose}
         />
 
-        {newUser && <h1> Add New User Form Here </h1>}
+        {newUser && <h1> </h1>}
 
         {/* <h1 className="meet-tutor-h1">Meet some of our tutors.</h1> */}
 
