@@ -109,7 +109,8 @@ const TutorPage = () => {
             <BookingCalendar tutor={tutor} />
             {showCheckoutForm && <CheckoutForm />}
             
-            <ChatModal />
+            {/* <ChatModal /> */}
+            <ChatModal recipient={tutor} />
             {/* <button className="message-button">MESSAGE</button> */}
           </div>
         </div>

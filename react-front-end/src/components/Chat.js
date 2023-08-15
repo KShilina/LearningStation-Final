@@ -27,27 +27,32 @@ const Chat = function(props) {
     });
 
     socket.on("public", data => {
-      const message = `${data.from} says:  ${data.text}`;
+      // const message = `${data.from} says:  ${data.text}`;
+      const message = `${data.text}`; //"undefined says"removed
       setMessages(prev => [message, ...prev]);
-      // console.log(data);
+      // console.log(data, "public");
     });
 
     socket.on("private", data => {
       console.log(data, "data")
-      const message = `${data.from} says:  ${data.text}`;
+      // const message = `${data.from} says:  ${data.text}`;
+      const message = `${data.text}`; //"undefined says"removed
       setMessages(prev => [message, ...prev]);
-      // console.log(data);
+      // console.log(data, "private");
     });
 
     return () => socket.disconnect(); // prevents memory leaks
-  },[]);
+  },[logName]);
 
 
   const send = function() {
     // socket.emit("message", {text, to});//extra code
     // socket.emit("message", { text, to: to }); //working 1-way message
       const senderName = sessionStorage.getItem("first_name"); // Get sender's name from sessionStorage
-      socket.emit("message", { text, to, senderName }); // Send the entered text message and sender's name ----added
+      socket.emit("message", { text, to, senderName });
+      setText("");
+      // setMessages("");
+      // Send the entered text message and sender's name ----added
     };
 
 
@@ -64,8 +69,11 @@ const Chat = function(props) {
       <div class="text-boxes">
         <div>
           <input
+            // onChange={event => setTo(event.target.value)}
+            // value={to}
+            // placeholder="Recipient" />
             onChange={event => setTo(event.target.value)}
-            value={to}
+            value={to || props.recipient.first_name}
             placeholder="Recipient" />
         </div>
   
