@@ -1,0 +1,16 @@
+.chat-box{
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+
+  .messages{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .buttons{
+    display: flex;
+    margin-left: 5%;
+  }
+}

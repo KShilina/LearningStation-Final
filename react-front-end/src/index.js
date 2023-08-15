@@ -19,6 +19,7 @@ import StudentMessages from "./components/StudentMessages";
 import StudentBookings from "./components/StudentBookings";
 import LessonPlanWriter from "./components/LessonPlanWriter";
 import Profile from "./components/Profile";
+import Chat from "./components/Chat"
 
 // import SuccessPage from "./components/SuccessPage";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -66,6 +67,7 @@ export default function Index() {
         <Route path="/LessonPlanWriter" element={<LessonPlanWriter />} /> 
         <Route path="/Profile" element={<Profile />} />
         <Route path="/VideoComponent" element={<VideoComponent />} />
+        <Route path="/Chat" element={<Chat />} />
         
 
 
