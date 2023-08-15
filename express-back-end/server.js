@@ -139,14 +139,19 @@ io.on('connection', client => {
     }
 
     const id = clients[to];
+    if (id) {
     console.log(`Sending message to ${to}:${id}`);
-    // io.to(id).emit("private", {text, from});
-    io.to(id).emit('private', {from: "system", text: "testing send"})
+    // io.to(id).emit('private', {from: "system", text: "testing send"})
+    io.to(id).emit('private', {from, text}); //working 1-way message
+    } else {
+      // Handle case when recipient is not found
+      client.emit('system', `Recipient '${to}' not found.`);
+    }
   });
 
   client.on("disconnect", () => {
     console.log("Client Disconnected", name, " : ", client.id);
-    client.broadcast.emit('system', `${name} has just left`); // Change first_name to name
+    // client.broadcast.emit('system', `${name} has just left`); // Change first_name to name
     delete clients[name];
   });
 });
