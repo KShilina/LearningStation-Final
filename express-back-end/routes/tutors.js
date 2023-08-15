@@ -16,6 +16,7 @@ module.exports = (pool) => {
 
    // Route to get a specific tutor by tutor_id
    router.get('/:id', async (req, res) => {
+    console.log('triggered')
     try {
       const { id } = req.params;
       const tutor = await pool.query('SELECT * FROM tutors WHERE tutor_id = $1', [id]);

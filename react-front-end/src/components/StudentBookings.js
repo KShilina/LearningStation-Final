@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const StudentBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -34,6 +35,7 @@ const StudentBookings = () => {
               <p>Class ID: {booking.class_id}</p>
               <p>Booking Date: {booking.booking_date}</p>
               <p>Payment Confirmed: {booking.payment_confirmed}</p>
+              < Link to="/VideoComponent" > Video call tutor</ Link>
               <hr />
             </li>
           ))}
