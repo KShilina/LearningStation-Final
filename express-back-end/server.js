@@ -9,6 +9,8 @@ const { Pool } = require('pg');
 const app = express();
 const server = require("http").createServer(app);
 const port = 8080;
+//added for chat
+const session = require('express-session')
 
 const io = require("socket.io")(server, {
 	cors: {
@@ -105,8 +107,9 @@ io.on("connection", (socket) => {
 const clients = {};
 
 // Allow socket.io to access session
-// const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
-// io.use(wrap(session));
+const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
+io.use(wrap(session));
+
 
 io.on('connection', client => {
   const session = client.request.session;
@@ -114,7 +117,7 @@ io.on('connection', client => {
 
   console.log("Client Connected!", name, " : ", client.id);
   client.emit("system", `Welcome ${name}`);
-  client.broadcast.emit('system', `${name} has just joined`);
+  client.broadcast.emit('system', `${name} has just joined`); // Change first_name to name
 
   // Add this client.id to our clients lookup object
   clients[name] = client.id;
@@ -137,10 +140,11 @@ io.on('connection', client => {
 
   client.on("disconnect", () => {
     console.log("Client Disconnected", name, " : ", client.id);
-    client.broadcast.emit('system', `${name} has just left`);
+    client.broadcast.emit('system', `${name} has just left`); // Change first_name to name
     delete clients[name];
   });
 });
+
 
 //-------------
 
