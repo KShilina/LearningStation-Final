@@ -107,21 +107,26 @@ io.on("connection", (socket) => {
 const clients = {};
 
 // Allow socket.io to access session
-const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
-io.use(wrap(session));
+// const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
+// io.use(wrap(session));
 
+// let user = 0
 
 io.on('connection', client => {
   const session = client.request.session;
+  console.log(client.handshake.query.name)
   const name = session?.user?.name; //figure out how to switch from cookies to session.
 
+  
   console.log("Client Connected!", name, " : ", client.id);
-  client.emit("system", `Welcome ${name}`);
-  client.broadcast.emit('system', `${name} has just joined`); // Change first_name to name
+  // client.emit("system", `Welcome ${name}`);
+  // client.broadcast.emit('system', `${user} has just joined`); // Change first_name to name
 
   // Add this client.id to our clients lookup object
-  clients[name] = client.id;
+  clients[client.handshake.query.name] = client.id;
   console.log(clients);
+  // client.broadcast.emit("private", {from: "system", text: "testing send"})
+   
 
   client.on('message', data => {
     console.log(data);
@@ -135,7 +140,8 @@ io.on('connection', client => {
 
     const id = clients[to];
     console.log(`Sending message to ${to}:${id}`);
-    io.to(id).emit("private", {text, from});
+    // io.to(id).emit("private", {text, from});
+    io.to(id).emit('private', {from: "system", text: "testing send"})
   });
 
   client.on("disconnect", () => {
