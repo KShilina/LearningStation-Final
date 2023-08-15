@@ -1,6 +1,6 @@
 -------- RE-SEEDING PROCESS --------
 --- delete entries
-DELETE FROM table_name;
+DELETE FROM students;
 --- serial reset
 SELECT setval('students_student_id_seq', 1, false);
 SELECT setval('tutors_tutor_id_seq', 1, false);
