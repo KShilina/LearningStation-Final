@@ -93,6 +93,7 @@ const MyCalendar = ({ tutor }) => {
     console.log("Selected Date:", selectedDate);
     const booking_date = moment(selectedDate).format("MMMM D, YYYY");
     console.log("Formatted Date:", booking_date);
+    console.log('hello');
     const student_id = studentId; // Replace with the actual student ID
     const class_id = tutor.tutor_id;
     const payment_confirmed = null;
@@ -141,7 +142,7 @@ const MyCalendar = ({ tutor }) => {
                   <input
                     type="text"
                     value={`${moment(selectedDate).format(
-                      "MMMM Do, YYYY [at] h:mm a"
+                      "MMMM D, YYYY"
                     )} - ${moment(selectedDate)
                       .add(1, "hour")
                       .format("h:mm a")}`}
