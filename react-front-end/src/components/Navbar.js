@@ -28,10 +28,6 @@ const Navbar = ({mode=""}) => {
             <li>
               <Link to="/about">About</Link>
             </li>
-
-            <li>
-              <Link to="/studentPage">Student Page</Link>
-            </li>
     
             <li>
               <Link to="/lessonPlanWriter">AI-Playground</Link>
