@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import "./StudentBookings.scss";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import moment from "moment";
 
 const StudentBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -64,7 +65,8 @@ const StudentBookings = () => {
                 <tr key={booking.booking_id}>
                   <td>{booking.booking_id}</td>
                   <td>{booking.class_id}</td>
-                  <td>{booking.booking_date}</td>
+                  <td>{moment(booking.booking_date).format("MMMM D, YYYY")}</td>
+                  
                   <td>{booking.payment_confirmed ? "❌" : "✅"}</td>{" "}
                   {/* Conditional rendering */}
                 </tr>
