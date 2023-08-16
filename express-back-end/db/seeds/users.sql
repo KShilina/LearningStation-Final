@@ -51,12 +51,27 @@ VALUES
   ('Music', 'Talented music tutor and performer.', 'Ethan', 'Rivera', 'ethan.rivera@example.com', 'Seattle', 'music123', 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80', 0, 0, 0),
   ('Spanish', 'Experienced tutor in Spanish.', 'Maria', 'Garcia', 'maria.garcia@example.com', 'Madrid', 'password123', 'https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80', 0, 0, 0);
 
+  ------create 10 class examples ----
+
+  INSERT INTO classes (tutor_id, subject, class_price)
+VALUES
+  (1, 'Mathematics', 30.00),
+  (2, 'Science', 25.00),
+  (3, 'English', 20.00),
+  (4, 'History', 18.00),
+  (5, 'Physics', 35.00),
+  (6, 'Chemistry', 28.00),
+  (7, 'Computer Science', 40.00),
+  (8, 'Spanish', 22.00),
+  (9, 'Biology', 26.00),
+  (10, 'Music', 32.00),
+  (11, 'Foreign Languages', 47.00);
 
   ---- add 10 bookings ----
 
   INSERT INTO bookings (student_id, class_id, booking_date, payment_confirmed)
 VALUES
-  (1, 1, '2023-07-25 12:00:00', true),
+  -- (1, 1, '2023-07-25 12:00:00', true),
   (2, 2, '2023-07-26 15:30:00', true),
   (3, 3, '2023-07-27 10:00:00', false),
   (4, 4, '2023-07-28 09:45:00', false),
@@ -84,21 +99,7 @@ VALUES
   (10, 10, 'Hey, Im interested in learning music theory.', '2023-07-26 11:15:00', false);
 
 
-  ------create 10 class examples ----
 
-  INSERT INTO classes (tutor_id, subject, class_price)
-VALUES
-  (1, 'Mathematics', '$30.00'),
-  (2, 'Science', '$25.00'),
-  (3, 'English', '$20.00'),
-  (4, 'History', '$18.00'),
-  (5, 'Physics', '$35.00'),
-  (6, 'Chemistry', '$28.00'),
-  (7, 'Computer Science', '$40.00'),
-  (8, 'Spanish', '$22.00'),
-  (9, 'Biology', '$26.00'),
-  (10, 'Music', '$32.00'),
-  (11, 'Foreign Languages', '$47.00');
 
 
 ------create 10 reviews examples ----

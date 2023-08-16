@@ -19,11 +19,25 @@ const TutorPage = () => {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [newReviewRating, setNewReviewRating] = useState(5); // Default rating
   const [newReviewComment, setNewReviewComment] = useState("");
+  const [avrclassprice, setAvrclassprice] = useState(0);
 
   useEffect(() => {
     fetchTutorInfo(id);
     fetchTutorReviews(id);
+    fetchTutorClasses(id);
   }, [id]);
+
+  const fetchTutorClasses = async (tutorId) => {
+    try {
+      const response = await axios.get(`/api/classes?tutor_id=${tutorId}`);
+      // setTutor(response.data);
+      console.log(response.data, "fetch tutor classes")
+      console.log(Number(response.data[0].class_price.substring(1)));
+      setAvrclassprice(Number(response.data[0].class_price.substring(1)))
+    } catch (error) {
+      console.error("Error fetching tutor information:", error);
+    }
+  };
 
   const fetchTutorInfo = async (tutorId) => {
     try {
@@ -66,6 +80,7 @@ const TutorPage = () => {
       setNewReviewRating(5);
       setNewReviewComment("");
       setShowReviewForm(false);
+      fetchTutorInfo(id);
     } catch (error) {
       console.error("Error submitting review:", error);
     }
@@ -99,8 +114,8 @@ const TutorPage = () => {
             <h3>{tutor.first_name} {tutor.last_name}</h3>
             <p>🎓 Expertise: {tutor.expertise}</p>
             <p>ℹ️ About {tutor.first_name}: {tutor.quick_bio}</p>
-            <p>📊 Average student rating: {tutor.avg_rating}</p>
-            <p>💲 Price: {tutor.avg_class_prices}</p>
+            <p>📊 Average student rating: {Number.parseFloat(tutor.avg_rating).toFixed(1)}</p>
+            <p>💲 Price: {avrclassprice}</p>
             <p>🧑🏻‍🎓 Number of student taught: {tutor.num_students_booked}</p>
           </div>
           <div className="buttons">

@@ -120,6 +120,7 @@ EXECUTE FUNCTION update_avg_rating();
 ----------------- TRIGGER FUNCTION FOR CLASS PRICES ---------------
 
 -- Create a new function to update avg_class_prices
+-- DROP FUNCTION IF EXISTS update_avg_class_prices();
 CREATE OR REPLACE FUNCTION update_avg_class_prices()
 RETURNS TRIGGER AS
 $$
@@ -165,7 +166,7 @@ $$
 LANGUAGE plpgsql;
 
 ---
-DROP FUNCTION IF EXISTS update_avg_class_prices();
+-- DROP FUNCTION IF EXISTS update_avg_class_prices();
 
 -- Create a trigger to update num_students_booked
 CREATE TRIGGER update_num_students_booked_trigger
