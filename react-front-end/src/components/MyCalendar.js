@@ -89,7 +89,10 @@ const MyCalendar = ({ tutor }) => {
 
   const handleSubmit = async () => {
     const studentId = sessionStorage.getItem('student_id');
-    const booking_date = moment(selectedDate).format("YYYY-MM-DD HH:mm:ss");
+    // const booking_date = moment(selectedDate).format("YYYY-MM-DD HH:mm:ss");
+    console.log("Selected Date:", selectedDate);
+    const booking_date = moment(selectedDate).format("MMMM D, YYYY");
+    console.log("Formatted Date:", booking_date);
     const student_id = studentId; // Replace with the actual student ID
     const class_id = tutor.tutor_id;
     const payment_confirmed = null;
