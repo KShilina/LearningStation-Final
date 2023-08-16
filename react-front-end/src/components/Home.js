@@ -146,9 +146,9 @@ const Home = () => {
           />
 
           <h1>
-            Welcome to the Learning Station.
+          &ensp;Welcome to the Learning Station.
             <br />
-            &ensp;&ensp;&ensp;&ensp;Where you can find your tutor.
+            &ensp;&ensp;&ensp;&ensp;&ensp;Where you can find your tutor.
             <br />
             &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Start your learning
             journey today!
