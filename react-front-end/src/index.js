@@ -31,8 +31,8 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import { ContextProvider } from './Context';
 import axios from "axios";
 
-// axios.defaults.baseURL = process.env.BASE_URL || "https://learningstation.onrender.com";
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = process.env.BASE_URL || "https://learningstation.onrender.com";
+// axios.defaults.baseURL = "http://localhost:8080";
 // import { stopReportingRuntimeErrors  } from 'react-error-overlay';
 //
 // if (process.env.NODE_ENV === "development") {
