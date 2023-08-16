@@ -10,7 +10,7 @@ const TutorCard = ({ tutor, classes }) => {
       <div className="tutor-card-content">
         <div className="tutor-card-info">
           <h3>{tutor.name}</h3>
-          <p className="tutor-card-name" >{tutor.first_name} {tutor.last_name}</p>
+          <h3 className="tutor-card-name" >{tutor.first_name} {tutor.last_name}</h3>
           <p>Expertise: {tutor.expertise}</p>
           <p>About Me: {tutor.quick_bio}</p>
           <p>Location: {tutor.location}</p>
