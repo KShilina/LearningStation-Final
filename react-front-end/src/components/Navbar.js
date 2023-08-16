@@ -5,60 +5,57 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = ({mode=""}) => {
+const Navbar = ({ mode = "" }) => {
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
     useAuth0();
 
   return (
-    <nav className={`Navbar ${mode === 'dark' ? 'NavbarDark' : ''}`}>
+    <nav className={`Navbar ${mode === "dark" ? "NavbarDark" : ""}`}>
       <div className="navbar-content">
-
         <div className="logo">
           <Link to="/" className="logo">
             Learning𖠿Station
           </Link>
         </div>
-        
-        
-          <ul className="nav-links">
+
+        <ul className="nav-links">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+
+          <li>
+            <Link to="/lessonPlanWriter">AI-Playground</Link>
+          </li>
+
+          {isAuthenticated && !isLoading ? (
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/StudentPage">Hello, {user.name}</Link>
+              <button
+                className="login-logout-btn"
+                onClick={() => logout({ returnTo: window.location.origin })}
+              >
+                Logout
+              </button>
             </li>
-    
+          ) : (
             <li>
-              <Link to="/about">About</Link>
+              <button
+                className="login-logout-btn"
+                onClick={() => loginWithRedirect()}
+              >
+                <FontAwesomeIcon
+                  icon={faSignInAlt}
+                  style={{ marginRight: "0.5rem" }}
+                />
+                Login
+              </button>
             </li>
-    
-            <li>
-              <Link to="/lessonPlanWriter">AI-Playground</Link>
-            </li>
-    
-            {isAuthenticated && !isLoading ? (
-              <li>
-                <Link to="/StudentPage">Hello, {user.name}</Link>
-                <button
-                  className="login-logout-btn"
-                  onClick={() => logout({ returnTo: window.location.origin })}
-                >
-                  Logout
-                </button>
-              </li>
-            ) : (
-              <li>
-                <button
-                  className="login-logout-btn"
-                  onClick={() => loginWithRedirect()}
-                >
-                  <FontAwesomeIcon
-                    icon={faSignInAlt}
-                    style={{ marginRight: "0.5rem" }}
-                  />
-                  Login
-                </button>
-              </li>
-            )}
-          </ul>
-        
+          )}
+        </ul>
       </div>
     </nav>
   );
