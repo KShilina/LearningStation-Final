@@ -22,6 +22,7 @@
 
 }
 
+
 //--------SEARCH/FILTER CARDS--------
 
 /* Apply styles to the search result card */
@@ -34,8 +35,8 @@
   max-height: 20%;
   // //addes styles
   position: absolute; /* Set to relative positioning */
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  // background-color: white;
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
   z-index: 1; /* Ensure the results appear above the background image */
 
@@ -57,12 +58,13 @@
 
   .search-card-item-li{
   display: flex;
-  border: solid 1px #504b4b;
-  background-color: #ebebeb;
+  // border: solid 1px #504b4b;
+  background-color: white;
+  margin-left: 40%;
   width: 1000px;
-      :hover{
-      border: solid 1px #d5d4d4;
-     }
+      // :hover{
+      // border: solid 1px #d5d4d4;
+    //  }
   }
 
   .search-card-item-a{
@@ -83,8 +85,15 @@
     padding-right: 10px;
     padding-left: 10%;
     color: black;
-  
+    p{
+      color:#504B4B;
+      // color:#6F7579;
+    }
   }
+  
+ .search-result-tutor-img{
+  width: 300px;
+ }
   
   /* Style the profile image */
   .search-card-image {
@@ -206,5 +215,3 @@
     margin-top: 20px;
   }
 }
-
-

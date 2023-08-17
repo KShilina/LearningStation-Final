@@ -144,7 +144,15 @@ const Home = () => {
         <div class="header-text">
           <img class="header-image" src={process.env.PUBLIC_URL + '/images/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg'} alt="headerImg" />
           
-          <h1>Start your learning journey today!</h1>
+          <h1>
+          &ensp;Welcome to the Learning Station.
+            <br />
+            &ensp;&ensp;&ensp;&ensp;&ensp;Where you can find your tutor.
+            <br />
+            &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Start your learning
+            journey today!
+          </h1>
+          
         </div>
 
         <div class="quote-text-area">

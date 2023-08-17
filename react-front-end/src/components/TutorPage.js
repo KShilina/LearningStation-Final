@@ -100,7 +100,7 @@ const TutorPage = () => {
             <h3>{tutor.first_name} {tutor.last_name}</h3>
             <p>🎓 Expertise: {tutor.expertise}</p>
             <p>ℹ️ About {tutor.first_name}: {tutor.quick_bio}</p>
-            <p>📊 Average student rating: {tutor.avg_rating}</p>
+            <p>📊 Average student rating: {Number.parseFloat(tutor.avg_rating).toFixed(1)}</p>
             <p>💲 Price: {tutor.avg_class_prices}</p>
             <p>🧑🏻‍🎓 Number of student taught: {tutor.num_students_booked}</p>
           </div>
