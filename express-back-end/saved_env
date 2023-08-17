@@ -1,0 +1,12 @@
+# CHOKIDAR_USEPOLLING=true
+
+DB_HOST=localhost
+DB_USER=labber
+DB_PASS=labber
+DB_NAME=learningstation
+# Uncomment and set to true for Heroku
+# DB_SSL=true if heroku
+DB_PORT=5432
+
+YOUR_PUBLISHABLE_KEY=pk_test_51NPUwIJ7asQDcmsxPQqqMevZU3aNyMYdWDBTm75kAgHEjLYQu7NLGSvoTa55z4uBBIWjrJeucHnysVKzEEdNzDOx00vBYfZek2
+STRIPE_API_KEY=sk_test_51NPUwIJ7asQDcmsxBlgufHKigfwMQXFz8I1NSkj8huOnNygt9Y7GONYl01MI0SaTmUxjseA3pfGBL7U5oKrumU0t00AMH0nBwK
