@@ -1,10 +1,42 @@
 // // App.scss
-// .appContainer {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   width: 100%;
-// }
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 7%;
+  background-color: #271F38;
+  padding-bottom: 50px;
+}
+
+.css-11lq3yg-MuiGrid-root{
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.video-footer{
+  display: flex;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  justify-content: center;
+  margin-bottom: -10%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  // margin-top: 4%;
+}
+
+.css-1cjrmu8-MuiPaper-root-MuiAppBar-root{
+  display: flex;
+  width: 61.5% !important;
+  background-color: rgb(251, 251, 251) !important;
+}
+
+.css-1ps6pg7-MuiPaper-root{
+  margin-bottom: 3%;
+}
 
 // .appBar {
 //   border-radius: 15px;
@@ -27,6 +59,8 @@
 
 // App.scss
 // App.scss
+
+
 .wrapper {
   display: flex;
   flex-direction: column;
