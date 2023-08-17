@@ -29,6 +29,10 @@
   object-fit: cover;
 }
 .booking-table {
+
+  padding-left:4%;
+  padding-right:4%;
+  padding-top:3%;
   h1 {
     color: #ad8d76;
     text-align: center;
@@ -64,9 +68,29 @@ table th {
   font-weight: bold;
 }
 
+.video-button-booking{
+  a{
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2 !important;
+    border: solid 1px #AD8D76;
+    color: #AD8D76;
+    font-display: none;
+    border-radius: 4%;
+    padding: 5px 10px;
+    width: 50%;
+
+    &:hover {
+      box-shadow: 0 0 7px rgba(0,0,0,.50);
+      background-color: #ffffff !important;
+    }
+  }
+}
+
 /* Media query for smaller screens */
 @media (max-width: 768px) {
   .header-text {
     font-size: 1.5rem; /* Decrease font size for smaller screens */
   }
 }
+

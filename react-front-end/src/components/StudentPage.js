@@ -34,9 +34,9 @@ const StudentPage = () => {
       <nav>
         <ul className="student-nav-links">
           {/* Use Link instead of a */}
-          <li>
+          {/* <li>
             <Link to="/StudentMessages">Messages</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/StudentBookings">Bookings</Link>
           </li>
@@ -54,40 +54,3 @@ const StudentPage = () => {
 };
 
 export default StudentPage;
-
-// //KATYA code snippet
-
-// import React from "react";
-// import "./StudentPage.scss";
-// import { Link } from "react-router-dom"; // Import the Link component
-
-// const StudentPage = () => {
-//   return (
-//     <div>
-//       <h1 className="header">Welcome</h1>
-//       <nav>
-//         <ul className="nav-links">
-//           {/* Use Link instead of a */}
-//           <li>
-//             <Link to="/StudentMessages">Messages</Link>
-//           </li>
-//           <li>
-//             <Link to="/StudentBookings">Bookings</Link>
-//           </li>
-//           <li>
-//             <Link to="/">Home</Link>
-//           </li>
-//           <li>
-//             <Link to="/logout">Log out</Link>
-//           </li>
-//           <li>
-//             <Link to="/profile">My Profile</Link>
-//           </li>
-//         </ul>
-//       </nav>
-//     </div>
-//   );
-// };
-
-// export default StudentPage;
-

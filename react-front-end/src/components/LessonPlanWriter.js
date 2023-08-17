@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -33,82 +34,13 @@ const LessonPlanWriter = () => {
     setLoading(false);
   };
 
-  //   return (
-  //     <div>
-  //       <div
-  //         // style={{
-  //         //   display: "flex",
-  //         //   justifyContent: "center",
-  //         //   alignItems: "center",
-  //         //   height: "30vh",
-  //         // }}
-  //         style={{
-  //           backgroundImage: `url(${process.env.PUBLIC_URL}/images/AI.jpg)`, // Use process.env.PUBLIC_URL
-  //           backgroundSize: "cover",
-  //           backgroundPosition: "center",
-  //           maxHeight: "700px", // Set a minimum height to cover the viewport
-  //           display: "flex",
-  //           flexDirection: "column",
-  //           justifyContent: "center",
-  //           alignItems: "center",
-  //         }}
-  //       >
-  //       <div style={{ position: "relative" }}>
-  //     <img src={process.env.PUBLIC_URL + "/images/AI.jpg"} alt="AI" />
-
-  //     <div
-  //       style={{
-  //         position: "absolute",
-  //         top: "50%",
-  //         left: "50%",
-  //         transform: "translate(-50%, -50%)",
-  //         textAlign: "center",
-  //       }}
-  //     >
-
-  //         <form onSubmit={handleSubmit}>
-  //           <textarea
-  //             type="text"
-  //             value={prompt}
-  //             placeholder="Please enter your lesson plan details"
-  //             onChange={(e) => setPrompt(e.target.value)}
-  //           ></textarea>
-  //           <button disabled={loading || prompt.length === 0} type="submit">
-  //             {loading ? "Generating..." : "Generate Lesson Plan"}
-  //           </button>
-  //         </form>
-  //       </div>
-
-  //       {apiResponse && (
-  //         <div
-  //           style={{
-  //             display: "flex",
-  //             flexDirection: "column",
-  //             alignItems: "center",
-  //             marginBottom: "50px",
-  //             marginLeft: "50px",
-  //             marginRight: "50px",
-  //             padding: "20px",
-  //             border: "1px solid #ccc",
-  //             borderRadius: "5px",
-  //           }}
-  //         >
-  //           <strong>Lesson Plan:</strong>
-  //           <p style={{ marginTop: "10px", whiteSpace: "pre-wrap" }}>
-  //             {apiResponse}
-  //           </p>
-  //         </div>
-  //       )}
-  //     </div>
-  //   );
-  // };
-
   // export default LessonPlanWriter;
 
   return (
     <div>
-      {/* <div
-      
+      <Navbar mode="dark" />
+  
+      <div
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/images/AI.jpg)`, // Use process.env.PUBLIC_URL
           backgroundSize: "cover",
@@ -119,16 +51,14 @@ const LessonPlanWriter = () => {
           justifyContent: "center",
           alignItems: "center",
         }}
-      > */}
-        
+      >
         <div style={{ position: "relative" }}>
-          
           <img
             src={process.env.PUBLIC_URL + "/images/AI.jpg"}
             alt="AI"
             style={{ maxWidth: "100%" }} // Make the image fit the container
           />
-
+  
           <div
             style={{
               position: "absolute",
@@ -138,7 +68,6 @@ const LessonPlanWriter = () => {
               textAlign: "center",
             }}
           >
-            
             <form onSubmit={handleSubmit}>
               <textarea
                 type="text"
@@ -150,10 +79,9 @@ const LessonPlanWriter = () => {
                 {loading ? "Generating..." : "Generate Lesson Plan"}
               </button>
             </form>
-          {/* </div> */}
+          </div>
         </div>
-        
-
+  
         {apiResponse && (
           <div
             style={{
@@ -183,14 +111,15 @@ const LessonPlanWriter = () => {
           </div>
         )}
       </div>
+  
       <ul className="student-nav-links" style={{ marginTop: "2%" }}>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
+        <li className="mini-home" style={{ marginBottom: "2%" }}>
+          <Link to="/">Home</Link>
+        </li>
       </ul>
       <Footer />
     </div>
   );
-};
+}
 
 export default LessonPlanWriter;

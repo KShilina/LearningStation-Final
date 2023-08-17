@@ -3,10 +3,18 @@ import axios from "axios";
 import Footer from "./Footer";
 import "./StudentBookings.scss";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
+import moment from "moment";
+// import "./videoComponent";
 
 const StudentBookings = () => {
   const [bookings, setBookings] = useState([]);
 
+  //-----test----
+    const handleReload = () => {
+      window.location.reload(); // Reload the current page
+    };
+  
   // const studentID = window.sessionStorage.getItem("student_id")
   // console.log(studentID);
   useEffect(() => {
@@ -28,10 +36,11 @@ const StudentBookings = () => {
 
   return (
     <section>
-      <div class="header-student-booking-text">
+      <Navbar />
+      <div className="header-student-booking-text">
        <div className="header-text-bookings">
         <img
-          class="header-image-std-bookings"
+          className="header-image-std-bookings"
           src={
             process.env.PUBLIC_URL +
             "/images/thought-catalog-505eectW54k-unsplash.jpg"
@@ -42,9 +51,9 @@ const StudentBookings = () => {
         </div>
       </div>
 
-      {/* <div class="student-booking-content"> */}
+      {/* <div className="student-booking-content"> */}
       {bookings.length === 0 ? (
-        <p class="no-booking-message"> No bookings </p>
+        <p className="no-booking-message"> No bookings </p>
       ) : (
         <div className="booking-table">
           <h1>Booking Details</h1>
@@ -55,6 +64,7 @@ const StudentBookings = () => {
                 <th>Class ID</th>
                 <th>Booking Date</th>
                 <th>Payment Confirmed</th>
+                <th>Virtual Room</th>
               </tr>
             </thead>
             <tbody>
@@ -62,8 +72,18 @@ const StudentBookings = () => {
                 <tr key={booking.booking_id}>
                   <td>{booking.booking_id}</td>
                   <td>{booking.class_id}</td>
-                  <td>{booking.booking_date}</td>
+                  <td>{moment(booking.booking_date).format("MMMM D, YYYY")}</td>
                   <td>{booking.payment_confirmed ? "❌" : "✅"}</td>{" "}
+                  <td>
+                     {/* <Link to="/videoComponent">VideoComponent</Link> */}
+
+                     <div className="video-button-booking">
+                      <a  href="/videoComponent" onClick={handleReload}>
+                        Video Messenger
+                      </a>
+                    </div>
+                    
+                  </td>
                   {/* Conditional rendering */}
                 </tr>
               ))}
@@ -76,15 +96,9 @@ const StudentBookings = () => {
       <nav>
         <ul className="student-nav-links">
           {/* Use Link instead of a */}
-          <li>
+          {/* <li>
             <Link to="/StudentMessages">Messages</Link>
-          </li>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/logout">Log out</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
       <Footer />
