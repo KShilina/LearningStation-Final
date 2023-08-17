@@ -34,31 +34,19 @@ const LessonPlanWriter = () => {
     setLoading(false);
   };
 
-  // export default LessonPlanWriter;
-
+  
   return (
     <div>
-      <Navbar mode="dark" />
-  
-      <div
-        style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}/images/AI.jpg)`, // Use process.env.PUBLIC_URL
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          minHeight: "100vh", // Set a minimum height to cover the viewport
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <Navbar />
+        
         <div style={{ position: "relative" }}>
+          
           <img
             src={process.env.PUBLIC_URL + "/images/AI.jpg"}
             alt="AI"
             style={{ maxWidth: "100%" }} // Make the image fit the container
           />
-  
+
           <div
             style={{
               position: "absolute",
@@ -68,6 +56,7 @@ const LessonPlanWriter = () => {
               textAlign: "center",
             }}
           >
+            
             <form onSubmit={handleSubmit}>
               <textarea
                 type="text"
@@ -79,9 +68,10 @@ const LessonPlanWriter = () => {
                 {loading ? "Generating..." : "Generate Lesson Plan"}
               </button>
             </form>
-          </div>
+          {/* </div> */}
         </div>
-  
+        
+
         {apiResponse && (
           <div
             style={{
@@ -111,15 +101,14 @@ const LessonPlanWriter = () => {
           </div>
         )}
       </div>
-  
       <ul className="student-nav-links" style={{ marginTop: "2%" }}>
-        <li className="mini-home" style={{ marginBottom: "2%" }}>
-          <Link to="/">Home</Link>
-        </li>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
       </ul>
       <Footer />
     </div>
   );
-}
+};
 
 export default LessonPlanWriter;
