@@ -24,7 +24,20 @@ const TutorPage = () => {
   useEffect(() => {
     fetchTutorInfo(id);
     fetchTutorReviews(id);
+    // fetchTutorClasses(id);
   }, [id]);
+
+  // const fetchTutorClasses = async (tutorId) => {
+  //   try {
+  //     const response = await axios.get(`/api/classes?tutor_id=${tutorId}`);
+  //     // setTutor(response.data);
+  //     console.log(response.data, "fetch tutor classes")
+  //     console.log(Number(response.data[0].class_price.substring(1)));
+  //     setAvrclassprice(Number(response.data[0].class_price.substring(1)))
+  //   } catch (error) {
+  //     console.error("Error fetching tutor information:", error);
+  //   }
+  // };
 
   const fetchTutorInfo = async (tutorId) => {
     try {
@@ -70,6 +83,10 @@ const TutorPage = () => {
     } catch (error) {
       console.error("Error submitting review:", error);
     }
+  };
+
+  const handleReload = () => {
+    window.location.reload(); // Reload the current page
   };
 
   if (!tutor) {
@@ -139,7 +156,11 @@ const TutorPage = () => {
               value={newReviewComment}
               onChange={(e) => setNewReviewComment(e.target.value)}
             />
-            <button onClick={handleReviewSubmit}>Submit Review</button>
+            {/* <button onClick={handleReviewSubmit, handleReload}>Submit Review</button> */}
+            <button onClick={() => {
+               handleReviewSubmit();
+               handleReload();
+             }}>Submit Review</button>
           </div>
         )}
 
