@@ -32,7 +32,7 @@ import { ContextProvider } from './Context';
 
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
+axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 
 // import { stopReportingRuntimeErrors  } from 'react-error-overlay';
 //
