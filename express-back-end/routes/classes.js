@@ -3,9 +3,20 @@ const router = express.Router();
 // Route to get all classes
 
 module.exports = (pool) => {
+  // router.get('/', async (req, res) => {
+  //   try {
+  //     const classes = await pool.query('SELECT * FROM classes');
+  //     res.json(classes.rows);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //     res.status(500).json({ error: 'Server Error' });
+  //   }
+  // });
   router.get('/', async (req, res) => {
+    const{tutor_id} = req.query
+    console.log(req.query,"req.query");
     try {
-      const classes = await pool.query('SELECT * FROM classes');
+      const classes = tutor_id ? await pool.query('SELECT * FROM classes WHERE tutor_id = $1;', [tutor_id]) : await pool.query('SELECT * FROM classes;') ;
       res.json(classes.rows);
     } catch (err) {
       console.error(err.message);
